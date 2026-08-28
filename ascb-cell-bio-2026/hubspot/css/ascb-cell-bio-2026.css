@@ -35,14 +35,14 @@ body.body-wrapper {
 .bt-btn-primary {
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--biotium-blue); color: #ffffff; font-weight: 800; font-size: 16px;
-  padding: 15px 28px; border-radius: 8px; border: none; text-decoration: none;
+  padding: 15px 28px; border-radius: 999px; border: none; text-decoration: none;
 }
 .bt-btn-primary:hover { background: var(--biotium-blue-dark); color: #ffffff; }
 
 .bt-btn-outline {
   display: inline-flex; align-items: center; gap: 8px;
   background: #ffffff; color: var(--biotium-blue); font-weight: 800; font-size: 14px;
-  padding: 11px 20px; border-radius: 8px; border: 1.5px solid var(--biotium-blue); text-decoration: none;
+  padding: 11px 20px; border-radius: 999px; border: 1.5px solid var(--biotium-blue); text-decoration: none;
 }
 .bt-btn-outline:hover { background: var(--biotium-blue-tint); color: var(--biotium-blue-dark); }
 
