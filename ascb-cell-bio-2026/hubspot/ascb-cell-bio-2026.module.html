@@ -1,0 +1,224 @@
+<style>
+  * { box-sizing: border-box; }
+  .bt-body-scope { font-family: 'Mulish', 'Nunito Sans', 'Open Sans', sans-serif; color: #333333; }
+  .bt-a { color: #0084FF; text-decoration: none; }
+  .bt-a:hover { color: #006fd6; }
+  .bt-wrap { max-width: 1160px; margin: 0 auto; padding-left: 48px; padding-right: 48px; }
+  .bt-btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #0084FF; color: #ffffff; font-weight: 800; font-size: 16px; padding: 15px 28px; border-radius: 8px; border: none; text-decoration: none; }
+  .bt-btn-primary:hover { background: #006fd6; color: #ffffff; }
+  .bt-btn-outline { display: inline-flex; align-items: center; gap: 8px; background: #ffffff; color: #0084FF; font-weight: 800; font-size: 14px; padding: 11px 20px; border-radius: 8px; border: 1.5px solid #0084FF; text-decoration: none; }
+  .bt-btn-outline:hover { background: #EBF5FF; color: #006fd6; }
+  .bt-link-arrow { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 14px; text-decoration: none; }
+  .bt-eyebrow { font-size: 13px; font-weight: 800; letter-spacing: 0.06em; color: #0084FF; margin-bottom: 14px; }
+  .bt-eyebrow--onDark { color: #40A3FF; }
+  .bt-card { transition: box-shadow 0.15s ease, transform 0.15s ease; text-decoration: none; display: block; }
+  .bt-card:hover { box-shadow: 0 12px 28px rgba(17,17,17,0.08); transform: translateY(-2px); }
+  .bt-cat-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 28px; }
+  .bt-cat-card__img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+  .bt-res-row { display: flex; gap: 24px; align-items: stretch; flex-wrap: wrap; }
+  .bt-res-card { flex: 1 1 260px; }
+  @media (max-width: 900px) {
+    .bt-wrap { padding-left: 24px !important; padding-right: 24px !important; }
+    .bt-hero-row, .bt-featured-row { flex-direction: column !important; }
+    .bt-hero-copy { max-width: 100% !important; }
+    .bt-h1 { font-size: 40px !important; }
+    .bt-cat-grid { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+  }
+  @media (max-width: 560px) {
+    .bt-cat-grid { grid-template-columns: 1fr !important; }
+    .bt-nav-links { display: none !important; }
+  }
+</style>
+
+<div class="bt-body-scope">
+
+<!-- Header -->
+<div style="background:#ffffff; border-bottom:1px solid #EEEEEE;">
+  <div class="bt-wrap" style="display:flex; align-items:center; justify-content:space-between; gap:24px; padding-top:20px; padding-bottom:20px;">
+    <a href="/" style="display:block; line-height:0;">
+      <img src="https://learn.biotium.com/hs-fs/hubfs/BiotiumLogo-BlackColor-transparent-1.png?width=264&height=100&name=BiotiumLogo-BlackColor-transparent-1.png" alt="Biotium" style="height:32px; width:auto; display:block;">
+    </a>
+    <div class="bt-nav-links" style="display:flex; align-items:center; gap:28px;">
+      {% if module.badge_text %}
+      <div style="display:flex; align-items:center; gap:8px; background:#EBF5FF; border-radius:999px; padding:7px 14px;">
+        <div style="width:7px; height:7px; border-radius:999px; background:#0084FF; flex:none;"></div>
+        <span style="font-size:13px; font-weight:800; letter-spacing:0.03em; color:#0084FF; white-space:nowrap;">{{ module.badge_text|upper }}</span>
+      </div>
+      {% endif %}
+      {% if module.nav_link_text and module.nav_link_url.url.href %}
+      <a href="{{ module.nav_link_url.url.href }}" class="bt-link-arrow" style="color:#111111; font-size:14px; font-weight:700;">
+        {{ module.nav_link_text }}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<!-- Hero -->
+<div style="position:relative; overflow:hidden; background:#ffffff;">
+  <svg width="480" height="480" viewBox="0 0 480 480" style="position:absolute; top:-120px; right:-100px; opacity:0.55; pointer-events:none;">
+    <line x1="240" y1="140" x2="140" y2="260" stroke="#BFE0FF" stroke-width="2"></line>
+    <line x1="240" y1="140" x2="340" y2="260" stroke="#BFE0FF" stroke-width="2"></line>
+    <line x1="140" y1="260" x2="340" y2="260" stroke="#CEEDD2" stroke-width="2"></line>
+    <line x1="340" y1="260" x2="400" y2="140" stroke="#FBC6C8" stroke-width="2"></line>
+    <circle cx="240" cy="140" r="10" fill="#0084FF"></circle>
+    <circle cx="140" cy="260" r="8" fill="#39B54A"></circle>
+    <circle cx="340" cy="260" r="8" fill="#ED1C24"></circle>
+    <circle cx="400" cy="140" r="6" fill="#0084FF" opacity="0.6"></circle>
+  </svg>
+  <div class="bt-wrap bt-hero-row" style="display:flex; align-items:center; gap:64px; padding-top:96px; padding-bottom:88px; position:relative;">
+    <div class="bt-hero-copy" style="flex:1 1 0; max-width:560px;">
+      <h1 class="bt-h1" style="margin:0 0 22px 0; font-size:56px; line-height:1.06; font-weight:900; letter-spacing:-0.01em; color:#111111;">{{ module.headline }}</h1>
+      {% if module.subcopy %}
+      <p style="margin:0 0 32px 0; font-size:19px; line-height:1.5; color:#333333; max-width:480px;">{{ module.subcopy }}</p>
+      {% endif %}
+      <div style="display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
+        {% if module.primary_cta_text and module.primary_cta_url.url.href %}
+        <a href="{{ module.primary_cta_url.url.href }}" class="bt-btn-primary">
+          {{ module.primary_cta_text }}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+        </a>
+        {% endif %}
+        {% if module.secondary_link_text and module.secondary_link_url.url.href %}
+        <a href="{{ module.secondary_link_url.url.href }}" class="bt-link-arrow" style="color:#0084FF; font-size:15px;">
+          {{ module.secondary_link_text }}
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+        </a>
+        {% endif %}
+      </div>
+    </div>
+    <div style="flex:1 1 0; max-width:520px; width:100%; position:relative;">
+      <div style="border-radius:20px; overflow:hidden; box-shadow:0 24px 60px rgba(17,17,17,0.14); position:relative;">
+        <img src="{{ module.hero_image.src }}" alt="{{ module.hero_image.alt }}" style="width:100%; height:auto; display:block;">
+        {% if module.hero_image_caption %}
+        <div style="position:absolute; left:16px; bottom:16px; background:rgba(17,17,17,0.72); color:#ffffff; font-size:12px; font-weight:700; letter-spacing:0.02em; padding:8px 14px; border-radius:999px;">{{ module.hero_image_caption }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Featured product -->
+<div style="background:#292929;">
+  <div class="bt-wrap bt-featured-row" style="display:flex; align-items:center; gap:64px; padding-top:80px; padding-bottom:80px;">
+    <div style="flex:1 1 0; max-width:520px; width:100%;">
+      <div style="border-radius:16px; overflow:hidden; border:1px solid #454545;">
+        <img src="{{ module.featured_image.src }}" alt="{{ module.featured_image.alt }}" style="width:100%; height:auto; display:block;">
+      </div>
+    </div>
+    <div style="flex:1 1 0; max-width:520px;">
+      {% if module.featured_eyebrow %}
+      <div class="bt-eyebrow bt-eyebrow--onDark">{{ module.featured_eyebrow|upper }}</div>
+      {% endif %}
+      <h2 style="margin:0 0 18px 0; font-size:34px; line-height:1.18; font-weight:800; color:#ffffff;">{{ module.featured_headline }}</h2>
+      {% if module.featured_body %}
+      <p style="margin:0 0 26px 0; font-size:17px; line-height:1.6; color:#CFCFCF;">{{ module.featured_body }}</p>
+      {% endif %}
+      {% if module.featured_link_text and module.featured_link_url.url.href %}
+      <a href="{{ module.featured_link_url.url.href }}" class="bt-link-arrow" style="color:#40A3FF; font-size:15px;">
+        {{ module.featured_link_text }}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<!-- Category grid -->
+<div style="background:#ffffff;">
+  <div class="bt-wrap" style="padding-top:92px; padding-bottom:32px;">
+    <div style="max-width:680px; margin:0 auto 56px auto; text-align:center;">
+      {% if module.grid_eyebrow %}
+      <div class="bt-eyebrow">{{ module.grid_eyebrow|upper }}</div>
+      {% endif %}
+      <h2 style="margin:0; font-size:32px; line-height:1.25; font-weight:800; color:#111111;">{{ module.grid_headline }}</h2>
+    </div>
+    <div class="bt-cat-grid" style="padding-bottom:88px;">
+      {% for item in module.categories %}
+        <a href="{{ item.link_url.url.href }}" class="bt-card" style="border:1px solid #EEEEEE; border-radius:16px; overflow:hidden; background:#ffffff;">
+          <img class="bt-cat-card__img" src="{{ item.image.src }}" alt="{{ item.image.alt|default(item.title, true) }}">
+          <div style="padding:22px;">
+            <div style="font-size:17px; font-weight:800; color:#111111; margin-bottom:6px;">{{ item.title }}</div>
+            {% if item.description %}
+            <p style="margin:0 0 14px 0; font-size:14px; line-height:1.5; color:#555555;">{{ item.description }}</p>
+            {% endif %}
+            <span class="bt-link-arrow" style="color:#0084FF; font-size:13px;">Learn more
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+            </span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- Resources -->
+<div style="background:#F7F7F7;">
+  <div class="bt-wrap" style="padding-top:72px; padding-bottom:80px;">
+    <div style="max-width:680px; margin:0 auto 44px auto; text-align:center;">
+      {% if module.resources_eyebrow %}
+      <div class="bt-eyebrow">{{ module.resources_eyebrow|upper }}</div>
+      {% endif %}
+      <h2 style="margin:0; font-size:28px; line-height:1.3; font-weight:800; color:#111111;">{{ module.resources_headline }}</h2>
+    </div>
+    <div class="bt-res-row">
+      {% for item in module.resources %}
+        <div class="bt-card bt-res-card" style="background:#ffffff; border:1px solid #EEEEEE; border-radius:14px; padding:28px;">
+          <div style="width:44px; height:44px; border-radius:10px; background:#EBF5FF; display:flex; align-items:center; justify-content:center; margin-bottom:18px;">
+            {% if item.icon == "poster" %}
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0084FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="M21 15l-5-5L5 21"></path></svg>
+            {% elif item.icon == "clock" %}
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0084FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg>
+            {% else %}
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0084FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M9 13h6"></path><path d="M9 17h6"></path></svg>
+            {% endif %}
+          </div>
+          <div style="font-size:17px; font-weight:800; color:#111111; margin-bottom:8px;">{{ item.title }}</div>
+          {% if item.description %}
+          <p style="margin:0 0 20px 0; font-size:14px; line-height:1.55; color:#555555;">{{ item.description }}</p>
+          {% endif %}
+          {% if item.download_url.url.href %}
+          <a href="{{ item.download_url.url.href }}" class="bt-btn-outline">
+            {{ item.button_text|default('Download PDF', true) }}
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"></path><path d="M6 11l6 6 6-6"></path><path d="M5 21h14"></path></svg>
+          </a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div style="background:#404040;">
+  <div class="bt-wrap" style="padding-top:52px; padding-bottom:32px;">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; padding-bottom:28px; border-bottom:1px solid #565656;">
+      <div style="display:flex; align-items:center; gap:16px;">
+        <div style="background:#ffffff; border-radius:8px; padding:8px 14px; display:inline-flex; align-items:center;">
+          <img src="https://learn.biotium.com/hs-fs/hubfs/BiotiumLogo-BlackColor-transparent-1.png?width=126&height=48&name=BiotiumLogo-BlackColor-transparent-1.png" alt="Biotium" style="height:24px; width:auto; display:block;">
+        </div>
+        {% if module.footer_tagline %}
+        <span style="color:#CFCFCF; font-size:14px; font-style:italic;">{{ module.footer_tagline }}</span>
+        {% endif %}
+      </div>
+      {% if module.footer_links %}
+      <div style="display:flex; align-items:center; gap:28px; flex-wrap:wrap;">
+        {% for link in module.footer_links %}
+        <a href="{{ link.url.url.href }}" style="color:#CFCFCF; font-size:14px; font-weight:600;">{{ link.text }}</a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; padding-top:24px;">
+      {% if module.copyright_text %}
+      <span style="color:#A0A0A0; font-size:12px;">{{ module.copyright_text }}</span>
+      {% endif %}
+      {% if module.privacy_url.url.href %}
+      <a href="{{ module.privacy_url.url.href }}" style="color:#A0A0A0; font-size:12px; font-weight:600;">Privacy Policy</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+</div>
