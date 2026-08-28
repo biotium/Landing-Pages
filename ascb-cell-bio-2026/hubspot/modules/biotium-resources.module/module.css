@@ -1,9 +1,0 @@
-.bt-res-row {
-  display: flex;
-  gap: 24px;
-  align-items: stretch;
-  flex-wrap: wrap;
-}
-.bt-res-card {
-  flex: 1 1 260px;
-}
