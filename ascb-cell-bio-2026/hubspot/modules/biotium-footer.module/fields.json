@@ -1,0 +1,41 @@
+[
+  {
+    "name": "tagline",
+    "label": "Tagline",
+    "type": "text",
+    "default": "Glowing Products for Science™",
+    "required": false,
+    "locked": false
+  },
+  {
+    "name": "footer_links",
+    "label": "Footer links",
+    "type": "group",
+    "occurrence": { "min": 0, "max": 6, "default": 3 },
+    "default": [
+      { "text": "Home", "url": { "url": { "type": "EXTERNAL", "href": "https://biotium.com" } } },
+      { "text": "The Full Spectrum Blog", "url": { "url": { "type": "EXTERNAL", "href": "https://biotium.com/blog" } } },
+      { "text": "About Us", "url": { "url": { "type": "EXTERNAL", "href": "https://biotium.com/about-us" } } }
+    ],
+    "children": [
+      { "name": "text", "label": "Link text", "type": "text", "default": "" },
+      { "name": "url", "label": "Link URL", "type": "url", "default": { "url": { "type": "EXTERNAL", "href": "https://biotium.com" } } }
+    ]
+  },
+  {
+    "name": "copyright_text",
+    "label": "Copyright text",
+    "type": "text",
+    "default": "©2026 Biotium, Inc. All rights reserved.",
+    "required": false,
+    "locked": false
+  },
+  {
+    "name": "privacy_url",
+    "label": "Privacy policy URL",
+    "type": "url",
+    "default": { "url": { "type": "EXTERNAL", "href": "https://biotium.com/privacy-policy" } },
+    "required": false,
+    "locked": false
+  }
+]

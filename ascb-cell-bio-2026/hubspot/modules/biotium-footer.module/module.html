@@ -1,0 +1,33 @@
+<div style="background:#404040;">
+  <div class="bt-wrap" style="padding-top:52px; padding-bottom:32px;">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; padding-bottom:28px; border-bottom:1px solid #565656;">
+      <div style="display:flex; align-items:center; gap:16px;">
+        <div style="background:#ffffff; border-radius:8px; padding:8px 14px; display:inline-flex; align-items:center;">
+          <img src="{{ get_asset_url('../images/biotium-logo.png') }}" alt="Biotium" style="height:24px; width:auto; display:block;">
+        </div>
+        {% if module.tagline %}
+        <span style="color:#CFCFCF; font-size:14px; font-style:italic;">{{ module.tagline }}</span>
+        {% endif %}
+      </div>
+      {% if module.footer_links %}
+      <div style="display:flex; align-items:center; gap:28px; flex-wrap:wrap;">
+        {% for link in module.footer_links %}
+        <a
+          href="{{ link.url.url.href }}"
+          {% if link.url.open_in_new_tab %}target="_blank"{% endif %}
+          style="color:#CFCFCF; font-size:14px; font-weight:600;"
+        >{{ link.text }}</a>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; padding-top:24px;">
+      {% if module.copyright_text %}
+      <span style="color:#A0A0A0; font-size:12px;">{{ module.copyright_text }}</span>
+      {% endif %}
+      {% if module.privacy_url.url.href %}
+      <a href="{{ module.privacy_url.url.href }}" style="color:#A0A0A0; font-size:12px; font-weight:600;">Privacy Policy</a>
+      {% endif %}
+    </div>
+  </div>
+</div>

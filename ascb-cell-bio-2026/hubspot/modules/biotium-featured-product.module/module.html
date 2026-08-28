@@ -1,0 +1,33 @@
+<div style="background:#292929;">
+  <div class="bt-wrap bt-featured-row" style="display:flex; align-items:center; gap:64px; padding-top:80px; padding-bottom:80px;">
+    <div style="flex:1 1 0; max-width:520px; width:100%;">
+      <div style="border-radius:16px; overflow:hidden; border:1px solid #454545;">
+        {% if module.product_image.src %}
+        <img src="{{ module.product_image.src }}" alt="{{ module.product_image.alt }}" style="width:100%; height:auto; display:block;">
+        {% else %}
+        <img src="{{ get_asset_url('../images/cytoliner-default.jpg') }}" alt="{{ module.product_image.alt }}" style="width:100%; height:auto; display:block;">
+        {% endif %}
+      </div>
+    </div>
+    <div style="flex:1 1 0; max-width:520px;">
+      {% if module.eyebrow_text %}
+      <div class="bt-eyebrow bt-eyebrow--onDark" style="margin-bottom:14px;">{{ module.eyebrow_text|upper }}</div>
+      {% endif %}
+      <h2 style="margin:0 0 18px 0; font-size:34px; line-height:1.18; font-weight:800; color:#ffffff;">{{ module.headline }}</h2>
+      {% if module.body_text %}
+      <p style="margin:0 0 26px 0; font-size:17px; line-height:1.6; color:#CFCFCF;">{{ module.body_text }}</p>
+      {% endif %}
+      {% if module.link_text and module.link_url.url.href %}
+      <a
+        href="{{ module.link_url.url.href }}"
+        {% if module.link_url.open_in_new_tab %}target="_blank"{% endif %}
+        class="bt-link-arrow"
+        style="color:#40A3FF; font-size:15px;"
+      >
+        {{ module.link_text }}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>

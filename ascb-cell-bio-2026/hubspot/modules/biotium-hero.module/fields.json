@@ -1,0 +1,76 @@
+[
+  {
+    "name": "headline",
+    "label": "Headline",
+    "type": "richtext",
+    "default": "Not sales reps.<br>Your research partners.",
+    "required": true,
+    "locked": false,
+    "help_text": "Keep it to two short lines — this renders at 56px on desktop."
+  },
+  {
+    "name": "subcopy",
+    "label": "Subcopy",
+    "type": "text",
+    "default": "Stop by Booth 1216 and get product guidance from someone who's run the assay themselves.",
+    "required": false,
+    "locked": false
+  },
+  {
+    "name": "primary_cta_text",
+    "label": "Primary button text",
+    "type": "text",
+    "default": "Find us at Booth 1216",
+    "required": false,
+    "locked": false
+  },
+  {
+    "name": "primary_cta_url",
+    "label": "Primary button URL",
+    "type": "url",
+    "default": {
+      "url": { "type": "EXTERNAL", "href": "https://events.jspargo.com/CellBio26/Public/EventMap.aspx?shavailable=1&ID=122552&sortMenu=103000" },
+      "open_in_new_tab": true,
+      "no_follow": false
+    },
+    "required": false,
+    "locked": false
+  },
+  {
+    "name": "secondary_link_text",
+    "label": "Secondary link text",
+    "type": "text",
+    "default": "Visit biotium.com",
+    "required": false,
+    "locked": false
+  },
+  {
+    "name": "secondary_link_url",
+    "label": "Secondary link URL",
+    "type": "url",
+    "default": {
+      "url": { "type": "EXTERNAL", "href": "https://biotium.com" },
+      "open_in_new_tab": false,
+      "no_follow": false
+    },
+    "required": false,
+    "locked": false
+  },
+  {
+    "name": "hero_image",
+    "label": "Hero image",
+    "type": "image",
+    "default": { "src": "", "alt": "The Biotium team at a trade show booth", "loading": "eager" },
+    "required": false,
+    "locked": false,
+    "help_text": "Falls back to a default booth photo until you upload one for this show."
+  },
+  {
+    "name": "hero_image_caption",
+    "label": "Hero image caption chip",
+    "type": "text",
+    "default": "Live from the show floor",
+    "required": false,
+    "locked": false
+  }
+]
