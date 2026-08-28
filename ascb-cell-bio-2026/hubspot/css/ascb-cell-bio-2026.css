@@ -3,14 +3,14 @@
    reference these classes instead of repeating inline rules. */
 
 :root {
-  --biotium-blue: #0084FF;
-  --biotium-blue-dark: #006fd6;
-  --biotium-blue-onDark: #40A3FF;
-  --biotium-blue-tint: #EBF5FF;
+  --biotium-blue: #087eec;
+  --biotium-blue-dark: #0062be;
+  --biotium-blue-onDark: #66b5ff;
+  --biotium-blue-tint: #e5f2ff;
   --biotium-green: #39B54A;
   --biotium-red: #ED1C24;
-  --biotium-ink: #111111;
-  --biotium-body: #333333;
+  --biotium-ink: #2d2d2d;
+  --biotium-body: #454545;
   --biotium-muted: #555555;
   --biotium-caption: #888888;
   --biotium-divider: #EEEEEE;
@@ -22,7 +22,7 @@
 
 body.body-wrapper {
   margin: 0;
-  font-family: 'Mulish', 'Nunito Sans', 'Open Sans', sans-serif;
+  font-family: 'Mulish', Arial, sans-serif;
   background: #ffffff;
   color: var(--biotium-body);
 }

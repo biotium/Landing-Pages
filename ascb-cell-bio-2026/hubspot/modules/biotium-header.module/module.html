@@ -5,9 +5,9 @@
     </a>
     <div class="bt-nav-links" style="display:flex; align-items:center; gap:28px;">
       {% if module.badge_text %}
-      <div style="display:flex; align-items:center; gap:8px; background:#EBF5FF; border-radius:999px; padding:7px 14px;">
-        <div style="width:7px; height:7px; border-radius:999px; background:#0084FF; flex:none;"></div>
-        <span style="font-size:13px; font-weight:800; letter-spacing:0.03em; color:#0084FF; white-space:nowrap;">{{ module.badge_text|upper }}</span>
+      <div style="display:flex; align-items:center; gap:8px; background:#e5f2ff; border-radius:999px; padding:7px 14px;">
+        <div style="width:7px; height:7px; border-radius:999px; background:#087eec; flex:none;"></div>
+        <span style="font-size:13px; font-weight:800; letter-spacing:0.03em; color:#087eec; white-space:nowrap;">{{ module.badge_text|upper }}</span>
       </div>
       {% endif %}
       {% if module.nav_link_text and module.nav_link_url.url.href %}
@@ -16,7 +16,7 @@
         {% if module.nav_link_url.open_in_new_tab %}target="_blank"{% endif %}
         {% if module.nav_link_url.no_follow %}rel="nofollow"{% endif %}
         class="bt-link-arrow"
-        style="color:#111111; font-size:14px; font-weight:700;"
+        style="color:#2d2d2d; font-size:14px; font-weight:700;"
       >
         {{ module.nav_link_text }}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>

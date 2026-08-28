@@ -4,7 +4,7 @@
       {% if module.eyebrow_text %}
       <div class="bt-eyebrow">{{ module.eyebrow_text|upper }}</div>
       {% endif %}
-      <h2 style="margin:0; font-size:32px; line-height:1.25; font-weight:800; color:#111111;">{{ module.headline }}</h2>
+      <h2 style="margin:0; font-size:32px; line-height:1.25; font-weight:800; color:#2d2d2d;">{{ module.headline }}</h2>
     </div>
 
     <div class="bt-cat-grid" style="padding-bottom:88px;">
@@ -25,11 +25,11 @@
         >
           <img class="bt-cat-card__img" src="{{ item.image.src|default(fallback_image, true) }}" alt="{{ item.image.alt|default(item.title, true) }}">
           <div style="padding:22px;">
-            <div style="font-size:17px; font-weight:800; color:#111111; margin-bottom:6px;">{{ item.title }}</div>
+            <div style="font-size:17px; font-weight:800; color:#2d2d2d; margin-bottom:6px;">{{ item.title }}</div>
             {% if item.description %}
             <p style="margin:0 0 14px 0; font-size:14px; line-height:1.5; color:#555555;">{{ item.description }}</p>
             {% endif %}
-            <span class="bt-link-arrow" style="color:#0084FF; font-size:13px;">Learn more
+            <span class="bt-link-arrow" style="color:#087eec; font-size:13px;">Learn more
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
             </span>
           </div>

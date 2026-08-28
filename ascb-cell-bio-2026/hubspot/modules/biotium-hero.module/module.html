@@ -4,16 +4,16 @@
     <line x1="240" y1="140" x2="340" y2="260" stroke="#BFE0FF" stroke-width="2"></line>
     <line x1="140" y1="260" x2="340" y2="260" stroke="#CEEDD2" stroke-width="2"></line>
     <line x1="340" y1="260" x2="400" y2="140" stroke="#FBC6C8" stroke-width="2"></line>
-    <circle cx="240" cy="140" r="10" fill="#0084FF"></circle>
+    <circle cx="240" cy="140" r="10" fill="#087eec"></circle>
     <circle cx="140" cy="260" r="8" fill="#39B54A"></circle>
     <circle cx="340" cy="260" r="8" fill="#ED1C24"></circle>
-    <circle cx="400" cy="140" r="6" fill="#0084FF" opacity="0.6"></circle>
+    <circle cx="400" cy="140" r="6" fill="#087eec" opacity="0.6"></circle>
   </svg>
   <div class="bt-wrap bt-hero-row" style="display:flex; align-items:center; gap:64px; padding-top:96px; padding-bottom:88px; position:relative;">
     <div class="bt-hero-copy" style="flex:1 1 0; max-width:560px;">
-      <h1 class="bt-h1" style="margin:0 0 22px 0; font-size:56px; line-height:1.06; font-weight:900; letter-spacing:-0.01em; color:#111111;">{{ module.headline }}</h1>
+      <h1 class="bt-h1" style="margin:0 0 22px 0; font-size:56px; line-height:1.06; font-weight:800; letter-spacing:-0.01em; color:#2d2d2d;">{{ module.headline }}</h1>
       {% if module.subcopy %}
-      <p style="margin:0 0 32px 0; font-size:19px; line-height:1.5; color:#333333; max-width:480px;">{{ module.subcopy }}</p>
+      <p style="margin:0 0 32px 0; font-size:19px; line-height:1.5; color:#454545; max-width:480px;">{{ module.subcopy }}</p>
       {% endif %}
       <div style="display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
         {% if module.primary_cta_text and module.primary_cta_url.url.href %}
@@ -32,7 +32,7 @@
           href="{{ module.secondary_link_url.url.href }}"
           {% if module.secondary_link_url.open_in_new_tab %}target="_blank"{% endif %}
           class="bt-link-arrow"
-          style="color:#0084FF; font-size:15px;"
+          style="color:#087eec; font-size:15px;"
         >
           {{ module.secondary_link_text }}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
