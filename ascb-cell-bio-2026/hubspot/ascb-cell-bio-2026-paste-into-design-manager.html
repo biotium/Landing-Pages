@@ -1,0 +1,277 @@
+<!--
+templateType: page
+isAvailableForNewContent: true
+label: Biotium – ASCB Cell Bio 2026 Landing Page
+-->
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_meta.html_title }}</title>
+  {{ standard_header_includes }}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800;900&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body.bt-body { margin: 0; font-family: 'Mulish', 'Nunito Sans', 'Open Sans', sans-serif; background: #ffffff; color: #333333; }
+    .bt-a { color: #0084FF; text-decoration: none; }
+    .bt-a:hover { color: #006fd6; }
+    .bt-wrap { max-width: 1160px; margin: 0 auto; padding-left: 48px; padding-right: 48px; }
+    .bt-btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #0084FF; color: #ffffff; font-weight: 800; font-size: 16px; padding: 15px 28px; border-radius: 8px; border: none; text-decoration: none; }
+    .bt-btn-primary:hover { background: #006fd6; color: #ffffff; }
+    .bt-btn-outline { display: inline-flex; align-items: center; gap: 8px; background: #ffffff; color: #0084FF; font-weight: 800; font-size: 14px; padding: 11px 20px; border-radius: 8px; border: 1.5px solid #0084FF; text-decoration: none; }
+    .bt-btn-outline:hover { background: #EBF5FF; color: #006fd6; }
+    .bt-link-arrow { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 14px; text-decoration: none; }
+    .bt-eyebrow { font-size: 13px; font-weight: 800; letter-spacing: 0.06em; color: #0084FF; margin-bottom: 14px; }
+    .bt-eyebrow--onDark { color: #40A3FF; }
+    .bt-card { transition: box-shadow 0.15s ease, transform 0.15s ease; text-decoration: none; display: block; }
+    .bt-card:hover { box-shadow: 0 12px 28px rgba(17,17,17,0.08); transform: translateY(-2px); }
+    .bt-cat-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 28px; }
+    .bt-cat-card__img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+    .bt-res-row { display: flex; gap: 24px; align-items: stretch; flex-wrap: wrap; }
+    .bt-res-card { flex: 1 1 260px; }
+    @media (max-width: 900px) {
+      .bt-wrap { padding-left: 24px !important; padding-right: 24px !important; }
+      .bt-hero-row, .bt-featured-row { flex-direction: column !important; }
+      .bt-hero-copy { max-width: 100% !important; }
+      .bt-h1 { font-size: 40px !important; }
+      .bt-cat-grid { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+    }
+    @media (max-width: 560px) {
+      .bt-cat-grid { grid-template-columns: 1fr !important; }
+      .bt-nav-links { display: none !important; }
+    }
+  </style>
+</head>
+<body class="bt-body {{ body_classes }}">
+
+<!-- Header -->
+<div style="background:#ffffff; border-bottom:1px solid #EEEEEE;">
+  <div class="bt-wrap" style="display:flex; align-items:center; justify-content:space-between; gap:24px; padding-top:20px; padding-bottom:20px;">
+    <a href="/" style="display:block; line-height:0;">
+      <img src="https://learn.biotium.com/hs-fs/hubfs/BiotiumLogo-BlackColor-transparent-1.png?width=264&height=100&name=BiotiumLogo-BlackColor-transparent-1.png" alt="Biotium" style="height:32px; width:auto; display:block;">
+    </a>
+    <div class="bt-nav-links" style="display:flex; align-items:center; gap:28px;">
+      <div style="display:flex; align-items:center; gap:8px; background:#EBF5FF; border-radius:999px; padding:7px 14px;">
+        <div style="width:7px; height:7px; border-radius:999px; background:#0084FF; flex:none;"></div>
+        <span style="font-size:13px; font-weight:800; letter-spacing:0.03em; color:#0084FF; white-space:nowrap;">ASCB CELL BIO 2026 &middot; BOOTH 1216</span>
+      </div>
+      <a href="https://biotium.com" class="bt-link-arrow" style="color:#111111; font-size:14px; font-weight:700;">
+        Visit biotium.com
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Hero -->
+<div style="position:relative; overflow:hidden; background:#ffffff;">
+  <svg width="480" height="480" viewBox="0 0 480 480" style="position:absolute; top:-120px; right:-100px; opacity:0.55; pointer-events:none;">
+    <line x1="240" y1="140" x2="140" y2="260" stroke="#BFE0FF" stroke-width="2"></line>
+    <line x1="240" y1="140" x2="340" y2="260" stroke="#BFE0FF" stroke-width="2"></line>
+    <line x1="140" y1="260" x2="340" y2="260" stroke="#CEEDD2" stroke-width="2"></line>
+    <line x1="340" y1="260" x2="400" y2="140" stroke="#FBC6C8" stroke-width="2"></line>
+    <circle cx="240" cy="140" r="10" fill="#0084FF"></circle>
+    <circle cx="140" cy="260" r="8" fill="#39B54A"></circle>
+    <circle cx="340" cy="260" r="8" fill="#ED1C24"></circle>
+    <circle cx="400" cy="140" r="6" fill="#0084FF" opacity="0.6"></circle>
+  </svg>
+  <div class="bt-wrap bt-hero-row" style="display:flex; align-items:center; gap:64px; padding-top:96px; padding-bottom:88px; position:relative;">
+    <div class="bt-hero-copy" style="flex:1 1 0; max-width:560px;">
+      <h1 class="bt-h1" style="margin:0 0 22px 0; font-size:56px; line-height:1.06; font-weight:900; letter-spacing:-0.01em; color:#111111;">Not sales reps.<br>Your research partners.</h1>
+      <p style="margin:0 0 32px 0; font-size:19px; line-height:1.5; color:#333333; max-width:480px;">Stop by Booth 1216 and get product guidance from someone who's run the assay themselves.</p>
+      <div style="display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
+        <a href="https://events.jspargo.com/CellBio26/Public/EventMap.aspx?shavailable=1&ID=122552&sortMenu=103000" class="bt-btn-primary">
+          Find us at Booth 1216
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a href="https://biotium.com" class="bt-link-arrow" style="color:#0084FF; font-size:15px;">
+          Visit biotium.com
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+        </a>
+      </div>
+    </div>
+    <div style="flex:1 1 0; max-width:520px; width:100%; position:relative;">
+      <div style="border-radius:20px; overflow:hidden; box-shadow:0 24px 60px rgba(17,17,17,0.14); position:relative;">
+        <img src="https://learn.biotium.com/hs-fs/hubfs/boothpic.png?width=800&height=800&name=boothpic.png" alt="The Biotium team at a trade show booth" style="width:100%; height:auto; display:block;">
+        <div style="position:absolute; left:16px; bottom:16px; background:rgba(17,17,17,0.72); color:#ffffff; font-size:12px; font-weight:700; letter-spacing:0.02em; padding:8px 14px; border-radius:999px;">Live from the show floor</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Featured product -->
+<div style="background:#292929;">
+  <div class="bt-wrap bt-featured-row" style="display:flex; align-items:center; gap:64px; padding-top:80px; padding-bottom:80px;">
+    <div style="flex:1 1 0; max-width:520px; width:100%;">
+      <div style="border-radius:16px; overflow:hidden; border:1px solid #454545;">
+        <img src="https://learn.biotium.com/hs-fs/hubfs/Plots,%20Figures,%20Spectra/CytoLiner-MCF7-composite-900x599-1.jpg?width=900&height=599&name=CytoLiner-MCF7-composite-900x599-1.jpg" alt="CytoLiner fixed cell membrane stains across six fluorescent channels" style="width:100%; height:auto; display:block;">
+      </div>
+    </div>
+    <div style="flex:1 1 0; max-width:520px;">
+      <div class="bt-eyebrow bt-eyebrow--onDark">FEATURED AT ASCB CELL BIO</div>
+      <h2 style="margin:0 0 18px 0; font-size:34px; line-height:1.18; font-weight:800; color:#ffffff;">CytoLiner&trade; Fixed Cell Membrane Stains: built for real workflows</h2>
+      <p style="margin:0 0 26px 0; font-size:17px; line-height:1.6; color:#CFCFCF;">Novel lipophilic fluorescent dyes for selective staining of the plasma membrane in formaldehyde-fixed cells. Available in six colors, from blue to near-IR.</p>
+      <a href="https://biotium.com/product/cytoliner-fixed-cell-membrane-stains/" class="bt-link-arrow" style="color:#40A3FF; font-size:15px;">
+        Learn more about CytoLiner
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Category grid -->
+<div style="background:#ffffff;">
+  <div class="bt-wrap" style="padding-top:92px; padding-bottom:32px;">
+    <div style="max-width:680px; margin:0 auto 56px auto; text-align:center;">
+      <div class="bt-eyebrow">OUR PORTFOLIO AT ASCB</div>
+      <h2 style="margin:0; font-size:32px; line-height:1.25; font-weight:800; color:#111111;">Simplify cell biology research with innovative tools that deliver clarity, consistency, and speed.</h2>
+    </div>
+    <div class="bt-cat-grid" style="padding-bottom:88px;">
+
+      <a href="https://biotium.com" class="bt-card" style="border:1px solid #EEEEEE; border-radius:16px; overflow:hidden; background:#ffffff;">
+        <img class="bt-cat-card__img" src="https://learn.biotium.com/hs-fs/hubfs/biotium-nuclearstains.png?width=1264&height=848&name=biotium-nuclearstains.png" alt="Nuclear stains">
+        <div style="padding:22px;">
+          <div style="font-size:17px; font-weight:800; color:#111111; margin-bottom:6px;">Nuclear Stains</div>
+          <p style="margin:0 0 14px 0; font-size:14px; line-height:1.5; color:#555555;">Bright, wash-free nuclear counterstains.</p>
+          <span class="bt-link-arrow" style="color:#0084FF; font-size:13px;">Learn more
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+          </span>
+        </div>
+      </a>
+
+      <a href="https://biotium.com" class="bt-card" style="border:1px solid #EEEEEE; border-radius:16px; overflow:hidden; background:#ffffff;">
+        <img class="bt-cat-card__img" src="https://learn.biotium.com/hs-fs/hubfs/biotium-membranestains.png?width=1264&height=848&name=biotium-membranestains.png" alt="Membrane stains">
+        <div style="padding:22px;">
+          <div style="font-size:17px; font-weight:800; color:#111111; margin-bottom:6px;">Membrane Stains</div>
+          <p style="margin:0 0 14px 0; font-size:14px; line-height:1.5; color:#555555;">No more lipophilic dye workarounds.</p>
+          <span class="bt-link-arrow" style="color:#0084FF; font-size:13px;">Learn more
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+          </span>
+        </div>
+      </a>
+
+      <a href="https://biotium.com" class="bt-card" style="border:1px solid #EEEEEE; border-radius:16px; overflow:hidden; background:#ffffff;">
+        <img class="bt-cat-card__img" src="https://learn.biotium.com/hs-fs/hubfs/biotium-antibody.png?width=1264&height=848&name=biotium-antibody.png" alt="Antibodies">
+        <div style="padding:22px;">
+          <div style="font-size:17px; font-weight:800; color:#111111; margin-bottom:6px;">Antibodies</div>
+          <p style="margin:0 0 14px 0; font-size:14px; line-height:1.5; color:#555555;">Validated primaries, ready off the shelf.</p>
+          <span class="bt-link-arrow" style="color:#0084FF; font-size:13px;">Learn more
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+          </span>
+        </div>
+      </a>
+
+      <a href="https://biotium.com" class="bt-card" style="border:1px solid #EEEEEE; border-radius:16px; overflow:hidden; background:#ffffff;">
+        <img class="bt-cat-card__img" src="https://learn.biotium.com/hs-fs/hubfs/biotium-flow%20cyto.png?width=1264&height=848&name=biotium-flow%20cyto.png" alt="Flow cytometry">
+        <div style="padding:22px;">
+          <div style="font-size:17px; font-weight:800; color:#111111; margin-bottom:6px;">Flow Cytometry</div>
+          <p style="margin:0 0 14px 0; font-size:14px; line-height:1.5; color:#555555;">Multiplex 15 samples in one tube.</p>
+          <span class="bt-link-arrow" style="color:#0084FF; font-size:13px;">Learn more
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+          </span>
+        </div>
+      </a>
+
+      <a href="https://biotium.com" class="bt-card" style="border:1px solid #EEEEEE; border-radius:16px; overflow:hidden; background:#ffffff;">
+        <img class="bt-cat-card__img" src="https://learn.biotium.com/hs-fs/hubfs/biotium%20EVs.png?width=1264&height=848&name=biotium%20EVs.png" alt="Exosome and EV detection">
+        <div style="padding:22px;">
+          <div style="font-size:17px; font-weight:800; color:#111111; margin-bottom:6px;">Exosome &amp; EV Detection</div>
+          <p style="margin:0 0 14px 0; font-size:14px; line-height:1.5; color:#555555;">Detect exosomes without ultracentrifugation.</p>
+          <span class="bt-link-arrow" style="color:#0084FF; font-size:13px;">Learn more
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+          </span>
+        </div>
+      </a>
+
+      <a href="https://biotium.com" class="bt-card" style="border:1px solid #EEEEEE; border-radius:16px; overflow:hidden; background:#ffffff;">
+        <img class="bt-cat-card__img" src="https://learn.biotium.com/hs-fs/hubfs/biotium-TSA.png?width=1264&height=848&name=biotium-TSA.png" alt="Signal amplification">
+        <div style="padding:22px;">
+          <div style="font-size:17px; font-weight:800; color:#111111; margin-bottom:6px;">Signal Amplification</div>
+          <p style="margin:0 0 14px 0; font-size:14px; line-height:1.5; color:#555555;">Amplify faint signals, keep resolution sharp.</p>
+          <span class="bt-link-arrow" style="color:#0084FF; font-size:13px;">Learn more
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+          </span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- Resources -->
+<div style="background:#F7F7F7;">
+  <div class="bt-wrap" style="padding-top:72px; padding-bottom:80px;">
+    <div style="max-width:680px; margin:0 auto 44px auto; text-align:center;">
+      <div class="bt-eyebrow">TAKE IT WITH YOU</div>
+      <h2 style="margin:0; font-size:28px; line-height:1.3; font-weight:800; color:#111111;">Free guides for the show and after</h2>
+    </div>
+    <div class="bt-res-row">
+
+      <div class="bt-card bt-res-card" style="background:#ffffff; border:1px solid #EEEEEE; border-radius:14px; padding:28px;">
+        <div style="width:44px; height:44px; border-radius:10px; background:#EBF5FF; display:flex; align-items:center; justify-content:center; margin-bottom:18px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0084FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M9 13h6"></path><path d="M9 17h6"></path></svg>
+        </div>
+        <div style="font-size:17px; font-weight:800; color:#111111; margin-bottom:8px;">Cell Stain Selection Guide</div>
+        <p style="margin:0 0 20px 0; font-size:14px; line-height:1.55; color:#555555;">Pick the right nuclear, membrane, or live-cell stain for your assay in minutes.</p>
+        <a href="https://biotium.com/resource/cellular-stains-selection-guide/" class="bt-btn-outline">
+          Download PDF
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"></path><path d="M6 11l6 6 6-6"></path><path d="M5 21h14"></path></svg>
+        </a>
+      </div>
+
+      <div class="bt-card bt-res-card" style="background:#ffffff; border:1px solid #EEEEEE; border-radius:14px; padding:28px;">
+        <div style="width:44px; height:44px; border-radius:10px; background:#EBF5FF; display:flex; align-items:center; justify-content:center; margin-bottom:18px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0084FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="9" cy="9" r="2"></circle><path d="M21 15l-5-5L5 21"></path></svg>
+        </div>
+        <div style="font-size:17px; font-weight:800; color:#111111; margin-bottom:8px;">Cell Stains Under the Hood</div>
+        <p style="margin:0 0 20px 0; font-size:14px; line-height:1.55; color:#555555;">The chemistry and photophysics behind Biotium's stain portfolio, in one poster.</p>
+        <a href="https://biotium.com/poster/poster-cellular-stains-under-the-hood/" class="bt-btn-outline">
+          Download PDF
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"></path><path d="M6 11l6 6 6-6"></path><path d="M5 21h14"></path></svg>
+        </a>
+      </div>
+
+      <div class="bt-card bt-res-card" style="background:#ffffff; border:1px solid #EEEEEE; border-radius:14px; padding:28px;">
+        <div style="width:44px; height:44px; border-radius:10px; background:#EBF5FF; display:flex; align-items:center; justify-content:center; margin-bottom:18px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0084FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg>
+        </div>
+        <div style="font-size:17px; font-weight:800; color:#111111; margin-bottom:8px;">CF&reg; Dyes &amp; Cell Stains for Microscopy</div>
+        <p style="margin:0 0 20px 0; font-size:14px; line-height:1.55; color:#555555;">A quick-reference wall poster for the CF&reg; dye and stain lineup.</p>
+        <a href="https://biotium.com/resource/cf-dyes-cell-stains-for-microscopy-poster/" class="bt-btn-outline">
+          Download PDF
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"></path><path d="M6 11l6 6 6-6"></path><path d="M5 21h14"></path></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div style="background:#404040;">
+  <div class="bt-wrap" style="padding-top:52px; padding-bottom:32px;">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; padding-bottom:28px; border-bottom:1px solid #565656;">
+      <div style="display:flex; align-items:center; gap:16px;">
+        <div style="background:#ffffff; border-radius:8px; padding:8px 14px; display:inline-flex; align-items:center;">
+          <img src="https://learn.biotium.com/hs-fs/hubfs/BiotiumLogo-BlackColor-transparent-1.png?width=126&height=48&name=BiotiumLogo-BlackColor-transparent-1.png" alt="Biotium" style="height:24px; width:auto; display:block;">
+        </div>
+        <span style="color:#CFCFCF; font-size:14px; font-style:italic;">Glowing Products for Science&trade;</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:28px; flex-wrap:wrap;">
+        <a href="https://biotium.com" style="color:#CFCFCF; font-size:14px; font-weight:600;">Home</a>
+        <a href="https://biotium.com/blog" style="color:#CFCFCF; font-size:14px; font-weight:600;">The Full Spectrum Blog</a>
+        <a href="https://biotium.com/about-us" style="color:#CFCFCF; font-size:14px; font-weight:600;">About Us</a>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; padding-top:24px;">
+      <span style="color:#A0A0A0; font-size:12px;">&copy;2026 Biotium, Inc. All rights reserved.</span>
+      <a href="https://biotium.com/privacy-policy" style="color:#A0A0A0; font-size:12px; font-weight:600;">Privacy Policy</a>
+    </div>
+  </div>
+</div>
+
+{{ standard_footer_includes }}
+</body>
+</html>
