@@ -25,8 +25,7 @@
     .bt-eyebrow--onDark { color: #66b5ff; }
     .bt-card { transition: box-shadow 0.15s ease, transform 0.15s ease; text-decoration: none; display: block; }
     .bt-card:hover { box-shadow: 0 12px 28px rgba(17,17,17,0.08); transform: translateY(-2px); }
-    .bt-cat-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 28px; }
-    .bt-cat-card__img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+    .bt-cat-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
     .bt-res-row { display: flex; gap: 24px; align-items: stretch; flex-wrap: wrap; }
     .bt-res-card { flex: 1 1 260px; }
     .cytoliner-swatch {
@@ -115,7 +114,7 @@
   <div class="bt-wrap bt-hero-row" style="display:flex; align-items:center; gap:64px; padding-top:104px; padding-bottom:96px; position:relative;">
     <div class="bt-hero-copy" style="flex:1 1 0; max-width:620px;">
       <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.16); border-radius:999px; padding:7px 14px; margin-bottom:22px;">
-        <div class="bt-hero-dot" style="width:7px; height:7px; border-radius:999px; background:#66b5ff; flex:none;"></div>
+        <div class="bt-hero-dot" style="width:7px; height:7px; aspect-ratio:1/1; border-radius:999px; background:#66b5ff; flex:none; flex-shrink:0;"></div>
         <span style="font-size:12.5px; font-weight:800; letter-spacing:0.04em; color:#D7DEE5; white-space:nowrap;">BOOTH 1216 &middot; CELL BIO 2026 &middot; SAN DIEGO &middot; DEC 12&ndash;15</span>
       </div>
       <h1 class="bt-h1" style="margin:0 0 22px 0; font-size:56px; line-height:1.06; font-weight:800; letter-spacing:-0.01em; color:#ffffff;">Not sales reps.<br>Your research partners.</h1>
@@ -140,7 +139,28 @@
   </div>
 </div>
 
-<!-- CytoLiner spectrum explorer -->
+<!-- Featured product -->
+<div style="background:#292929;">
+  <div class="bt-wrap bt-featured-row" style="display:flex; align-items:center; gap:64px; padding-top:80px; padding-bottom:80px;">
+    <div style="flex:1 1 0; max-width:520px; width:100%;">
+      <div style="border-radius:16px; overflow:hidden; border:1px solid #454545; position:relative;">
+        <img src="cytoliner_sm.jpg" alt="Comparison of CytoLiner and traditional dye fixed cell staining" style="width:100%; height:auto; display:block;">
+        <div class="bt-img-pill">Comparison of fixed cell staining</div>
+      </div>
+    </div>
+    <div style="flex:1 1 0; max-width:520px;">
+      <div class="bt-eyebrow bt-eyebrow--onDark">FEATURED AT CELL BIO 2026</div>
+      <h2 style="margin:0 0 18px 0; font-size:34px; line-height:1.18; font-weight:800; color:#ffffff;">CytoLiner&trade;: built for real workflows</h2>
+      <p style="margin:0 0 26px 0; font-size:17px; line-height:1.6; color:#CFCFCF;">Most lipophilic membrane dyes are built for live cells. Fixation and permeabilization wash them right out. CytoLiner&trade; stains the plasma membrane cleanly in formaldehyde-fixed cells, in six colors from blue to near-IR. Ask our team at Booth 1216 for the full staining protocol.</p>
+      <a href="https://biotium.com/product/cytoliner-fixed-cell-membrane-stains/" class="bt-link-arrow" style="color:#66b5ff; font-size:15px;">
+        Learn more about CytoLiner
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- CytoLiner spectrum explorer (alt) -->
 <div style="background:#232323; border-top:1px solid #3f3f3f;">
   <div class="bt-wrap bt-featured-row" style="display:flex; align-items:center; gap:64px; padding-top:80px; padding-bottom:80px;">
     <div style="flex:1 1 380px; max-width:560px;">
@@ -197,106 +217,67 @@
 </script>
 
 <!-- Category grid -->
-
-<!-- Category grid -->
 <div style="background:#ffffff;">
-  <div class="bt-wrap" style="padding-top:92px; padding-bottom:32px;">
-    <div style="max-width:680px; margin:0 auto 56px auto; text-align:center;">
+  <div class="bt-wrap" style="padding-top:56px; padding-bottom:32px;">
+    <div style="max-width:680px; margin:0 auto 32px auto; text-align:center;">
       <div class="bt-eyebrow">OUR PORTFOLIO AT CELL BIO 2026</div>
-      <h2 style="margin:0; font-size:32px; line-height:1.25; font-weight:800; color:#2d2d2d;">Simplify cell biology research with innovative tools that deliver clarity, consistency, and speed.</h2>
+      <h2 style="margin:0; font-size:28px; line-height:1.3; font-weight:800; color:#2d2d2d;">Simplify cell biology research with innovative tools</h2>
     </div>
-    <div class="bt-cat-grid" style="padding-bottom:88px;">
+    <div class="bt-cat-grid" style="padding-bottom:40px;">
 
-      <div class="bt-card" style="border:1px solid #EEEEEE; border-radius:16px; overflow:hidden; background:#ffffff;">
-        <a href="https://biotium.com/technology/cellular-stains/nuclear-stains/" style="display:block;">
-          <img class="bt-cat-card__img" src="nuclear_sm.jpg" alt="Nuclear stains">
-        </a>
-        <div style="padding:22px;">
-          <a href="https://biotium.com/technology/cellular-stains/nuclear-stains/" style="text-decoration:none;">
-            <div style="font-size:17px; font-weight:800; color:#2d2d2d; margin-bottom:8px;">Nuclear Stains</div>
-          </a>
-          <p style="margin:0 0 14px 0; font-size:14px; line-height:1.5; color:#555555;">Bright, wash-free nuclear counterstains.</p>
-          <a href="https://biotium.com/technology/cellular-stains/nuclear-stains/" class="bt-link-arrow" style="color:#087eec; font-size:13px;">Learn more
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
-          </a>
+      <a href="https://biotium.com/technology/cellular-stains/nuclear-stains/" class="bt-card" style="display:flex; align-items:center; gap:16px; border:1px solid #EEEEEE; border-radius:14px; background:#ffffff; padding:14px 16px; text-decoration:none;">
+        <img src="nuclear_sm.jpg" alt="Nuclear stains" style="width:52px; height:52px; border-radius:10px; object-fit:cover; flex:none;">
+        <div style="flex:1 1 auto; min-width:0;">
+          <div style="font-size:15px; font-weight:800; color:#2d2d2d; margin-bottom:2px;">Nuclear Stains</div>
+          <p style="margin:0; font-size:13px; line-height:1.4; color:#555555; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Bright, wash-free nuclear counterstains.</p>
         </div>
-      </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
 
-      <div class="bt-card" style="border:1px solid #EEEEEE; border-radius:16px; overflow:hidden; background:#ffffff;">
-        <a href="https://biotium.com/technology/cellular-stains/cell-surface-stains/" style="display:block;">
-          <img class="bt-cat-card__img" src="membrane_sm.jpg" alt="Membrane stains">
-        </a>
-        <div style="padding:22px;">
-          <a href="https://biotium.com/technology/cellular-stains/cell-surface-stains/" style="text-decoration:none;">
-            <div style="font-size:17px; font-weight:800; color:#2d2d2d; margin-bottom:8px;">Membrane Stains</div>
-          </a>
-          <p style="margin:0 0 14px 0; font-size:14px; line-height:1.5; color:#555555;">No more lipophilic dye workarounds.</p>
-          <a href="https://biotium.com/technology/cellular-stains/cell-surface-stains/" class="bt-link-arrow" style="color:#087eec; font-size:13px;">Learn more
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
-          </a>
+      <a href="https://biotium.com/technology/cellular-stains/cell-surface-stains/" class="bt-card" style="display:flex; align-items:center; gap:16px; border:1px solid #EEEEEE; border-radius:14px; background:#ffffff; padding:14px 16px; text-decoration:none;">
+        <img src="membrane_sm.jpg" alt="Membrane stains" style="width:52px; height:52px; border-radius:10px; object-fit:cover; flex:none;">
+        <div style="flex:1 1 auto; min-width:0;">
+          <div style="font-size:15px; font-weight:800; color:#2d2d2d; margin-bottom:2px;">Membrane Stains</div>
+          <p style="margin:0; font-size:13px; line-height:1.4; color:#555555; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">No more lipophilic dye workarounds.</p>
         </div>
-      </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
 
-      <div class="bt-card" style="border:1px solid #EEEEEE; border-radius:16px; overflow:hidden; background:#ffffff;">
-        <a href="https://biotium.com/technology/primary-secondary-antibody-conjugates/" style="display:block;">
-          <img class="bt-cat-card__img" src="antibody_sm.jpg" alt="Antibodies">
-        </a>
-        <div style="padding:22px;">
-          <a href="https://biotium.com/technology/primary-secondary-antibody-conjugates/" style="text-decoration:none;">
-            <div style="font-size:17px; font-weight:800; color:#2d2d2d; margin-bottom:8px;">Antibodies</div>
-          </a>
-          <p style="margin:0 0 14px 0; font-size:14px; line-height:1.5; color:#555555;">Validated primaries, ready off the shelf.</p>
-          <a href="https://biotium.com/technology/primary-secondary-antibody-conjugates/" class="bt-link-arrow" style="color:#087eec; font-size:13px;">Learn more
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
-          </a>
+      <a href="https://biotium.com/technology/primary-secondary-antibody-conjugates/" class="bt-card" style="display:flex; align-items:center; gap:16px; border:1px solid #EEEEEE; border-radius:14px; background:#ffffff; padding:14px 16px; text-decoration:none;">
+        <img src="antibody_sm.jpg" alt="Antibodies" style="width:52px; height:52px; border-radius:10px; object-fit:cover; flex:none;">
+        <div style="flex:1 1 auto; min-width:0;">
+          <div style="font-size:15px; font-weight:800; color:#2d2d2d; margin-bottom:2px;">Antibodies</div>
+          <p style="margin:0; font-size:13px; line-height:1.4; color:#555555; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Validated primaries, ready off the shelf.</p>
         </div>
-      </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
 
-      <div class="bt-card" style="border:1px solid #EEEEEE; border-radius:16px; overflow:hidden; background:#ffffff;">
-        <a href="https://biotium.com/technology/flow-cytometry-reagents/" style="display:block;">
-          <img class="bt-cat-card__img" src="flow_sm.jpg" alt="Flow cytometry">
-        </a>
-        <div style="padding:22px;">
-          <a href="https://biotium.com/technology/flow-cytometry-reagents/" style="text-decoration:none;">
-            <div style="font-size:17px; font-weight:800; color:#2d2d2d; margin-bottom:8px;">Flow Cytometry</div>
-          </a>
-          <p style="margin:0 0 14px 0; font-size:14px; line-height:1.5; color:#555555;">Multiplex 15 samples in one tube.</p>
-          <a href="https://biotium.com/technology/flow-cytometry-reagents/" class="bt-link-arrow" style="color:#087eec; font-size:13px;">Learn more
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
-          </a>
+      <a href="https://biotium.com/technology/flow-cytometry-reagents/" class="bt-card" style="display:flex; align-items:center; gap:16px; border:1px solid #EEEEEE; border-radius:14px; background:#ffffff; padding:14px 16px; text-decoration:none;">
+        <img src="flow_sm.jpg" alt="Flow cytometry" style="width:52px; height:52px; border-radius:10px; object-fit:cover; flex:none;">
+        <div style="flex:1 1 auto; min-width:0;">
+          <div style="font-size:15px; font-weight:800; color:#2d2d2d; margin-bottom:2px;">Flow Cytometry</div>
+          <p style="margin:0; font-size:13px; line-height:1.4; color:#555555; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Multiplex 15 samples in one tube.</p>
         </div>
-      </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
 
-      <div class="bt-card" style="border:1px solid #EEEEEE; border-radius:16px; overflow:hidden; background:#ffffff;">
-        <a href="https://biotium.com/technology/exosome-ev-labeling/" style="display:block;">
-          <img class="bt-cat-card__img" src="evs_sm.jpg" alt="Exosome and EV detection">
-        </a>
-        <div style="padding:22px;">
-          <a href="https://biotium.com/technology/exosome-ev-labeling/" style="text-decoration:none;">
-            <div style="font-size:17px; font-weight:800; color:#2d2d2d; margin-bottom:8px;">Exosome &amp; EV Detection</div>
-          </a>
-          <p style="margin:0 0 14px 0; font-size:14px; line-height:1.5; color:#555555;">Detect exosomes without ultracentrifugation.</p>
-          <a href="https://biotium.com/technology/exosome-ev-labeling/" class="bt-link-arrow" style="color:#087eec; font-size:13px;">Learn more
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
-          </a>
+      <a href="https://biotium.com/technology/exosome-ev-labeling/" class="bt-card" style="display:flex; align-items:center; gap:16px; border:1px solid #EEEEEE; border-radius:14px; background:#ffffff; padding:14px 16px; text-decoration:none;">
+        <img src="evs_sm.jpg" alt="Exosome and EV detection" style="width:52px; height:52px; border-radius:10px; object-fit:cover; flex:none;">
+        <div style="flex:1 1 auto; min-width:0;">
+          <div style="font-size:15px; font-weight:800; color:#2d2d2d; margin-bottom:2px;">Exosome &amp; EV Detection</div>
+          <p style="margin:0; font-size:13px; line-height:1.4; color:#555555; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Detect exosomes without ultracentrifugation.</p>
         </div>
-      </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
 
-      <div class="bt-card" style="border:1px solid #EEEEEE; border-radius:16px; overflow:hidden; background:#ffffff;">
-        <a href="https://biotium.com/technology/primary-secondary-antibody-conjugates/tyramide-signal-amplification/" style="display:block;">
-          <img class="bt-cat-card__img" src="tsa_sm.jpg" alt="Signal amplification">
-        </a>
-        <div style="padding:22px;">
-          <a href="https://biotium.com/technology/primary-secondary-antibody-conjugates/tyramide-signal-amplification/" style="text-decoration:none;">
-            <div style="font-size:17px; font-weight:800; color:#2d2d2d; margin-bottom:8px;">Signal Amplification</div>
-          </a>
-          <p style="margin:0 0 14px 0; font-size:14px; line-height:1.5; color:#555555;">Amplify faint signals, keep resolution sharp.</p>
-          <a href="https://biotium.com/technology/primary-secondary-antibody-conjugates/tyramide-signal-amplification/" class="bt-link-arrow" style="color:#087eec; font-size:13px;">Learn more
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
-          </a>
+      <a href="https://biotium.com/technology/primary-secondary-antibody-conjugates/tyramide-signal-amplification/" class="bt-card" style="display:flex; align-items:center; gap:16px; border:1px solid #EEEEEE; border-radius:14px; background:#ffffff; padding:14px 16px; text-decoration:none;">
+        <img src="tsa_sm.jpg" alt="Signal amplification" style="width:52px; height:52px; border-radius:10px; object-fit:cover; flex:none;">
+        <div style="flex:1 1 auto; min-width:0;">
+          <div style="font-size:15px; font-weight:800; color:#2d2d2d; margin-bottom:2px;">Signal Amplification</div>
+          <p style="margin:0; font-size:13px; line-height:1.4; color:#555555; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">Amplify faint signals, keep resolution sharp.</p>
         </div>
-      </div>
-
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
     </div>
   </div>
 </div>
