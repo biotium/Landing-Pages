@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800;900&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    .v2-scope { font-family: 'Mulish', Arial, sans-serif; }
+    a { color: #66b5ff; text-decoration: none; }
+    a:hover { color: #a9d3ff; }
+    .v2-swatch { -webkit-appearance: none; appearance: none; outline: none; }
+    .v2-swatch:focus-visible { outline: 2px solid #ffffff; outline-offset: 2px; }
+    .v2-link-arrow { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 15px; text-decoration: none; }
+  </style>
+</helmet>
+
+<div class="v2-scope" style="background:#292929;">
+  <div style="max-width:1064px; margin:0 auto; padding:80px 48px; display:flex; align-items:center; gap:64px; flex-wrap:wrap;">
+
+    <div style="flex:1 1 420px; max-width:520px; width:100%;">
+      <div style="border-radius:16px; overflow:hidden; border:1px solid #454545;">
+        <img src="{{currentImage}}" alt="{{currentLabel}}" style="width:100%; height:auto; display:block;">
+      </div>
+      <div style="display:flex; align-items:center; gap:14px; margin-top:20px;">
+        <sc-for list="{{swatches}}" as="sw" hint-placeholder-count="5">
+          <button
+            class="v2-swatch"
+            onMouseEnter="{{sw.pick}}"
+            onClick="{{sw.pick}}"
+            aria-label="{{sw.label}}"
+            style="{{sw.buttonStyle}}"
+          ></button>
+        </sc-for>
+        <span style="margin-left:6px; font-size:13px; font-weight:700; color:#CFCFCF; letter-spacing:0.02em;">{{currentLabel}}</span>
+      </div>
+    </div>
+
+    <div style="flex:1 1 380px; max-width:520px;">
+      <div style="font-size:13px; font-weight:800; letter-spacing:0.06em; color:#66b5ff; margin-bottom:14px;">FEATURED AT CELL BIO 2026</div>
+      <h2 style="margin:0 0 18px 0; font-size:34px; line-height:1.18; font-weight:800; color:#ffffff;">CytoLiner&trade;: built for real workflows</h2>
+      <p style="margin:0 0 20px 0; font-size:17px; line-height:1.6; color:#CFCFCF;">Most lipophilic membrane dyes are built for live cells. Fixation and permeabilization wash them right out. CytoLiner&trade; stains the plasma membrane cleanly in formaldehyde-fixed cells, in six colors from blue to near-IR. Ask our team at Booth 1216 for the full staining protocol.</p>
+      <p style="margin:0 0 26px 0; font-size:14px; line-height:1.5; color:#8a8a8a;">Hover a swatch to preview the channel.</p>
+      <a href="https://biotium.com/product/cytoliner-fixed-cell-membrane-stains/" class="v2-link-arrow" style="color:#66b5ff;">
+        Learn more about CytoLiner
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+<script data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const channels = [
+      { key: 0, hex: '#22D3EE', label: 'CytoLiner™ 410/450', img: 'cytoliner-410-450.jpg' },
+      { key: 1, hex: '#3DDC5B', label: 'CytoLiner™ 495/510', img: 'cytoliner-495-510.jpg' },
+      { key: 2, hex: '#FF3B30', label: 'CytoLiner™ 570/590', img: 'cytoliner-570-590.jpg' },
+      { key: 3, hex: '#E91E8C', label: 'CytoLiner™ 650/675', img: 'cytoliner-650-675.jpg' },
+      { key: 4, hex: '#9B5DE5', label: 'CytoLiner™ 680/710', img: 'cytoliner-680-710.jpg' },
+    ];
+    const selected = this.state.selected ?? 0;
+    const current = channels[selected];
+    const swatches = channels.map((c) => {
+      const isSelected = c.key === selected;
+      return {
+        key: c.key,
+        label: c.label,
+        buttonStyle:
+          'width:32px; height:32px; border-radius:999px; background:' + c.hex + ';' +
+          ' border:2px solid ' + (isSelected ? '#ffffff' : 'transparent') + ';' +
+          ' box-shadow:' + (isSelected ? '0 0 0 2px rgba(255,255,255,0.25)' : 'none') + ';' +
+          ' cursor:pointer; padding:0; transition:transform 0.15s ease;' +
+          ' transform:' + (isSelected ? 'scale(1.15)' : 'scale(1)') + ';',
+        pick: () => this.setState({ selected: c.key }),
+      };
+    });
+    return {
+      currentImage: current.img,
+      currentLabel: current.label,
+      swatches,
+    };
+  }
+}
+</script>
+</body>
+</html>
