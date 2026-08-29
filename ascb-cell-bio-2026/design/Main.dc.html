@@ -29,6 +29,25 @@
     .bt-cat-card__img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
     .bt-res-row { display: flex; gap: 24px; align-items: stretch; flex-wrap: wrap; }
     .bt-res-card { flex: 1 1 260px; }
+    .cytoliner-swatch {
+      -webkit-appearance: none; appearance: none; outline: none; border: none; padding: 0;
+      width: 34px; height: 34px; border-radius: 999px; cursor: pointer;
+      position: relative; flex: none;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      --ring: rgba(255,255,255,0);
+      box-shadow:
+        inset -3px -4px 6px rgba(0,0,0,0.35),
+        inset 2px 3px 5px rgba(255,255,255,0.5),
+        0 3px 6px rgba(0,0,0,0.4),
+        0 0 0 3px var(--ring),
+        0 0 14px var(--ring);
+    }
+    .cytoliner-swatch:hover, .cytoliner-swatch.is-active { transform: scale(1.18); }
+    .cytoliner-swatch.is-active { --ring: rgba(255,255,255,0.9); }
+    @keyframes cytolinerNudgeBob {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(6px); }
+    }
     @media (max-width: 900px) {
       .bt-wrap { padding-left: 24px !important; padding-right: 24px !important; }
       .bt-hero-row, .bt-featured-row { flex-direction: column !important; }
@@ -125,6 +144,60 @@
     </div>
   </div>
 </div>
+
+<!-- CytoLiner spectrum explorer -->
+<div style="background:#232323; border-top:1px solid #3f3f3f;">
+  <div class="bt-wrap bt-featured-row" style="display:flex; align-items:center; gap:64px; padding-top:80px; padding-bottom:80px;">
+    <div style="flex:1 1 0; max-width:520px;">
+      <div class="bt-eyebrow bt-eyebrow--onDark">SIX CHANNELS, ONE STAIN</div>
+      <h2 style="margin:0 0 18px 0; font-size:34px; line-height:1.18; font-weight:800; color:#ffffff;">See CytoLiner&trade; in every channel</h2>
+      <p style="margin:0; font-size:17px; line-height:1.6; color:#CFCFCF;">The same fixed-cell membrane stain, from blue to near-IR. Hover a color to preview the channel on real MCF7 cells.</p>
+    </div>
+    <div style="flex:1 1 0; max-width:520px; width:100%;">
+      <div style="border-radius:16px; overflow:hidden; border:1px solid #454545;">
+        <img id="cytolinerImg" src="cytoliner-410-450.jpg" alt="CytoLiner&trade; 410/450" style="width:100%; height:auto; display:block;">
+      </div>
+      <div class="cytoliner-nudge" id="cytolinerNudge" style="display:flex; align-items:center; gap:8px; margin-top:20px; margin-bottom:12px; transition:opacity 0.4s ease;">
+        <svg width="15" height="15" viewBox="0 0 24 24" style="flex:none; animation:cytolinerNudgeBob 1.4s ease-in-out infinite;"><path d="M4 4l7.07 17 2.51-7.39L21 11.07z" fill="#8a8a8a"></path></svg>
+        <span style="font-size:13px; color:#8a8a8a; font-weight:600;">Hover a color to preview</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+        <button class="cytoliner-swatch is-active" data-img="cytoliner-410-450.jpg" data-label="CytoLiner&trade; 410/450" aria-label="CytoLiner&trade; 410/450" style="background:radial-gradient(circle at 30% 25%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 32%), radial-gradient(circle at 38% 35%, #B2F0FA 0%, #22D3EE 55%, #0E8FA6 100%);"></button>
+        <button class="cytoliner-swatch" data-img="cytoliner-495-510.jpg" data-label="CytoLiner&trade; 495/510" aria-label="CytoLiner&trade; 495/510" style="background:radial-gradient(circle at 30% 25%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 32%), radial-gradient(circle at 38% 35%, #B8F5C6 0%, #3DDC5B 55%, #219B3E 100%);"></button>
+        <button class="cytoliner-swatch" data-img="cytoliner-570-590.jpg" data-label="CytoLiner&trade; 570/590" aria-label="CytoLiner&trade; 570/590" style="background:radial-gradient(circle at 30% 25%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 32%), radial-gradient(circle at 38% 35%, #FFB3AD 0%, #FF3B30 55%, #C22019 100%);"></button>
+        <button class="cytoliner-swatch" data-img="cytoliner-650-675.jpg" data-label="CytoLiner&trade; 650/675" aria-label="CytoLiner&trade; 650/675" style="background:radial-gradient(circle at 30% 25%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 32%), radial-gradient(circle at 38% 35%, #F7A8D6 0%, #E91E8C 55%, #A01262 100%);"></button>
+        <button class="cytoliner-swatch" data-img="cytoliner-680-710.jpg" data-label="CytoLiner&trade; 680/710" aria-label="CytoLiner&trade; 680/710" style="background:radial-gradient(circle at 30% 25%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 32%), radial-gradient(circle at 38% 35%, #D9C4F7 0%, #9B5DE5 55%, #6B34A8 100%);"></button>
+        <span id="cytolinerLabel" style="margin-left:4px; font-size:13px; font-weight:700; color:#CFCFCF;">CytoLiner&trade; 410/450</span>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var img = document.getElementById('cytolinerImg');
+  var label = document.getElementById('cytolinerLabel');
+  var nudge = document.getElementById('cytolinerNudge');
+  var swatches = document.querySelectorAll('.cytoliner-swatch');
+  var nudged = false;
+  function select(btn){
+    for (var i = 0; i < swatches.length; i++) { swatches[i].classList.remove('is-active'); }
+    btn.classList.add('is-active');
+    img.setAttribute('src', btn.getAttribute('data-img'));
+    img.setAttribute('alt', btn.getAttribute('data-label'));
+    label.textContent = btn.getAttribute('data-label');
+    if (!nudged) { nudged = true; nudge.style.opacity = '0'; }
+  }
+  for (var j = 0; j < swatches.length; j++) {
+    (function(btn){
+      btn.addEventListener('mouseenter', function(){ select(btn); });
+      btn.addEventListener('click', function(){ select(btn); });
+      btn.addEventListener('focus', function(){ select(btn); });
+    })(swatches[j]);
+  }
+})();
+</script>
+
+<!-- Category grid -->
 
 <!-- Category grid -->
 <div style="background:#ffffff;">
