@@ -45,9 +45,9 @@
         0 0 12px 2px var(--ring);
     }
     .cytoliner-swatch:hover, .cytoliner-swatch.is-active { transform: scale(1.25); --ring: var(--glow); }
-    .cytoliner-pill {
-      position: absolute; top: 14px; left: 14px;
-      padding: 7px 14px; border-radius: 999px;
+    .bt-img-pill {
+      position: absolute; left: 16px; bottom: 16px;
+      padding: 8px 14px; border-radius: 999px;
       background: rgba(255,255,255,0.12);
       border: 1px solid rgba(255,255,255,0.3);
       backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
@@ -129,7 +129,7 @@
     <div style="flex:1 1 0; max-width:420px; width:100%; position:relative;">
       <div style="border-radius:20px; overflow:hidden; border:1px solid rgba(255,255,255,0.14); box-shadow:0 24px 60px rgba(0,0,0,0.45); position:relative;">
         <img src="booth_sm.jpg" alt="The Biotium team at a trade show booth" style="width:100%; height:auto; display:block;">
-        <div style="position:absolute; left:16px; bottom:16px; background:rgba(5,11,18,0.78); color:#ffffff; font-size:12px; font-weight:700; letter-spacing:0.02em; padding:8px 14px; border-radius:999px;">From a previous show</div>
+        <div class="bt-img-pill">From a previous show</div>
       </div>
     </div>
   </div>
@@ -141,7 +141,7 @@
     <div style="flex:1 1 0; max-width:520px; width:100%;">
       <div style="border-radius:16px; overflow:hidden; border:1px solid #454545; position:relative;">
         <img src="cytoliner_sm.jpg" alt="Comparison of CytoLiner and traditional dye fixed cell staining" style="width:100%; height:auto; display:block;">
-        <div style="position:absolute; left:16px; bottom:16px; background:rgba(5,11,18,0.78); color:#ffffff; font-size:12px; font-weight:700; letter-spacing:0.02em; padding:8px 14px; border-radius:999px;">Comparison of fixed cell staining</div>
+        <div class="bt-img-pill">Comparison of fixed cell staining</div>
       </div>
     </div>
     <div style="flex:1 1 0; max-width:520px;">
@@ -167,7 +167,7 @@
     <div style="flex:0 0 300px; max-width:300px; width:100%;">
       <div style="border-radius:16px; overflow:hidden; border:1px solid #454545; position:relative;">
         <img id="cytolinerImg" src="cytoliner-410-450.jpg" alt="CytoLiner&trade; 410/450" style="width:100%; height:auto; display:block;">
-        <span id="cytolinerPill" class="cytoliner-pill">CytoLiner&trade; 410/450</span>
+        <span id="cytolinerPill" class="bt-img-pill">CytoLiner&trade; 410/450</span>
       </div>
       <div style="display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:20px;">
         <button class="cytoliner-swatch is-active" data-img="cytoliner-410-450.jpg" data-label="CytoLiner&trade; 410/450" aria-label="CytoLiner&trade; 410/450" style="--glow:#22D3EEB3; background:radial-gradient(circle at 28% 22%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 68% 72%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 55%), linear-gradient(160deg, #B2F0FA 0%, #22D3EE 50%, #0E8FA6 100%);"></button>
