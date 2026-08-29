@@ -38,13 +38,13 @@
       transition: transform 0.18s ease, box-shadow 0.18s ease;
       --ring: rgba(255,255,255,0);
       box-shadow:
-        inset 0 1px 1px rgba(255,255,255,0.65),
+        inset 0 1px 1px rgba(255,255,255,0.4),
         inset 0 -3px 5px rgba(0,0,0,0.2),
         0 2px 5px rgba(0,0,0,0.3),
-        0 0 0 3px var(--ring);
+        0 0 0 3px var(--ring),
+        0 0 12px 2px var(--ring);
     }
-    .cytoliner-swatch:hover, .cytoliner-swatch.is-active { transform: scale(1.25); }
-    .cytoliner-swatch.is-active { --ring: rgba(255,255,255,0.8); }
+    .cytoliner-swatch:hover, .cytoliner-swatch.is-active { transform: scale(1.25); --ring: var(--glow); }
     @keyframes cytolinerNudgeBob {
       0%, 100% { transform: translateX(0); }
       50% { transform: translateX(6px); }
@@ -158,12 +158,12 @@
       <div style="border-radius:16px; overflow:hidden; border:1px solid #454545;">
         <img id="cytolinerImg" src="cytoliner-410-450.jpg" alt="CytoLiner&trade; 410/450" style="width:100%; height:auto; display:block;">
       </div>
-      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
-        <button class="cytoliner-swatch is-active" data-img="cytoliner-410-450.jpg" data-label="CytoLiner&trade; 410/450" aria-label="CytoLiner&trade; 410/450" style="background:radial-gradient(circle at 28% 22%, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 68% 72%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 55%), linear-gradient(160deg, #B2F0FA 0%, #22D3EE 50%, #0E8FA6 100%);"></button>
-        <button class="cytoliner-swatch" data-img="cytoliner-495-510.jpg" data-label="CytoLiner&trade; 495/510" aria-label="CytoLiner&trade; 495/510" style="background:radial-gradient(circle at 28% 22%, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 68% 72%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 55%), linear-gradient(160deg, #B8F5C6 0%, #3DDC5B 50%, #219B3E 100%);"></button>
-        <button class="cytoliner-swatch" data-img="cytoliner-570-590.jpg" data-label="CytoLiner&trade; 570/590" aria-label="CytoLiner&trade; 570/590" style="background:radial-gradient(circle at 28% 22%, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 68% 72%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 55%), linear-gradient(160deg, #FFB3AD 0%, #FF3B30 50%, #C22019 100%);"></button>
-        <button class="cytoliner-swatch" data-img="cytoliner-650-675.jpg" data-label="CytoLiner&trade; 650/675" aria-label="CytoLiner&trade; 650/675" style="background:radial-gradient(circle at 28% 22%, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 68% 72%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 55%), linear-gradient(160deg, #F7A8D6 0%, #E91E8C 50%, #A01262 100%);"></button>
-        <button class="cytoliner-swatch" data-img="cytoliner-680-710.jpg" data-label="CytoLiner&trade; 680/710" aria-label="CytoLiner&trade; 680/710" style="background:radial-gradient(circle at 28% 22%, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 68% 72%, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 55%), linear-gradient(160deg, #D9C4F7 0%, #9B5DE5 50%, #6B34A8 100%);"></button>
+      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-top:20px;">
+        <button class="cytoliner-swatch is-active" data-img="cytoliner-410-450.jpg" data-label="CytoLiner&trade; 410/450" aria-label="CytoLiner&trade; 410/450" style="--glow:#22D3EEB3; background:radial-gradient(circle at 28% 22%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 68% 72%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 55%), linear-gradient(160deg, #B2F0FA 0%, #22D3EE 50%, #0E8FA6 100%);"></button>
+        <button class="cytoliner-swatch" data-img="cytoliner-495-510.jpg" data-label="CytoLiner&trade; 495/510" aria-label="CytoLiner&trade; 495/510" style="--glow:#3DDC5BB3; background:radial-gradient(circle at 28% 22%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 68% 72%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 55%), linear-gradient(160deg, #B8F5C6 0%, #3DDC5B 50%, #219B3E 100%);"></button>
+        <button class="cytoliner-swatch" data-img="cytoliner-570-590.jpg" data-label="CytoLiner&trade; 570/590" aria-label="CytoLiner&trade; 570/590" style="--glow:#FF3B30B3; background:radial-gradient(circle at 28% 22%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 68% 72%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 55%), linear-gradient(160deg, #FFB3AD 0%, #FF3B30 50%, #C22019 100%);"></button>
+        <button class="cytoliner-swatch" data-img="cytoliner-650-675.jpg" data-label="CytoLiner&trade; 650/675" aria-label="CytoLiner&trade; 650/675" style="--glow:#E91E8CB3; background:radial-gradient(circle at 28% 22%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 68% 72%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 55%), linear-gradient(160deg, #F7A8D6 0%, #E91E8C 50%, #A01262 100%);"></button>
+        <button class="cytoliner-swatch" data-img="cytoliner-680-710.jpg" data-label="CytoLiner&trade; 680/710" aria-label="CytoLiner&trade; 680/710" style="--glow:#9B5DE5B3; background:radial-gradient(circle at 28% 22%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 68% 72%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 55%), linear-gradient(160deg, #D9C4F7 0%, #9B5DE5 50%, #6B34A8 100%);"></button>
         <span id="cytolinerLabel" style="margin-left:4px; font-size:13px; font-weight:700; color:#CFCFCF;">CytoLiner&trade; 410/450</span>
       </div>
       <div class="cytoliner-nudge" id="cytolinerNudge" style="display:flex; align-items:center; gap:8px; margin-top:14px; margin-bottom:0; transition:opacity 0.4s ease;">
