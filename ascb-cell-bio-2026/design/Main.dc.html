@@ -59,6 +59,15 @@
       0%, 100% { box-shadow: 0 0 0 0 rgba(102,181,255,0.65); }
       50% { box-shadow: 0 0 0 5px rgba(102,181,255,0), 0 0 10px 3px rgba(102,181,255,0.85); }
     }
+    .dev-tag {
+      display: block; background: #111111; color: #ffb020;
+      font-family: 'SF Mono', Consolas, 'Courier New', monospace;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
+      text-transform: uppercase; padding: 6px 20px;
+      border-bottom: 2px dashed #ffb020;
+    }
+    .dev-tag--a { color: #ffb020; border-bottom-color: #ffb020; }
+    .dev-tag--b { color: #4dd6ff; border-bottom-color: #4dd6ff; }
     @keyframes cytolinerNudgeBob {
       0%, 100% { transform: translateX(0); }
       50% { transform: translateX(6px); }
@@ -81,6 +90,7 @@
 
 <!-- Header -->
 <div style="background:#ffffff; border-bottom:1px solid #EEEEEE;">
+  <div class="dev-tag">&#9670; SECTION: HEADER</div>
   <div class="bt-wrap" style="display:flex; align-items:center; justify-content:space-between; gap:24px; padding-top:20px; padding-bottom:20px;">
     <a href="https://biotium.com" style="display:block; line-height:0;">
       <svg style="height:32px; width:auto; display:block;" id="a" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 189.28">
@@ -111,6 +121,7 @@
 
 <!-- Hero -->
 <div style="position:relative; overflow:hidden; background-color:#050b12; background-image:linear-gradient(100deg, rgba(3,8,14,0.94) 0%, rgba(3,8,14,0.82) 38%, rgba(3,8,14,0.45) 68%, rgba(3,8,14,0.15) 100%), url('hero-bg.jpg'); background-size:cover; background-position:center;">
+  <div class="dev-tag">&#9670; SECTION: HERO</div>
   <div class="bt-wrap bt-hero-row" style="display:flex; align-items:center; gap:64px; padding-top:104px; padding-bottom:96px; position:relative;">
     <div class="bt-hero-copy" style="flex:1 1 0; max-width:620px;">
       <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.16); border-radius:999px; padding:7px 14px; margin-bottom:22px;">
@@ -141,6 +152,7 @@
 
 <!-- Featured product -->
 <div style="background:#292929;">
+  <div class="dev-tag dev-tag--a">&#9670; SECTION: CYTOLINER &mdash; VARIANT A (STATIC IMAGE) &middot; compare with Variant B below</div>
   <div class="bt-wrap bt-featured-row" style="display:flex; align-items:center; gap:64px; padding-top:80px; padding-bottom:80px;">
     <div style="flex:1 1 0; max-width:520px; width:100%;">
       <div style="border-radius:16px; overflow:hidden; border:1px solid #454545; position:relative;">
@@ -162,6 +174,7 @@
 
 <!-- CytoLiner spectrum explorer (alt) -->
 <div style="background:#232323; border-top:1px solid #3f3f3f;">
+  <div class="dev-tag dev-tag--b">&#9670; SECTION: CYTOLINER &mdash; VARIANT B (INTERACTIVE EXPLORER) &middot; compare with Variant A above</div>
   <div class="bt-wrap bt-featured-row" style="display:flex; align-items:center; gap:64px; padding-top:80px; padding-bottom:80px;">
     <div style="flex:1 1 380px; max-width:560px;">
       <div class="bt-eyebrow bt-eyebrow--onDark">FEATURED AT CELL BIO 2026</div>
@@ -218,6 +231,7 @@
 
 <!-- Category grid -->
 <div style="background:#ffffff;">
+  <div class="dev-tag">&#9670; SECTION: PORTFOLIO GRID</div>
   <div class="bt-wrap" style="padding-top:56px; padding-bottom:32px;">
     <div style="max-width:680px; margin:0 auto 32px auto; text-align:center;">
       <div class="bt-eyebrow">OUR PORTFOLIO AT CELL BIO 2026</div>
@@ -284,6 +298,7 @@
 
 <!-- Resources -->
 <div style="background:#F7F7F7;">
+  <div class="dev-tag">&#9670; SECTION: RESOURCES</div>
   <div class="bt-wrap" style="padding-top:72px; padding-bottom:80px;">
     <div style="max-width:680px; margin:0 auto 44px auto; text-align:center;">
       <div class="bt-eyebrow">TAKE IT WITH YOU</div>
@@ -347,6 +362,7 @@
 
 <!-- Swag -->
 <div style="background:#ffffff;">
+  <div class="dev-tag">&#9670; SECTION: SWAG / GIVEAWAY</div>
   <div class="bt-wrap" style="padding-top:56px; padding-bottom:56px;">
     <div class="bt-card" style="display:flex; align-items:center; justify-content:center; gap:32px; flex-wrap:wrap; background:#EBF7ED; border:1px solid #D9E8D2; border-radius:16px; padding:28px 32px;">
       <img src="tshirts.webp" alt="Biotium spectra and TrueBlack conference t-shirts" style="width:320px; max-width:100%; height:auto; flex:none; display:block;">
@@ -361,6 +377,7 @@
 
 <!-- Come say hi -->
 <div style="background:#F7F7F7;">
+  <div class="dev-tag">&#9670; SECTION: CLOSING CTA</div>
   <div class="bt-wrap" style="padding-top:72px; padding-bottom:80px; text-align:center;">
     <div style="max-width:620px; margin:0 auto;">
       <h2 style="margin:0 0 16px 0; font-size:30px; line-height:1.25; font-weight:800; color:#2d2d2d;">Come say hi. Bring your questions.</h2>
@@ -376,6 +393,7 @@
 
 <!-- Footer -->
 <div style="background:#404040;">
+  <div class="dev-tag">&#9670; SECTION: FOOTER</div>
   <div class="bt-wrap" style="padding-top:52px; padding-bottom:32px;">
     <div style="display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; padding-bottom:28px; border-bottom:1px solid #565656;">
       <div style="display:flex; flex-direction:column; align-items:flex-start; gap:8px;">
