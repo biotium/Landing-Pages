@@ -45,6 +45,16 @@
         0 0 12px 2px var(--ring);
     }
     .cytoliner-swatch:hover, .cytoliner-swatch.is-active { transform: scale(1.25); --ring: var(--glow); }
+    .cytoliner-pill {
+      position: absolute; top: 14px; left: 14px;
+      padding: 7px 14px; border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      color: #ffffff; font-size: 12px; font-weight: 800; letter-spacing: 0.02em;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.2);
+      pointer-events: none;
+    }
     @keyframes cytolinerNudgeBob {
       0%, 100% { transform: translateX(0); }
       50% { transform: translateX(6px); }
@@ -155,8 +165,9 @@
       <p style="margin:0; font-size:17px; line-height:1.6; color:#CFCFCF;">The same fixed-cell membrane stain, from blue to near-IR. Hover a color to preview the channel on real MCF7 cells.</p>
     </div>
     <div style="flex:0 0 300px; max-width:300px; width:100%;">
-      <div style="border-radius:16px; overflow:hidden; border:1px solid #454545;">
+      <div style="border-radius:16px; overflow:hidden; border:1px solid #454545; position:relative;">
         <img id="cytolinerImg" src="cytoliner-410-450.jpg" alt="CytoLiner&trade; 410/450" style="width:100%; height:auto; display:block;">
+        <span id="cytolinerPill" class="cytoliner-pill">CytoLiner&trade; 410/450</span>
       </div>
       <div style="display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:20px;">
         <button class="cytoliner-swatch is-active" data-img="cytoliner-410-450.jpg" data-label="CytoLiner&trade; 410/450" aria-label="CytoLiner&trade; 410/450" style="--glow:#22D3EEB3; background:radial-gradient(circle at 28% 22%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 68% 72%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 55%), linear-gradient(160deg, #B2F0FA 0%, #22D3EE 50%, #0E8FA6 100%);"></button>
@@ -164,7 +175,6 @@
         <button class="cytoliner-swatch" data-img="cytoliner-570-590.jpg" data-label="CytoLiner&trade; 570/590" aria-label="CytoLiner&trade; 570/590" style="--glow:#FF3B30B3; background:radial-gradient(circle at 28% 22%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 68% 72%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 55%), linear-gradient(160deg, #FFB3AD 0%, #FF3B30 50%, #C22019 100%);"></button>
         <button class="cytoliner-swatch" data-img="cytoliner-650-675.jpg" data-label="CytoLiner&trade; 650/675" aria-label="CytoLiner&trade; 650/675" style="--glow:#E91E8CB3; background:radial-gradient(circle at 28% 22%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 68% 72%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 55%), linear-gradient(160deg, #F7A8D6 0%, #E91E8C 50%, #A01262 100%);"></button>
         <button class="cytoliner-swatch" data-img="cytoliner-680-710.jpg" data-label="CytoLiner&trade; 680/710" aria-label="CytoLiner&trade; 680/710" style="--glow:#9B5DE5B3; background:radial-gradient(circle at 28% 22%, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 42%), radial-gradient(circle at 68% 72%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 55%), linear-gradient(160deg, #D9C4F7 0%, #9B5DE5 50%, #6B34A8 100%);"></button>
-        <span id="cytolinerLabel" style="margin-left:4px; font-size:13px; font-weight:700; color:#CFCFCF;">CytoLiner&trade; 410/450</span>
       </div>
       <div class="cytoliner-nudge" id="cytolinerNudge" style="display:flex; align-items:center; gap:8px; margin-top:14px; margin-bottom:0; transition:opacity 0.4s ease;">
         <svg width="15" height="15" viewBox="0 0 24 24" style="flex:none; animation:cytolinerNudgeBob 1.4s ease-in-out infinite;"><path d="M4 4l7.07 17 2.51-7.39L21 11.07z" fill="#8a8a8a"></path></svg>
@@ -176,7 +186,7 @@
 <script>
 (function(){
   var img = document.getElementById('cytolinerImg');
-  var label = document.getElementById('cytolinerLabel');
+  var label = document.getElementById('cytolinerPill');
   var nudge = document.getElementById('cytolinerNudge');
   var swatches = document.querySelectorAll('.cytoliner-swatch');
   var nudged = false;
