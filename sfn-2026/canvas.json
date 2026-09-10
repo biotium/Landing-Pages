@@ -1,11 +1,40 @@
 {
   "artboards": [
-    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 1440, "h": 2750, "expand": "fill" },
-    { "file": "HeroB.dc.html", "x": 1560, "y": 0, "w": 1440, "h": 720, "expand": "fill" }
+    {
+      "file": "Main.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 2750,
+      "expand": "fill"
+    },
+    {
+      "file": "HeroB.dc.html",
+      "x": 1560,
+      "y": 0,
+      "w": 1440,
+      "h": 720,
+      "expand": "fill"
+    }
   ],
   "annotations": [
-    { "id": "main-note", "x": 0, "y": -90, "w": 420, "text": "Main: Direction A hero (\"Unlock Deeper Insights.\"), styled to match the ASCB Cell Bio 2026 LP's real bt- design system" },
-    { "id": "heroB-note", "x": 1560, "y": -90, "w": 420, "text": "Comparison sketch: Direction B hero (\"Built for the Brain's Smallest Structures.\"). Swap into Main if this tests better." }
+    {
+      "id": "main-note",
+      "x": 0,
+      "y": -90,
+      "w": 420,
+      "text": "Main: Direction A hero (\"Unlock Deeper Insights.\"), styled to match the ASCB Cell Bio 2026 LP's real bt- design system"
+    },
+    {
+      "id": "heroB-note",
+      "x": 1560,
+      "y": -90,
+      "w": 420,
+      "text": "Comparison sketch: Direction B hero (\"Built for the Brain's Smallest Structures.\"). Swap into Main if this tests better."
+    }
   ],
-  "launch": { "view": "focused", "file": "Main.dc.html" }
+  "launch": {
+    "view": "focused",
+    "file": "Main.dc.html"
+  }
 }
