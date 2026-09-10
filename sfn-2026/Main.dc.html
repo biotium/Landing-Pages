@@ -1,0 +1,405 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700;800;900&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    h1, h2, h3, h4 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+    .bt-body-scope { font-family: 'Mulish', Arial, sans-serif; color: #454545; -webkit-hyphens: none; -ms-hyphens: none; hyphens: none; }
+    .bt-a { color: #087eec; text-decoration: none; }
+    .bt-a:hover { color: #0062be; }
+    .bt-wrap { max-width: 1160px; margin: 0 auto; padding-left: 48px; padding-right: 48px; }
+    .bt-btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #087eec; color: #ffffff; font-weight: 800; font-size: 16px; padding: 15px 28px; border-radius: 999px; border: none; text-decoration: none; transition: background-color 0.2s ease; }
+    .bt-btn-primary:hover { background: #0062be; color: #ffffff; }
+    .bt-btn-outline { display: inline-flex; align-items: center; gap: 8px; background: #ffffff; color: #087eec; font-weight: 800; font-size: 14px; padding: 11px 20px; border-radius: 999px; border: 1.5px solid #087eec; text-decoration: none; transition: background-color 0.2s ease, color 0.2s ease; }
+    .bt-btn-outline:hover { background: #e5f2ff; color: #0062be; }
+    .bt-link-arrow { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 14px; text-decoration: none; }
+    .bt-eyebrow { font-size: 13px; font-weight: 800; letter-spacing: 0.06em; color: #087eec; margin-bottom: 14px; }
+    .bt-eyebrow--onDark { color: #66b5ff; }
+    .bt-card { transition: box-shadow 0.15s ease, transform 0.15s ease; text-decoration: none; display: block; }
+    .bt-card:hover { box-shadow: 0 12px 28px rgba(17,17,17,0.08); transform: translateY(-2px); }
+    .bt-cat-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; }
+    .bt-res-row { display: flex; gap: 24px; align-items: stretch; flex-wrap: wrap; }
+    .bt-res-card { flex: 1 1 260px; }
+    .bt-choice-badge { position: relative; display: inline-flex; vertical-align: middle; cursor: pointer; }
+    .bt-choice-tip {
+      position: absolute; bottom: calc(100% + 9px); left: 50%; transform: translateX(-50%);
+      background: #232323; color: #ffffff; font-size: 11.5px; font-weight: 700; letter-spacing: 0.01em;
+      text-transform: none; white-space: nowrap; padding: 7px 11px; border-radius: 7px;
+      opacity: 0; visibility: hidden; transition: opacity 0.15s ease;
+      pointer-events: none; box-shadow: 0 6px 16px rgba(0,0,0,0.22); z-index: 5;
+    }
+    .bt-choice-tip::after {
+      content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+      border: 5px solid transparent; border-top-color: #232323;
+    }
+    .bt-choice-badge:hover .bt-choice-tip,
+    .bt-choice-badge:focus .bt-choice-tip,
+    .bt-choice-badge:focus-visible .bt-choice-tip { opacity: 1; visibility: visible; }
+    .bt-hero-dot { animation: btHeroDotPulse 1.8s ease-in-out infinite; }
+    @keyframes btHeroDotPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(8,126,236,0.65); }
+      50% { box-shadow: 0 0 0 5px rgba(8,126,236,0), 0 0 10px 3px rgba(8,126,236,0.85); }
+    }
+    .bt-img-pill {
+      position: absolute; left: 16px; bottom: 16px;
+      padding: 8px 14px; border-radius: 999px;
+      background: rgba(6,8,12,0.6);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+      color: #ffffff; font-size: 12px; font-weight: 800; letter-spacing: 0.02em;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.08);
+      pointer-events: none;
+    }
+    @media (max-width: 900px) {
+      .bt-wrap { padding-left: 24px !important; padding-right: 24px !important; }
+      .bt-hero-row, .bt-featured-row { flex-direction: column !important; }
+      .bt-hero-copy { max-width: 100% !important; }
+      .bt-h1 { font-size: 40px !important; }
+      .bt-flagship-img-col { max-width: 100% !important; }
+      .bt-hero-badge { padding: 8px 14px !important; gap: 7px !important; align-items: flex-start !important; }
+      .bt-hero-badge-dot { margin-top: 4px !important; }
+      .bt-hero-badge-text { font-size: 11.5px !important; line-height: 1.45 !important; letter-spacing: 0.02em !important; }
+    }
+    @media (max-width: 560px) {
+      .bt-cat-grid { grid-template-columns: minmax(0,1fr) !important; }
+    }
+  </style>
+</helmet>
+<div class="bt-body-scope">
+
+<!-- Header -->
+<div style="background:#ffffff; border-bottom:1px solid #EEEEEE;">
+  <div class="bt-wrap" style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; padding-top:20px; padding-bottom:20px;">
+    <a href="https://biotium.com" style="display:block; line-height:0;">
+      <svg style="height:32px; width:auto; display:block;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 189.28">
+  <path d="M34.61,125.86c-1.93,0-3.52.43-4.77,1.28s-2.21,1.96-2.89,3.33c-.69,1.36-1.17,2.93-1.45,4.69-.28,1.76-.43,3.55-.43,5.37v11.07c0,1.83.11,3.62.34,5.37.23,1.78.69,3.33,1.37,4.69.68,1.37,1.62,2.48,2.81,3.33,1.19.85,2.75,1.28,4.69,1.28,3.63,0,6.19-1.5,7.67-4.51,1.48-3.01,2.22-7.37,2.22-13.05v-5.27c0-6.48-.69-11.03-2.05-13.64-1.37-2.62-3.86-3.93-7.51-3.93Z" fill="none"/>
+  <path d="M168.26,129.95c-.57-1.71-1.51-2.98-2.82-3.84-1.3-.85-3.04-1.28-5.2-1.28-4.43,0-7.19,1.71-8.27,5.12-1.08,3.41-1.62,8.35-1.62,14.83v4.43c0,6.48.49,11.43,1.45,14.83.96,3.41,3.67,5.12,8.1,5.12s7.01-1.71,8.09-5.12c1.08-3.4,1.62-8.35,1.62-14.83v-4.43c0-3.18-.09-6.02-.26-8.53-.17-2.5-.54-4.59-1.11-6.3Z" fill="none"/>
+  <path d="M263.54,56.97l-61.22-21.5c-.58,4.26-2.01,8.24-4.13,11.77l61.23,21.5c.37-4.33,1.83-8.35,4.12-11.77Z"/>
+  <path d="M116.05,54.22c2.78,3.1,4.8,6.87,5.78,11.06l25.68-13.96c-2.67-3.18-4.72-6.89-5.97-10.95l-25.49,13.85Z"/>
+  <path d="M284.43,45.8c-8.71,0-16.38,4.44-20.89,11.17-2.29,3.42-3.75,7.44-4.12,11.77-.06.72-.11,1.44-.11,2.17,0,13.87,11.25,25.12,25.12,25.12s25.12-11.25,25.12-25.12-11.25-25.12-25.12-25.12Z" fill="#ec1c24"/>
+  <path d="M97.25,45.79c-13.96,0-25.27,11.31-25.27,25.27s11.31,25.27,25.27,25.27,25.27-11.31,25.27-25.27c0-1.99-.25-3.92-.69-5.79-.98-4.19-3-7.96-5.78-11.06-4.63-5.16-11.32-8.43-18.8-8.43Z" fill="#37b34a"/>
+  <path d="M202.32,35.48c.19-1.39.32-2.8.32-4.24,0-17.25-13.98-31.23-31.23-31.23s-31.23,13.98-31.23,31.23c0,3.18.48,6.24,1.36,9.13,1.24,4.07,3.3,7.78,5.97,10.95,5.73,6.81,14.3,11.15,23.9,11.15,11.39,0,21.32-6.11,26.78-15.22,2.12-3.53,3.55-7.51,4.13-11.77Z" fill="#0084ff"/>
+  <path d="M62.73,112.9c-2.39-2.95-5.2-5.05-8.43-6.31-3.24-1.25-6.74-1.87-10.48-1.87-4.21,0-7.73.6-10.57,1.79-2.84,1.19-5.57,3.11-8.19,5.72v-39.04H0v113.7h23.53l1.53-6.65c2.62,2.39,5.31,4.18,8.1,5.37,2.78,1.19,6.22,1.79,10.31,1.79,3.75,0,7.28-.68,10.57-2.05,3.29-1.36,6.14-3.55,8.53-6.56,2.39-3.01,4.26-6.92,5.63-11.76,1.37-4.83,2.05-10.71,2.05-17.63v-6.66c0-7.27-.66-13.32-1.96-18.15-1.3-4.83-3.15-8.73-5.54-11.68ZM44.16,148.7c0,5.69-.74,10.04-2.22,13.05-1.48,3.01-4.04,4.51-7.67,4.51-1.94,0-3.5-.43-4.69-1.28-1.19-.85-2.13-1.96-2.81-3.33-.68-1.36-1.14-2.91-1.37-4.69-.23-1.75-.34-3.54-.34-5.37v-11.07c0-1.82.15-3.61.43-5.37.28-1.76.76-3.33,1.45-4.69.68-1.37,1.64-2.48,2.89-3.33s2.84-1.28,4.77-1.28c3.64,0,6.14,1.3,7.51,3.93,1.36,2.61,2.05,7.16,2.05,13.64v5.27Z"/>
+  <rect x="84.38" y="106.77" width="25.74" height="80.12"/>
+  <path d="M185.91,113.42c-3.13-3.07-6.91-5.29-11.34-6.65-4.43-1.37-9.32-2.05-14.66-2.05s-10.03.68-14.41,2.05c-4.38,1.36-8.13,3.58-11.25,6.65-3.13,3.07-5.57,7.02-7.33,11.85s-2.64,10.71-2.64,17.65v8c0,6.94.85,12.85,2.56,17.73,1.71,4.9,4.12,8.86,7.24,11.93,3.13,3.08,6.88,5.29,11.25,6.66,4.38,1.36,9.23,2.04,14.58,2.04s10.4-.68,14.83-2.04c4.43-1.37,8.18-3.58,11.25-6.66,3.07-3.07,5.45-7.03,7.16-11.93,1.71-4.88,2.56-10.79,2.56-17.73v-8c0-6.94-.85-12.82-2.56-17.65-1.71-4.83-4.12-8.78-7.24-11.85ZM169.63,149.21c0,6.48-.54,11.43-1.62,14.83-1.08,3.41-3.78,5.12-8.09,5.12s-7.14-1.71-8.1-5.12c-.96-3.4-1.45-8.35-1.45-14.83v-4.43c0-6.48.54-11.42,1.62-14.83,1.08-3.41,3.84-5.12,8.27-5.12,2.16,0,3.89.43,5.2,1.28,1.31.86,2.25,2.14,2.82,3.84.57,1.71.94,3.8,1.11,6.3.17,2.51.26,5.36.26,8.53v4.43Z"/>
+  <path d="M251.62,167.45c-3.98,0-6.6-.93-7.85-2.82-1.25-1.87-1.87-5.02-1.87-9.46v-27.95h17.39v-20.45h-17.73v-21.31h-25.06v21.31h-11.42v20.45h11.08v28.47c0,5.69.48,10.6,1.45,14.75.96,4.15,2.55,7.53,4.77,10.14,2.21,2.62,5.08,4.55,8.61,5.8,3.52,1.25,7.84,1.87,12.96,1.87,2.61,0,5.51-.14,8.69-.42,3.18-.29,5.57-.67,7.16-1.11v-19.78c-1.36.24-2.64.37-3.84.43-1.19.06-2.64.08-4.34.08Z"/>
+  <rect x="271.56" y="106.77" width="25.74" height="80.12"/>
+  <path d="M353.73,152.11c0,1.71-.08,3.36-.26,4.95-.17,1.58-.54,3.04-1.1,4.34-.58,1.3-1.39,2.33-2.48,3.07-1.08.75-2.47,1.11-4.18,1.11-2.62,0-4.43-.9-5.45-2.73-1.03-1.82-1.54-4.7-1.54-8.68v-47.39h-25.74v55.74c0,4.77.57,8.84,1.71,12.18,1.14,3.36,2.73,6.09,4.77,8.19,2.05,2.11,4.46,3.65,7.25,4.61,2.78.97,5.82,1.44,9.12,1.44,2.5,0,4.65-.22,6.48-.68,1.81-.46,3.43-1.11,4.86-1.96s2.73-1.82,3.92-2.9c1.19-1.08,2.41-2.3,3.67-3.66l1.7,7.16h23.02v-80.12h-25.74v45.34Z"/>
+  <path d="M498.12,118.36c-1.25-3.29-2.96-5.94-5.11-7.92s-4.66-3.44-7.5-4.36c-2.84-.9-5.8-1.36-8.86-1.36-3.98,0-7.48.71-10.49,2.14-3.01,1.42-5.99,3.72-8.95,6.9-2.16-3.29-4.6-5.62-7.33-6.98-2.73-1.37-6.53-2.05-11.42-2.05-4.21,0-7.73.8-10.57,2.39-2.84,1.6-5.57,3.87-8.19,6.83l-1.7-7.16h-22.85v80.12h25.58v-48.25c0-3.4.65-6.02,1.96-7.84,1.3-1.82,3.09-2.72,5.37-2.72.79,0,1.59.08,2.39.25.79.17,1.53.57,2.21,1.19.69.62,1.22,1.54,1.62,2.73.4,1.19.6,2.8.6,4.86v49.78h25.57v-49.26c0-3.07.62-5.42,1.87-7.08,1.26-1.65,3.01-2.47,5.29-2.47,1.71,0,3.27.51,4.69,1.53,1.42,1.03,2.13,3.52,2.13,7.51v49.78h25.57v-56.42c0-4.77-.63-8.81-1.88-12.11Z"/>
+</svg>
+    </a>
+    <span style="font-size:12px; font-weight:700; color:#767676; letter-spacing:0.02em; white-space:nowrap;">Glowing Products for Science&trade;</span>
+  </div>
+</div>
+
+<!-- Hero -->
+<div style="position:relative; overflow:hidden; background-color:#F7F7F7;">
+  <img src="minimab-hero.jpg" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:80% center; display:block;">
+  <img src="minimab-hero.jpg" alt="" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:80% center; display:block; filter:blur(18px); transform:scale(1.06); -webkit-mask-image:linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 78%); mask-image:linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 78%);">
+  <div style="position:absolute; inset:0; background:linear-gradient(100deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.82) 22%, rgba(255,255,255,0.4) 45%, rgba(255,255,255,0.08) 65%, rgba(255,255,255,0) 85%);"></div>
+  <div class="bt-wrap" style="padding-top:104px; padding-bottom:96px; position:relative; z-index:1;">
+    <div class="bt-hero-copy" style="max-width:620px;">
+      <div class="bt-hero-badge" style="display:inline-flex; align-items:center; gap:8px; background:#ffffff; border:1px solid #E3E3E3; border-radius:999px; padding:7px 14px; margin-bottom:22px;">
+        <div class="bt-hero-dot bt-hero-badge-dot" style="width:7px; height:7px; aspect-ratio:1/1; border-radius:999px; background:#087eec; flex:none; flex-shrink:0;"></div>
+        <span class="bt-hero-badge-text" style="font-size:12.5px; font-weight:800; letter-spacing:0.04em; color:#555555;">WASHINGTON, DC &middot; NOV 14&ndash;18</span>
+      </div>
+      <h1 class="bt-h1" style="margin:0 0 22px 0; font-size:56px; line-height:1.06; font-weight:800; letter-spacing:-0.01em; color:#2d2d2d;">Biotium at SfN 2026.</h1>
+      <p style="margin:0 0 32px 0; font-size:19px; line-height:1.5; color:#555555; max-width:480px;">Unlock deeper insights.</p>
+      <div style="display:flex; align-items:center; gap:24px; flex-wrap:wrap;">
+        <a href="#come-say-hi" class="bt-btn-primary">
+          Find us at Booth 1106
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+        </a>
+        <a href="https://biotium.com" class="bt-link-arrow" style="color:#087eec; font-size:15px;">
+          Visit biotium.com
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Flagship story: MiniMab -->
+<div style="background:#232323; border-top:1px solid #3f3f3f;">
+  <div class="bt-wrap bt-featured-row" style="display:flex; align-items:center; gap:64px; padding-top:80px; padding-bottom:80px;">
+    <div style="flex:1 1 0; max-width:560px;">
+      <div class="bt-eyebrow bt-eyebrow--onDark">FEATURED AT NEUROSCIENCE 2026</div>
+      <h2 style="margin:0 0 18px 0; font-size:34px; line-height:1.18; font-weight:800; color:#ffffff;">MiniMab&trade;: Small Format, Big Difference</h2>
+      <ul style="margin:0 0 26px 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:12px;">
+        <li style="display:flex; align-items:flex-start; gap:10px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#66b5ff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px;"><path d="M20 6L9 17l-5-5"></path></svg>
+          <span style="font-size:15.5px; line-height:1.5; color:#CFCFCF;">~15 kDa single-domain antibodies, a fraction of a full-size IgG (~150 kDa)</span>
+        </li>
+        <li style="display:flex; align-items:flex-start; gap:10px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#66b5ff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px;"><path d="M20 6L9 17l-5-5"></path></svg>
+          <span style="font-size:15.5px; line-height:1.5; color:#CFCFCF;">Deeper penetration into thick brain tissue</span>
+        </li>
+        <li style="display:flex; align-items:flex-start; gap:10px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#66b5ff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px;"><path d="M20 6L9 17l-5-5"></path></svg>
+          <span style="font-size:15.5px; line-height:1.5; color:#CFCFCF;">Faster binding kinetics</span>
+        </li>
+        <li style="display:flex; align-items:flex-start; gap:10px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#66b5ff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px;"><path d="M20 6L9 17l-5-5"></path></svg>
+          <span style="font-size:15.5px; line-height:1.5; color:#CFCFCF;">Minimal epitope-dye displacement for super-resolution work</span>
+        </li>
+      </ul>
+      <a href="https://biotium.com/technology/minimab-single-domain-antibodies/" target="_blank" rel="noopener" class="bt-link-arrow" style="color:#66b5ff; font-size:15px;">
+        Learn More About MiniMab&trade;
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
+    </div>
+    <div class="bt-flagship-img-col" style="flex:1 1 0; max-width:560px; width:100%;">
+      <a href="https://biotium.com?wvideo=lztnsxqbfz" target="_blank" rel="noopener" style="display:block; position:relative; aspect-ratio:400/225; border-radius:16px; overflow:hidden; border:1px solid #454545; background:#1a1a1a;">
+        <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center;">
+          <div style="width:60px; height:60px; border-radius:50%; background:rgba(8,133,255,0.9); display:flex; align-items:center; justify-content:center; box-shadow:0 4px 16px rgba(0,0,0,0.4);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="#ffffff"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+      </a>
+      <a href="https://biotium.com?wvideo=lztnsxqbfz" target="_blank" rel="noopener" style="display:block; margin-top:10px; font-size:12.5px; font-weight:600; color:#66b5ff; text-align:center; line-height:1.4;">Mouse Brain stained with GFAP and vGLUT1 Nanobody - LifeCanvas Tech</a>
+    </div>
+  </div>
+</div>
+
+<!-- Portfolio grid -->
+<div style="background:#ffffff;">
+  <div class="bt-wrap" style="padding-top:56px; padding-bottom:32px;">
+    <div style="max-width:680px; margin:0 auto 32px auto; text-align:center;">
+      <div class="bt-eyebrow">OUR PORTFOLIO AT NEUROSCIENCE 2026</div>
+      <h2 style="margin:0; font-size:28px; line-height:1.3; font-weight:800; color:#2d2d2d;">Everything you need for neuroscience research</h2>
+    </div>
+    <div class="bt-cat-grid" style="padding-bottom:40px;">
+
+      <a href="https://biotium.com/technology/primary-secondary-antibody-conjugates/" target="_blank" rel="noopener" class="bt-card" style="display:flex; align-items:center; gap:18px; border:1px solid #EEEEEE; border-radius:16px; background:#ffffff; padding:20px; text-decoration:none;">
+        <div style="width:96px; height:96px; border-radius:12px; background:#EEEEEE; display:flex; align-items:center; justify-content:center; flex:none;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
+        </div>
+        <div style="flex:1 1 auto; min-width:0;">
+          <div style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Neuronal Markers<span class="bt-choice-badge" style="margin-left:8px;" tabindex="0">
+            <img src="biotium-choice-icon.png" alt="Biotium Choice" style="width:20px; height:20px; display:block;">
+            <span class="bt-choice-tip">Biotium Choice&trade; &mdash; validated &amp; optimized</span>
+          </span></div>
+          <p style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">GFAP, NeuN: validated conjugates for glia and neuron identification.</p>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
+
+      <a href="https://biotium.com/technology/primary-secondary-antibody-conjugates/" target="_blank" rel="noopener" class="bt-card" style="display:flex; align-items:center; gap:18px; border:1px solid #EEEEEE; border-radius:16px; background:#ffffff; padding:20px; text-decoration:none;">
+        <div style="width:96px; height:96px; border-radius:12px; background:#EEEEEE; display:flex; align-items:center; justify-content:center; flex:none;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
+        </div>
+        <div style="flex:1 1 auto; min-width:0;">
+          <div style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Structural Markers<span class="bt-choice-badge" style="margin-left:8px;" tabindex="0">
+            <img src="biotium-choice-icon.png" alt="Biotium Choice" style="width:20px; height:20px; display:block;">
+            <span class="bt-choice-tip">Biotium Choice&trade; &mdash; validated &amp; optimized</span>
+          </span></div>
+          <p style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Neurofilament-H, &beta;3-Tubulin: core cytoskeletal targets.</p>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
+
+      <a href="https://biotium.com/technology/cellular-stains/neuronal-probes/" target="_blank" rel="noopener" class="bt-card" style="display:flex; align-items:center; gap:18px; border:1px solid #EEEEEE; border-radius:16px; background:#ffffff; padding:20px; text-decoration:none;">
+        <div style="width:96px; height:96px; border-radius:12px; background:#EEEEEE; display:flex; align-items:center; justify-content:center; flex:none;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
+        </div>
+        <div style="flex:1 1 auto; min-width:0;">
+          <div style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Axonal Tracers</div>
+          <p style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Neuro-DiI: lipophilic tracing for neuronal connectivity.</p>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
+
+      <a href="https://biotium.com/technology/minimab-single-domain-antibodies/" target="_blank" rel="noopener" class="bt-card" style="display:flex; align-items:center; gap:18px; border:1px solid #EEEEEE; border-radius:16px; background:#ffffff; padding:20px; text-decoration:none;">
+        <div style="width:96px; height:96px; border-radius:12px; background:#EEEEEE; display:flex; align-items:center; justify-content:center; flex:none;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
+        </div>
+        <div style="flex:1 1 auto; min-width:0;">
+          <div style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Small Format</div>
+          <p style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">MiniMab&trade; SdAbs: single-domain antibodies for deep tissue.</p>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
+
+      <a href="https://biotium.com/technology/cellular-stains/neuronal-probes/" target="_blank" rel="noopener" class="bt-card" style="display:flex; align-items:center; gap:18px; border:1px solid #EEEEEE; border-radius:16px; background:#ffffff; padding:20px; text-decoration:none;">
+        <div style="width:96px; height:96px; border-radius:12px; background:#EEEEEE; display:flex; align-items:center; justify-content:center; flex:none;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
+        </div>
+        <div style="flex:1 1 auto; min-width:0;">
+          <div style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Functional Imaging</div>
+          <p style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Calcium &amp; ion indicators for live-cell activity readouts.</p>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
+
+      <a href="https://biotium.com/technology/cellular-stains/neuronal-probes/" target="_blank" rel="noopener" class="bt-card" style="display:flex; align-items:center; gap:18px; border:1px solid #EEEEEE; border-radius:16px; background:#ffffff; padding:20px; text-decoration:none;">
+        <div style="width:96px; height:96px; border-radius:12px; background:#EEEEEE; display:flex; align-items:center; justify-content:center; flex:none;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
+        </div>
+        <div style="flex:1 1 auto; min-width:0;">
+          <div style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Neurodegeneration</div>
+          <p style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Amyloid &amp; aggregate stains for disease-model research.</p>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
+
+      <a href="https://biotium.com/technology/primary-secondary-antibody-conjugates/tyramide-signal-amplification/" target="_blank" rel="noopener" class="bt-card" style="display:flex; align-items:center; gap:18px; border:1px solid #EEEEEE; border-radius:16px; background:#ffffff; padding:20px; text-decoration:none;">
+        <div style="width:96px; height:96px; border-radius:12px; background:#EEEEEE; display:flex; align-items:center; justify-content:center; flex:none;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
+        </div>
+        <div style="flex:1 1 auto; min-width:0;">
+          <div style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Signal Amplification</div>
+          <p style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">TyraMax&trade; Dyes: boost faint targets while keeping resolution sharp.</p>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- Resources -->
+<div style="background:#F7F7F7;">
+  <div class="bt-wrap" style="padding-top:72px; padding-bottom:80px;">
+    <div style="max-width:680px; margin:0 auto 44px auto; text-align:center;">
+      <div class="bt-eyebrow">TAKE IT WITH YOU</div>
+      <h2 style="margin:0; font-size:28px; line-height:1.3; font-weight:800; color:#2d2d2d;">Resources for the show and after</h2>
+    </div>
+    <div class="bt-res-row">
+
+      <div class="bt-card bt-res-card" style="background:#ffffff; border:1px solid #EEEEEE; border-radius:14px; padding:28px;">
+        <div style="width:44px; height:44px; border-radius:10px; background:#e5f2ff; display:flex; align-items:center; justify-content:center; margin-bottom:18px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M9 13h6"></path><path d="M9 17h6"></path></svg>
+        </div>
+        <div style="font-size:17px; font-weight:800; color:#2d2d2d; margin-bottom:8px;">Neuronal Probes Flyer</div>
+        <p style="margin:0 0 20px 0; font-size:14px; line-height:1.55; color:#555555;">A quick-reference guide to Biotium's synaptic biology probes and stains.</p>
+        <a href="https://biotium.com/wp-content/uploads/2018/08/Neuronal-Probes.pdf" target="_blank" rel="noopener" class="bt-btn-outline">
+          Download PDF
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v13"></path><path d="M6 11l6 6 6-6"></path><path d="M5 21h14"></path></svg>
+        </a>
+      </div>
+
+      <div class="bt-card bt-res-card" style="background:#ffffff; border:1px solid #EEEEEE; border-radius:14px; padding:28px;">
+        <div style="width:44px; height:44px; border-radius:10px; background:#e5f2ff; display:flex; align-items:center; justify-content:center; margin-bottom:18px;">
+          <svg width="32" height="32" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M91.9043 19.5195H28.0957V100.48H91.9043V19.5195Z" stroke="black" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M81.8262 29.5977H38.1738V90.4023H81.8262V29.5977Z" stroke="black" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M41.6097 64.145H46.4595C52.8677 64.145 59.0149 67.0925 63.5489 72.3388C65.8119 74.9652 68.4857 77.012 71.3879 78.404C73.5203 79.4274 75.7807 80.0951 78.1008 80.3785" stroke="#0084FF" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M48.2519 41.3555H71.7481" stroke="#0084FF" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M71.7477 51.4336H65.0391" stroke="#0084FF" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M54.9609 51.4336H48.2523" stroke="#0084FF" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+        </div>
+        <div style="font-size:17px; font-weight:800; color:#2d2d2d; margin-bottom:8px;">TrueBlack&reg; in Neuroscience</div>
+        <p style="margin:0 0 20px 0; font-size:14px; line-height:1.55; color:#555555;">Lipofuscin autofluorescence quenching across diverse neuroscience applications.</p>
+        <a href="https://biotium.com/literature-digest/literature-digest-trueblack-lipofuscin-autofluorescence-quencher-in-diverse-neuroscience-applications/" target="_blank" rel="noopener" class="bt-btn-outline">
+          Read the Digest
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+        </a>
+      </div>
+
+      <div class="bt-card bt-res-card" style="background:#ffffff; border:1px solid #EEEEEE; border-radius:14px; padding:28px;">
+        <div style="width:44px; height:44px; border-radius:10px; background:#e5f2ff; display:flex; align-items:center; justify-content:center; margin-bottom:18px;">
+          <svg width="32" height="32" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M91.9043 19.5195H28.0957V100.48H91.9043V19.5195Z" stroke="black" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M81.8262 29.5977H38.1738V90.4023H81.8262V29.5977Z" stroke="black" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M41.6097 64.145H46.4595C52.8677 64.145 59.0149 67.0925 63.5489 72.3388C65.8119 74.9652 68.4857 77.012 71.3879 78.404C73.5203 79.4274 75.7807 80.0951 78.1008 80.3785" stroke="#0084FF" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M48.2519 41.3555H71.7481" stroke="#0084FF" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M71.7477 51.4336H65.0391" stroke="#0084FF" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M54.9609 51.4336H48.2523" stroke="#0084FF" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+        </div>
+        <div style="font-size:17px; font-weight:800; color:#2d2d2d; margin-bottom:8px;">CF&reg; Dyes for STORM</div>
+        <p style="margin:0 0 20px 0; font-size:14px; line-height:1.55; color:#555555;">CF&reg; Dyes for STORM super-resolution microscopy in advanced imaging workflows.</p>
+        <a href="https://biotium.com/resource/literature-digest-cf-dyes-for-storm-super-resolution-microscopy/" target="_blank" rel="noopener" class="bt-btn-outline">
+          Read the Digest
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Show promo -->
+<div style="background:#ffffff;">
+  <div class="bt-wrap" style="padding-top:56px; padding-bottom:56px;">
+    <div class="bt-card" style="display:flex; align-items:center; justify-content:center; gap:32px; flex-wrap:wrap; background:#EBF7ED; border:1px solid #D9E8D2; border-radius:16px; padding:28px 32px;">
+      <img src="tshirts.webp" alt="Biotium spectra and TrueBlack conference t-shirts" style="width:320px; max-width:100%; height:auto; flex:none; display:block;">
+      <div style="flex:1 1 260px; min-width:220px;">
+        <div class="bt-eyebrow">WIN SWAG</div>
+        <div style="font-size:20px; font-weight:800; color:#2d2d2d; margin-bottom:8px;">Come play Lab DnD for a chance to win a limited release tee-shirt</div>
+        <p style="margin:0; font-size:14px; line-height:1.55; color:#555555;">Stop by our booth to play for a chance to win various prizes, including our limited release t-shirts, while supplies last.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Come say hi -->
+<div id="come-say-hi" style="background:#F7F7F7;">
+  <div class="bt-wrap" style="padding-top:72px; padding-bottom:80px; text-align:center;">
+    <div style="max-width:620px; margin:0 auto;">
+      <h2 style="margin:0 0 16px 0; font-size:30px; line-height:1.25; font-weight:800; color:#2d2d2d;">Come say hi. Bring your questions.</h2>
+      <p style="margin:0 0 20px 0; font-size:16px; line-height:1.6; color:#555555;">Walk up any time. Talk to our team, PhD scientists included, about MiniMab&trade;, CF&reg; Dyes for in vivo imaging, neuronal probes, and optimizing your experimental workflow.</p>
+      <div style="font-size:13px; color:#888888;">No forms. No sales pitch. Just come find us at Booth 1106.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div style="background:#232323;">
+  <div class="bt-wrap" style="padding-top:52px; padding-bottom:32px;">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; padding-bottom:28px; border-bottom:1px solid #565656;">
+      <div style="display:flex; flex-direction:column; align-items:flex-start; gap:8px;">
+        <a href="https://biotium.com" style="display:block; line-height:0;">
+        <svg style="height:28px; width:auto; display:block;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 189.28">
+  <defs>
+    <style>
+      .cls-1sfn { fill: #fff; }
+      .cls-2sfn { fill: #37b34a; }
+      .cls-3sfn { fill: #ec1c24; }
+      .cls-4sfn { fill: #0084ff; }
+    </style>
+  </defs>
+  <path class="cls-3sfn" d="M284.43,45.8c-8.71,0-16.38,4.44-20.89,11.17-2.29,3.42-3.75,7.44-4.12,11.77-.06.72-.11,1.44-.11,2.17,0,13.87,11.25,25.12,25.12,25.12s25.12-11.25,25.12-25.12-11.25-25.12-25.12-25.12Z"/>
+  <path class="cls-2sfn" d="M97.25,45.79c-13.96,0-25.27,11.31-25.27,25.27s11.31,25.27,25.27,25.27,25.27-11.31,25.27-25.27c0-1.99-.25-3.92-.69-5.79-.98-4.19-3-7.96-5.78-11.06-4.63-5.16-11.32-8.43-18.8-8.43Z"/>
+  <path class="cls-4sfn" d="M202.32,35.48c.19-1.39.32-2.8.32-4.24,0-17.25-13.98-31.23-31.23-31.23s-31.23,13.98-31.23,31.23c0,3.18.48,6.24,1.36,9.13,1.24,4.07,3.3,7.78,5.97,10.95,5.73,6.81,14.3,11.15,23.9,11.15,11.39,0,21.32-6.11,26.78-15.22,2.12-3.53,3.55-7.51,4.13-11.77Z"/>
+  <g>
+    <path class="cls-1sfn" d="M198.19,47.24l61.23,21.5c.37-4.33,1.83-8.35,4.12-11.77l-61.22-21.5c-.58,4.26-2.01,8.24-4.13,11.77Z"/>
+    <path class="cls-1sfn" d="M141.54,40.36l-25.49,13.85c2.78,3.1,4.8,6.87,5.78,11.06l25.68-13.96c-2.67-3.18-4.72-6.89-5.97-10.95Z"/>
+    <path class="cls-1sfn" d="M62.73,112.9c-2.39-2.95-5.2-5.05-8.43-6.31-3.24-1.25-6.74-1.87-10.48-1.87-4.21,0-7.73.6-10.57,1.79-2.84,1.19-5.57,3.11-8.19,5.72v-39.04H0v113.7h23.53l1.53-6.65c2.62,2.39,5.31,4.18,8.1,5.37,2.78,1.19,6.22,1.79,10.31,1.79,3.75,0,7.28-.68,10.57-2.05,3.29-1.36,6.14-3.55,8.53-6.56,2.39-3.01,4.26-6.92,5.63-11.76,1.37-4.83,2.05-10.71,2.05-17.63v-6.66c0-7.27-.66-13.32-1.96-18.15-1.3-4.83-3.15-8.73-5.54-11.68ZM44.16,148.7c0,5.69-.74,10.04-2.22,13.05-1.48,3.01-4.04,4.51-7.67,4.51-1.94,0-3.5-.43-4.69-1.28-1.19-.85-2.13-1.96-2.81-3.33-.68-1.36-1.14-2.91-1.37-4.69-.23-1.75-.34-3.54-.34-5.37v-11.07c0-1.82.15-3.61.43-5.37.28-1.76.76-3.33,1.45-4.69.68-1.37,1.64-2.48,2.89-3.33,1.25-.85,2.84-1.28,4.77-1.28,3.64,0,6.14,1.3,7.51,3.93,1.36,2.61,2.05,7.16,2.05,13.64v5.27Z"/>
+    <rect class="cls-1sfn" x="84.38" y="106.77" width="25.74" height="80.12"/>
+    <path class="cls-1sfn" d="M185.91,113.42c-3.13-3.07-6.91-5.29-11.34-6.65-4.43-1.37-9.32-2.05-14.66-2.05s-10.03.68-14.41,2.05c-4.38,1.36-8.13,3.58-11.25,6.65-3.13,3.07-5.57,7.02-7.33,11.85-1.76,4.83-2.64,10.71-2.64,17.65v8c0,6.94.85,12.85,2.56,17.73,1.71,4.9,4.12,8.86,7.24,11.93,3.13,3.08,6.88,5.29,11.25,6.66,4.38,1.36,9.23,2.04,14.58,2.04s10.4-.68,14.83-2.04c4.43-1.37,8.18-3.58,11.25-6.66,3.07-3.07,5.45-7.03,7.16-11.93,1.71-4.88,2.56-10.79,2.56-17.73v-8c0-6.94-.85-12.82-2.56-17.65-1.71-4.83-4.12-8.78-7.24-11.85ZM169.63,149.21c0,6.48-.54,11.43-1.62,14.83-1.08,3.41-3.78,5.12-8.09,5.12s-7.14-1.71-8.1-5.12c-.96-3.4-1.45-8.35-1.45-14.83v-4.43c0-6.48.54-11.42,1.62-14.83,1.08-3.41,3.84-5.12,8.27-5.12,2.16,0,3.89.43,5.2,1.28,1.31.86,2.25,2.14,2.82,3.84.57,1.71.94,3.8,1.11,6.3.17,2.51.26,5.36.26,8.53v4.43Z"/>
+    <path class="cls-1sfn" d="M251.62,167.45c-3.98,0-6.6-.93-7.85-2.82-1.25-1.87-1.87-5.02-1.87-9.46v-27.95h17.39v-20.45h-17.73v-21.31h-25.06v21.31h-11.42v20.45h11.08v28.47c0,5.69.48,10.6,1.45,14.75.96,4.15,2.55,7.53,4.77,10.14,2.21,2.62,5.08,4.55,8.61,5.8,3.52,1.25,7.84,1.87,12.96,1.87,2.61,0,5.51-.14,8.69-.42,3.18-.29,5.57-.67,7.16-1.11v-19.78c-1.36.24-2.64.37-3.84.43-1.19.06-2.64.08-4.34.08Z"/>
+    <rect class="cls-1sfn" x="271.56" y="106.77" width="25.74" height="80.12"/>
+    <path class="cls-1sfn" d="M353.73,152.11c0,1.71-.08,3.36-.26,4.95-.17,1.58-.54,3.04-1.1,4.34-.58,1.3-1.39,2.33-2.48,3.07-1.08.75-2.47,1.11-4.18,1.11-2.62,0-4.43-.9-5.45-2.73-1.03-1.82-1.54-4.7-1.54-8.68v-47.39h-25.74v55.74c0,4.77.57,8.84,1.71,12.18,1.14,3.36,2.73,6.09,4.77,8.19,2.05,2.11,4.46,3.65,7.25,4.61,2.78.97,5.82,1.44,9.12,1.44,2.5,0,4.65-.22,6.48-.68,1.81-.46,3.43-1.11,4.86-1.96,1.42-.85,2.73-1.82,3.92-2.9,1.19-1.08,2.41-2.3,3.67-3.66l1.7,7.16h23.02v-80.12h-25.74v45.34Z"/>
+    <path class="cls-1sfn" d="M498.12,118.36c-1.25-3.29-2.96-5.94-5.11-7.92-2.16-1.98-4.66-3.44-7.5-4.36-2.84-.9-5.8-1.36-8.86-1.36-3.98,0-7.48.71-10.49,2.14-3.01,1.42-5.99,3.72-8.95,6.89-2.16-3.29-4.6-5.62-7.33-6.98-2.73-1.37-6.53-2.05-11.42-2.05-4.21,0-7.73.8-10.57,2.39-2.84,1.6-5.57,3.87-8.19,6.83l-1.7-7.16h-22.85v80.12h25.58v-48.25c0-3.4.65-6.02,1.96-7.84,1.3-1.82,3.09-2.72,5.37-2.72.79,0,1.59.08,2.39.25.79.17,1.53.57,2.21,1.19.69.62,1.22,1.54,1.62,2.73.4,1.19.6,2.8.6,4.86v49.78h25.57v-49.26c0-3.07.62-5.42,1.87-7.08,1.26-1.65,3.01-2.47,5.29-2.47,1.71,0,3.27.51,4.69,1.53,1.42,1.03,2.13,3.52,2.13,7.51v49.78h25.57v-56.42c0-4.77-.63-8.81-1.88-12.11Z"/>
+  </g>
+</svg>
+        </a>
+        <span style="color:#CFCFCF; font-size:12px;">Glowing Products for Science&trade;</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:28px; flex-wrap:wrap;">
+        <a href="https://biotium.com/technology/cellular-stains/neuronal-probes/" target="_blank" rel="noopener" style="color:#CFCFCF; font-size:14px; font-weight:600;">Full neuroscience portfolio</a>
+        <a href="https://biotium.com/events/" target="_blank" rel="noopener" style="color:#CFCFCF; font-size:14px; font-weight:600;">Other Biotium events</a>
+        <a href="https://biotium.com/distributors/" target="_blank" rel="noopener" style="color:#CFCFCF; font-size:14px; font-weight:600;">Contact a distributor</a>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; padding-top:24px;">
+      <span style="color:#A0A0A0; font-size:12px;">&copy;2026 Biotium, Inc. All rights reserved.</span>
+      <a href="https://biotium.com/privacy-policy" target="_blank" rel="noopener" style="color:#A0A0A0; font-size:12px; font-weight:600;">Privacy Policy</a>
+    </div>
+  </div>
+</div>
+
+</div>
+</x-dc>
+</body>
+</html>
