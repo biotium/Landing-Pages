@@ -133,7 +133,12 @@
       box-shadow: 0 4px 14px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.08);
       pointer-events: none;
     }
+    .bt-img-pill--center {
+      left: 50%; right: auto; transform: translateX(-50%);
+      width: max-content; max-width: calc(100% - 32px); text-align: center; white-space: normal;
+    }
     @media (max-width: 900px) {
+      .bt-img-pill--center { font-size: 11px !important; padding: 7px 12px !important; }
       .bt-wrap { padding-left: 24px !important; padding-right: 24px !important; }
       .bt-hero-row, .bt-featured-row { flex-direction: column !important; }
       .bt-hero-copy { max-width: 100% !important; }
@@ -154,6 +159,7 @@
       .bt-header-tagline { display: none !important; }
     }
     @media (max-width: 560px) {
+      .bt-img-pill--center { font-size: 10px !important; padding: 6px 10px !important; letter-spacing: 0.01em !important; }
       .bt-cat-grid { grid-template-columns: minmax(0,1fr) !important; }
       .bt-header-pill { padding: 4px 10px; gap: 5px; }
       .bt-header-pill-text { max-width: 180px; font-size: 10.5px; }
@@ -280,7 +286,7 @@
         <script src="https://fast.wistia.com/embed/lztnsxqbfz.js" async type="module"></script>
         <style>wistia-player[media-id='lztnsxqbfz']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/lztnsxqbfz/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
         <wistia-player media-id="lztnsxqbfz" aspect="1.7777777777777777"></wistia-player>
-        <div class="bt-img-pill">Mouse Brain stained with GFAP and vGLUT1 Nanobody - LifeCanvas Tech</div>
+        <div class="bt-img-pill bt-img-pill--center">Mouse Brain stained with GFAP and vGLUT1 Nanobody - LifeCanvas Tech</div>
       </div>
     </div>
   </div>
