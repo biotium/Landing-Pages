@@ -51,28 +51,18 @@
       50% { box-shadow: 0 0 0 4px rgba(0,132,255,0), 0 0 8px 2px rgba(0,132,255,0.85); }
     }
 
-    /* Glass panel behind hero copy — restores text contrast over the busy photo background */
-    .bt-hero-glass-panel {
-      position: absolute; inset: -28px 0 -28px 0;
-      background: rgba(255,255,255,0.58);
-      border: 1px solid rgba(255,255,255,0.55);
-      border-radius: 28px;
-      backdrop-filter: blur(10px) saturate(1.15);
-      -webkit-backdrop-filter: blur(10px) saturate(1.15);
-      box-shadow: 0 8px 40px rgba(20,20,20,0.06), inset 0 1px 0 rgba(255,255,255,0.5);
-      z-index: -1;
-      transform: translateZ(0);
-      -webkit-transform: translateZ(0);
-      isolation: isolate;
-      will-change: backdrop-filter;
+    /* Glass overlay across the hero — frosted where the copy sits, clearing to let the photo read on the right */
+    .bt-hero-glass-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(100deg,
+        rgba(255,255,255,0.94) 0%,
+        rgba(255,255,255,0.88) 16%,
+        rgba(255,255,255,0.66) 34%,
+        rgba(255,255,255,0.32) 52%,
+        rgba(255,255,255,0.1) 68%,
+        rgba(255,255,255,0) 82%);
+      pointer-events: none;
     }
-    /* CTA spotlight — a directional glow anchored on the primary button, leading the eye to the main action */
-    .bt-hero-cta-glow {
-      position: absolute; left: -40px; bottom: -64px; width: 340px; height: 230px;
-      background: radial-gradient(circle, rgba(0,132,255,0.4) 0%, rgba(0,132,255,0.14) 55%, rgba(0,132,255,0) 80%);
-      pointer-events: none; z-index: -1;
-    }
-    html.reduced-motion .bt-hero-cta-glow { opacity: 0.7; }
 
     /* Icon glass chips — glow appears only on hover/focus, signalling the card is interactive */
     .bt-icon-box {
@@ -181,12 +171,19 @@
     @media (max-width: 900px) {
       .bt-wrap { padding-left: 24px !important; padding-right: 24px !important; }
       .bt-hero-row, .bt-featured-row { flex-direction: column !important; }
-      .bt-hero-copy { max-width: 100% !important; padding: 0 14px !important; }
+      .bt-hero-copy { max-width: 100% !important; }
       .bt-h1 { font-size: 40px !important; }
       .bt-flagship-img-col { max-width: 100% !important; }
       .bt-hero-badge { padding: 8px 14px !important; gap: 7px !important; }
       .bt-hero-badge-text { font-size: 11.5px !important; line-height: 1.45 !important; letter-spacing: 0.02em !important; }
-      .bt-hero-glass-panel { inset: -18px 0 -18px 0 !important; border-radius: 22px !important; }
+      .bt-hero-glass-overlay {
+        background: linear-gradient(180deg,
+          rgba(255,255,255,0.92) 0%,
+          rgba(255,255,255,0.86) 30%,
+          rgba(255,255,255,0.55) 55%,
+          rgba(255,255,255,0.18) 75%,
+          rgba(255,255,255,0) 92%) !important;
+      }
     }
     @media (max-width: 600px) {
       .bt-header-tagline { display: none !important; }
@@ -251,14 +248,12 @@
 <!-- Hero -->
 <div style="position:relative; overflow:hidden; background-color:#F7F7F7;">
   <div id="hero-parallax">
-    <img src="neuron-antibody-hero.webp" alt="">
-    <img src="neuron-antibody-hero.webp" alt="" style="filter:blur(18px); transform:scale(1.06); -webkit-mask-image:linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 78%); mask-image:linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 78%);">
+    <img src="neuron-antibody-hero-dark.webp" alt="">
+    <img src="neuron-antibody-hero-dark.webp" alt="" style="filter:blur(18px); transform:scale(1.06); -webkit-mask-image:linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 78%); mask-image:linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 78%);">
   </div>
-  <div style="position:absolute; inset:0; background:linear-gradient(100deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.82) 22%, rgba(255,255,255,0.4) 45%, rgba(255,255,255,0.08) 65%, rgba(255,255,255,0) 85%);"></div>
+  <div class="bt-hero-glass-overlay"></div>
   <div class="bt-wrap" style="padding-top:104px; padding-bottom:96px; position:relative; z-index:1;">
-    <div class="bt-hero-copy" style="max-width:620px; position:relative; padding: 0 32px;">
-      <div class="bt-hero-glass-panel"></div>
-      <div class="bt-hero-cta-glow"></div>
+    <div class="bt-hero-copy" style="max-width:620px; position:relative;">
       <div class="hero-in bt-hero-badge" style="transition-delay:0ms; display:inline-flex; align-items:center; gap:8px; background:#ffffff; border:1px solid #E3E3E3; border-radius:999px; padding:7px 14px; margin-bottom:22px;">
         <span class="bt-hero-pin">
           <svg viewBox="0 0 24 24" aria-hidden="true">

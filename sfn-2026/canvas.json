@@ -32,7 +32,7 @@
       "x": 1560,
       "y": -90,
       "w": 420,
-      "text": "GlassVariant: same content, copy and bt- design system as Main, exploring a glassmorphism direction. Glass (frosted, translucent) buttons throughout; a frosted glass panel behind the hero's left-column copy for legibility over the photo; and purposeful glows only — a blue spotlight anchoring the primary CTA, a green glow on the Biotium Choice badge (validated/optimized), a blue hover-glow on card icons (signals interactivity), a pulsing glow on the video play button (signals playable media), a glow at the scroll-progress bar's leading edge (current position), and a small red text-glow on “WIN SWAG” (urgency). No purely decorative glow was added."
+      "text": "GlassVariant: same content, copy and bt- design system as Main, exploring a glassmorphism direction. Glass (frosted, translucent) buttons throughout; a full-bleed glass overlay across the hero, frosted on the left behind the copy and clearing to the right so the (now black-faded, not white-faded) photo reads on its own; and purposeful glows only — a green glow on the Biotium Choice badge (validated/optimized), a blue hover-glow on card icons (signals interactivity), a pulsing glow on the video play button (signals playable media), a glow at the scroll-progress bar's leading edge (current position), and a small red text-glow on “WIN SWAG” (urgency). No purely decorative glow was added."
     }
   ],
   "launch": {
