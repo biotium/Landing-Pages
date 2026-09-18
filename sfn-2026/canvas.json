@@ -1,0 +1,42 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 2750,
+      "expand": "fill",
+      "is_interactive": true
+    },
+    {
+      "file": "GlassVariant.dc.html",
+      "x": 1560,
+      "y": 0,
+      "w": 1440,
+      "h": 2750,
+      "expand": "fill",
+      "is_interactive": true
+    }
+  ],
+  "annotations": [
+    {
+      "id": "main-note",
+      "x": 0,
+      "y": -90,
+      "w": 420,
+      "text": "Main: the live SfN 2026 page — flat buttons, solid cards, no glass/glow treatment."
+    },
+    {
+      "id": "glassvariant-note",
+      "x": 1560,
+      "y": -90,
+      "w": 420,
+      "text": "GlassVariant: same content, copy and bt- design system as Main, exploring a glassmorphism direction. Glass (frosted, translucent) buttons throughout; a frosted glass panel behind the hero's left-column copy for legibility over the photo; and purposeful glows only — a blue spotlight anchoring the primary CTA, a green glow on the Biotium Choice badge (validated/optimized), a blue hover-glow on card icons (signals interactivity), a pulsing glow on the video play button (signals playable media), a glow at the scroll-progress bar's leading edge (current position), and a small red text-glow on “WIN SWAG” (urgency). No purely decorative glow was added."
+    }
+  ],
+  "launch": {
+    "view": "focused",
+    "file": "GlassVariant.dc.html"
+  }
+}
