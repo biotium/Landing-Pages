@@ -51,6 +51,6 @@
   ],
   "launch": {
     "view": "focused",
-    "file": "Main.dc.html"
+    "file": "ScrollVariant.dc.html"
   }
 }
