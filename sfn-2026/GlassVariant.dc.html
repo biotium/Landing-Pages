@@ -130,10 +130,7 @@
     #site-header.is-scrolled { background: rgba(255,255,255,0.92); box-shadow: 0 6px 24px rgba(20,20,20,0.07), 0 1px 0 rgba(0,132,255,0.18); }
     html.reduced-motion #site-header,
     html.reduced-motion #site-header.is-scrolled { background: #ffffff; backdrop-filter: none; -webkit-backdrop-filter: none; }
-    #header-inner { transition: padding-top 0.3s ease, padding-bottom 0.3s ease; }
-    #site-header.is-scrolled #header-inner { padding-top: 13px !important; padding-bottom: 13px !important; }
-    #header-logo { transition: transform 0.3s ease; transform-origin: left center; }
-    #site-header.is-scrolled #header-logo { transform: scale(0.88); }
+    #header-logo { transform: scale(0.88); transform-origin: left center; }
 
     /* Sticky event pill: replaces the tagline once scrolled */
     .bt-header-pill {
@@ -163,8 +160,6 @@
     html.reduced-motion .hero-in,
     html.reduced-motion .reveal { transition: none !important; opacity: 1 !important; transform: none !important; }
     html.reduced-motion #site-header { transition: none !important; }
-    html.reduced-motion #header-inner,
-    html.reduced-motion #header-logo { transition: none !important; }
 
     .bt-img-pill {
       position: absolute; left: 16px; bottom: 16px;
@@ -179,7 +174,7 @@
     @media (max-width: 900px) {
       .bt-wrap { padding-left: 24px !important; padding-right: 24px !important; }
       .bt-hero-row, .bt-featured-row { flex-direction: column !important; }
-      .bt-hero-copy { max-width: 100% !important; }
+      .bt-hero-copy { max-width: 100% !important; padding: 0 14px !important; }
       .bt-h1 { font-size: 40px !important; }
       .bt-flagship-img-col { max-width: 100% !important; }
       .bt-hero-badge { padding: 8px 14px !important; gap: 7px !important; }
@@ -206,7 +201,7 @@
 
 <!-- Header -->
 <div id="site-header">
-  <div id="header-inner" class="bt-wrap" style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; padding-top:20px; padding-bottom:20px;">
+  <div id="header-inner" class="bt-wrap" style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; padding-top:13px; padding-bottom:13px;">
     <a id="header-logo" href="https://biotium.com" style="display:block; line-height:0;">
       <svg style="height:32px; width:auto; display:block;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 189.28">
   <path d="M34.61,125.86c-1.93,0-3.52.43-4.77,1.28s-2.21,1.96-2.89,3.33c-.69,1.36-1.17,2.93-1.45,4.69-.28,1.76-.43,3.55-.43,5.37v11.07c0,1.83.11,3.62.34,5.37.23,1.78.69,3.33,1.37,4.69.68,1.37,1.62,2.48,2.81,3.33,1.19.85,2.75,1.28,4.69,1.28,3.63,0,6.19-1.5,7.67-4.51,1.48-3.01,2.22-7.37,2.22-13.05v-5.27c0-6.48-.69-11.03-2.05-13.64-1.37-2.62-3.86-3.93-7.51-3.93Z" fill="none"/>
@@ -246,7 +241,7 @@
   </div>
   <div style="position:absolute; inset:0; background:linear-gradient(100deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.82) 22%, rgba(255,255,255,0.4) 45%, rgba(255,255,255,0.08) 65%, rgba(255,255,255,0) 85%);"></div>
   <div class="bt-wrap" style="padding-top:104px; padding-bottom:96px; position:relative; z-index:1;">
-    <div class="bt-hero-copy" style="max-width:620px; position:relative;">
+    <div class="bt-hero-copy" style="max-width:620px; position:relative; padding: 0 32px;">
       <div class="bt-hero-glass-panel"></div>
       <div class="bt-hero-cta-glow"></div>
       <div class="hero-in bt-hero-badge" style="transition-delay:0ms; display:inline-flex; align-items:center; gap:8px; background:#ffffff; border:1px solid #E3E3E3; border-radius:999px; padding:7px 14px; margin-bottom:22px;">
