@@ -139,6 +139,11 @@ label: Biotium – ASCB Cell Bio 2026 Landing Page
       .bt-header-tagline { display: none !important; }
       .bt-header-pill { padding: 4px 10px; gap: 5px; }
       .bt-header-pill-text { max-width: 180px; font-size: 10.5px; }
+      /* Portfolio cards: free up width for the title and sharpen title/body contrast */
+      .bt-cat-grid .bt-card { gap: 14px !important; }
+      .bt-cat-icon { width: 64px !important; height: 64px !important; }
+      .bt-cat-title { font-size: 17px !important; }
+      .bt-cat-desc { font-size: 13px !important; color: #6b6b6b !important; }
     }
     @media (max-width: 340px) {
       /* Too narrow for one line without crowding the logo — wrap instead of overflowing */
@@ -310,55 +315,55 @@ label: Biotium – ASCB Cell Bio 2026 Landing Page
     <div class="bt-cat-grid" style="padding-bottom:40px;">
 
       <a href="https://biotium.com/technology/cellular-stains/nuclear-stains/" class="reveal bt-card" style="transition-delay:0ms; display:flex; align-items:center; gap:18px; border:1px solid #EEEEEE; border-radius:16px; background:#ffffff; padding:20px; text-decoration:none;">
-        <img src="https://learn.biotium.com/hs-fs/hubfs/biotium-nuclearstains.png?width=1264&height=848&name=biotium-nuclearstains.png" alt="Nuclear stains" style="width:96px; height:96px; border-radius:12px; object-fit:cover; flex:none;">
+        <img src="https://learn.biotium.com/hs-fs/hubfs/biotium-nuclearstains.png?width=1264&height=848&name=biotium-nuclearstains.png" alt="Nuclear stains" class="bt-cat-icon" style="width:96px; height:96px; border-radius:12px; object-fit:cover; flex:none;">
         <div style="flex:1 1 auto; min-width:0;">
-          <div style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Nuclear Stains</div>
-          <p style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Bright, wash-free nuclear counterstains with minimal spectral overlap for easy multiplexing.</p>
+          <div class="bt-cat-title" style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Nuclear Stains</div>
+          <p class="bt-cat-desc" style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Bright, wash-free nuclear counterstains with minimal spectral overlap for easy multiplexing.</p>
         </div>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
       </a>
 
       <a href="https://biotium.com/technology/cellular-stains/cell-surface-stains/" class="reveal bt-card" style="transition-delay:60ms; display:flex; align-items:center; gap:18px; border:1px solid #EEEEEE; border-radius:16px; background:#ffffff; padding:20px; text-decoration:none;">
-        <img src="https://learn.biotium.com/hs-fs/hubfs/biotium-membranestains.png?width=1264&height=848&name=biotium-membranestains.png" alt="Membrane stains" style="width:96px; height:96px; border-radius:12px; object-fit:cover; flex:none;">
+        <img src="https://learn.biotium.com/hs-fs/hubfs/biotium-membranestains.png?width=1264&height=848&name=biotium-membranestains.png" alt="Membrane stains" class="bt-cat-icon" style="width:96px; height:96px; border-radius:12px; object-fit:cover; flex:none;">
         <div style="flex:1 1 auto; min-width:0;">
-          <div style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Membrane Stains</div>
-          <p style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Lipophilic dyes and CytoLiner&trade; conjugates that label the plasma membrane, live or fixed.</p>
+          <div class="bt-cat-title" style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Membrane Stains</div>
+          <p class="bt-cat-desc" style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Lipophilic dyes and CytoLiner&trade; conjugates that label the plasma membrane, live or fixed.</p>
         </div>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
       </a>
 
       <a href="https://biotium.com/technology/primary-secondary-antibody-conjugates/" class="reveal bt-card" style="transition-delay:120ms; display:flex; align-items:center; gap:18px; border:1px solid #EEEEEE; border-radius:16px; background:#ffffff; padding:20px; text-decoration:none;">
-        <img src="https://learn.biotium.com/hs-fs/hubfs/biotium-antibody.png?width=1264&height=848&name=biotium-antibody.png" alt="Antibodies" style="width:96px; height:96px; border-radius:12px; object-fit:cover; flex:none;">
+        <img src="https://learn.biotium.com/hs-fs/hubfs/biotium-antibody.png?width=1264&height=848&name=biotium-antibody.png" alt="Antibodies" class="bt-cat-icon" style="width:96px; height:96px; border-radius:12px; object-fit:cover; flex:none;">
         <div style="flex:1 1 auto; min-width:0;">
-          <div style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Antibodies</div>
-          <p style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Validated primary and secondary conjugates, ready to use straight off the shelf.</p>
+          <div class="bt-cat-title" style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Antibodies</div>
+          <p class="bt-cat-desc" style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Validated primary and secondary conjugates, ready to use straight off the shelf.</p>
         </div>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
       </a>
 
       <a href="https://biotium.com/technology/flow-cytometry-reagents/" class="reveal bt-card" style="transition-delay:180ms; display:flex; align-items:center; gap:18px; border:1px solid #EEEEEE; border-radius:16px; background:#ffffff; padding:20px; text-decoration:none;">
-        <img src="https://learn.biotium.com/hs-fs/hubfs/biotium-flow%20cyto.png?width=1264&height=848&name=biotium-flow%20cyto.png" alt="Flow cytometry" style="width:96px; height:96px; border-radius:12px; object-fit:cover; flex:none;">
+        <img src="https://learn.biotium.com/hs-fs/hubfs/biotium-flow%20cyto.png?width=1264&height=848&name=biotium-flow%20cyto.png" alt="Flow cytometry" class="bt-cat-icon" style="width:96px; height:96px; border-radius:12px; object-fit:cover; flex:none;">
         <div style="flex:1 1 auto; min-width:0;">
-          <div style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Flow Cytometry</div>
-          <p style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Multiplex up to 15 samples in one tube with fixable viability dyes and bright conjugates.</p>
+          <div class="bt-cat-title" style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Flow Cytometry</div>
+          <p class="bt-cat-desc" style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Multiplex up to 15 samples in one tube with fixable viability dyes and bright conjugates.</p>
         </div>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
       </a>
 
       <a href="https://biotium.com/technology/exosome-ev-labeling/" class="reveal bt-card" style="transition-delay:240ms; display:flex; align-items:center; gap:18px; border:1px solid #EEEEEE; border-radius:16px; background:#ffffff; padding:20px; text-decoration:none;">
-        <img src="https://learn.biotium.com/hs-fs/hubfs/biotium%20EVs.png?width=1264&height=848&name=biotium%20EVs.png" alt="Exosome and EV detection" style="width:96px; height:96px; border-radius:12px; object-fit:cover; flex:none;">
+        <img src="https://learn.biotium.com/hs-fs/hubfs/biotium%20EVs.png?width=1264&height=848&name=biotium%20EVs.png" alt="Exosome and EV detection" class="bt-cat-icon" style="width:96px; height:96px; border-radius:12px; object-fit:cover; flex:none;">
         <div style="flex:1 1 auto; min-width:0;">
-          <div style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Exosome &amp; EV Detection</div>
-          <p style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Detect and quantify exosomes and EVs without ultracentrifugation or bulky isolation kits.</p>
+          <div class="bt-cat-title" style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Exosome &amp; EV Detection</div>
+          <p class="bt-cat-desc" style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Detect and quantify exosomes and EVs without ultracentrifugation or bulky isolation kits.</p>
         </div>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
       </a>
 
       <a href="https://biotium.com/technology/primary-secondary-antibody-conjugates/tyramide-signal-amplification/" class="reveal bt-card" style="transition-delay:300ms; display:flex; align-items:center; gap:18px; border:1px solid #EEEEEE; border-radius:16px; background:#ffffff; padding:20px; text-decoration:none;">
-        <img src="https://learn.biotium.com/hs-fs/hubfs/biotium-TSA.png?width=1264&height=848&name=biotium-TSA.png" alt="Signal amplification" style="width:96px; height:96px; border-radius:12px; object-fit:cover; flex:none;">
+        <img src="https://learn.biotium.com/hs-fs/hubfs/biotium-TSA.png?width=1264&height=848&name=biotium-TSA.png" alt="Signal amplification" class="bt-cat-icon" style="width:96px; height:96px; border-radius:12px; object-fit:cover; flex:none;">
         <div style="flex:1 1 auto; min-width:0;">
-          <div style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Signal Amplification</div>
-          <p style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Tyramide-based amplification that boosts faint signals while keeping resolution sharp.</p>
+          <div class="bt-cat-title" style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Signal Amplification</div>
+          <p class="bt-cat-desc" style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Tyramide-based amplification that boosts faint signals while keeping resolution sharp.</p>
         </div>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
       </a>

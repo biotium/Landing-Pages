@@ -195,6 +195,12 @@
       .bt-cat-grid { grid-template-columns: minmax(0,1fr) !important; }
       .bt-header-pill { padding: 4px 10px; gap: 5px; }
       .bt-header-pill-text { max-width: 180px; font-size: 10.5px; }
+      /* Portfolio cards: free up width for the title and sharpen title/body contrast */
+      .bt-cat-grid .bt-card { gap: 14px !important; }
+      .bt-cat-grid .bt-icon-box { width: 64px !important; height: 64px !important; }
+      .bt-cat-grid .bt-icon-box svg { width: 26px !important; height: 26px !important; }
+      .bt-cat-title { font-size: 17px !important; }
+      .bt-cat-desc { font-size: 13px !important; color: #6b6b6b !important; }
     }
     @media (max-width: 340px) {
       /* Too narrow for one line without crowding the logo — wrap instead of overflowing */
@@ -335,11 +341,11 @@
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
         </div>
         <div style="flex:1 1 auto; min-width:0;">
-          <div style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Neuronal Markers<span class="bt-choice-badge" style="margin-left:8px;" tabindex="0">
+          <div class="bt-cat-title" style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Neuronal Markers<span class="bt-choice-badge" style="margin-left:8px;" tabindex="0">
             <img src="biotium-choice-icon.png" alt="Biotium Choice" style="width:17px; height:17px; display:block;">
             <span class="bt-choice-tip">Biotium Choice&trade; &mdash; validated &amp; optimized</span>
           </span></div>
-          <p style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">GFAP, NeuN: validated conjugates for glia and neuron identification.</p>
+          <p class="bt-cat-desc" style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">GFAP, NeuN: validated conjugates for glia and neuron identification.</p>
         </div>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
       </a>
@@ -349,11 +355,11 @@
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
         </div>
         <div style="flex:1 1 auto; min-width:0;">
-          <div style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Structural Markers<span class="bt-choice-badge" style="margin-left:8px;" tabindex="0">
+          <div class="bt-cat-title" style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Structural Markers<span class="bt-choice-badge" style="margin-left:8px;" tabindex="0">
             <img src="biotium-choice-icon.png" alt="Biotium Choice" style="width:17px; height:17px; display:block;">
             <span class="bt-choice-tip">Biotium Choice&trade; &mdash; validated &amp; optimized</span>
           </span></div>
-          <p style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Neurofilament-H, &beta;3-Tubulin: core cytoskeletal targets.</p>
+          <p class="bt-cat-desc" style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Neurofilament-H, &beta;3-Tubulin: core cytoskeletal targets.</p>
         </div>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
       </a>
@@ -363,8 +369,8 @@
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
         </div>
         <div style="flex:1 1 auto; min-width:0;">
-          <div style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Axonal Tracers</div>
-          <p style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Neuro-DiI: lipophilic tracing for neuronal connectivity.</p>
+          <div class="bt-cat-title" style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Axonal Tracers</div>
+          <p class="bt-cat-desc" style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Neuro-DiI: lipophilic tracing for neuronal connectivity.</p>
         </div>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
       </a>
@@ -374,8 +380,8 @@
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
         </div>
         <div style="flex:1 1 auto; min-width:0;">
-          <div style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Small Format</div>
-          <p style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">MiniMab&trade; SdAbs: single-domain antibodies for deep tissue.</p>
+          <div class="bt-cat-title" style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Small Format</div>
+          <p class="bt-cat-desc" style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">MiniMab&trade; SdAbs: single-domain antibodies for deep tissue.</p>
         </div>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
       </a>
@@ -385,8 +391,8 @@
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
         </div>
         <div style="flex:1 1 auto; min-width:0;">
-          <div style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Functional Imaging</div>
-          <p style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Calcium &amp; ion indicators for live-cell activity readouts.</p>
+          <div class="bt-cat-title" style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Functional Imaging</div>
+          <p class="bt-cat-desc" style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Calcium &amp; ion indicators for live-cell activity readouts.</p>
         </div>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
       </a>
@@ -396,8 +402,8 @@
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
         </div>
         <div style="flex:1 1 auto; min-width:0;">
-          <div style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Neurodegeneration</div>
-          <p style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Amyloid &amp; aggregate stains for disease-model research.</p>
+          <div class="bt-cat-title" style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Neurodegeneration</div>
+          <p class="bt-cat-desc" style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">Amyloid &amp; aggregate stains for disease-model research.</p>
         </div>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
       </a>
@@ -407,8 +413,8 @@
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
         </div>
         <div style="flex:1 1 auto; min-width:0;">
-          <div style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Signal Amplification</div>
-          <p style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">TyraMax&trade; Dyes: boost faint targets while keeping resolution sharp.</p>
+          <div class="bt-cat-title" style="font-size:16px; font-weight:800; color:#2d2d2d; margin-bottom:4px;">Signal Amplification</div>
+          <p class="bt-cat-desc" style="margin:0; font-size:13.5px; line-height:1.5; color:#555555;">TyraMax&trade; Dyes: boost faint targets while keeping resolution sharp.</p>
         </div>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
       </a>
