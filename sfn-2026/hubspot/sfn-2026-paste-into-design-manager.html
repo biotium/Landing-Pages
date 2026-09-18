@@ -21,19 +21,19 @@ label: Biotium – SfN 2026 Landing Page
     .bt-a { color: #087eec; text-decoration: none; }
     .bt-a:hover { color: #0062be; }
     .bt-wrap { max-width: 1160px; margin: 0 auto; padding-left: 48px; padding-right: 48px; }
-    .bt-btn-primary { display: inline-flex; align-items: center; gap: 8px; background: #087eec; color: #ffffff; font-weight: 800; font-size: 16px; padding: 15px 28px; border-radius: 999px; border: none; text-decoration: none; transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease; }
-    .bt-btn-primary:hover { background: #0062be; color: #ffffff; transform: translateY(-1px); box-shadow: 0 8px 20px rgba(8,126,236,0.28); }
-    .bt-btn-outline { display: inline-flex; align-items: center; gap: 8px; background: #ffffff; color: #087eec; font-weight: 800; font-size: 14px; padding: 11px 20px; border-radius: 999px; border: 1.5px solid #087eec; text-decoration: none; transition: background-color 0.2s ease, color 0.2s ease; }
-    .bt-btn-outline:hover { background: #e5f2ff; color: #0062be; }
+    .bt-btn-primary { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, rgba(19,142,255,0.92), rgba(0,98,190,0.84)); color: #ffffff; font-weight: 800; font-size: 16px; padding: 15px 28px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.35); backdrop-filter: blur(14px) saturate(1.5); -webkit-backdrop-filter: blur(14px) saturate(1.5); text-decoration: none; transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 10px 30px rgba(0,132,255,0.38), inset 0 1px 0 rgba(255,255,255,0.3); }
+    .bt-btn-primary:hover { background: linear-gradient(135deg, rgba(37,152,255,0.96), rgba(0,98,190,0.92)); color: #ffffff; transform: translateY(-1px); box-shadow: 0 14px 38px rgba(0,132,255,0.52), inset 0 1px 0 rgba(255,255,255,0.35); }
+    .bt-btn-outline { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.55); color: #087eec; font-weight: 800; font-size: 14px; padding: 11px 20px; border-radius: 999px; border: 1.5px solid rgba(8,126,236,0.55); backdrop-filter: blur(10px) saturate(1.4); -webkit-backdrop-filter: blur(10px) saturate(1.4); text-decoration: none; transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease; }
+    .bt-btn-outline:hover { background: rgba(229,242,255,0.78); color: #0062be; box-shadow: 0 6px 18px rgba(8,126,236,0.22); }
     .bt-link-arrow { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 14px; text-decoration: none; }
     .bt-eyebrow { font-size: 13px; font-weight: 800; letter-spacing: 0.06em; color: #087eec; margin-bottom: 14px; }
     .bt-eyebrow--onDark { color: #66b5ff; }
     .bt-card { transition: box-shadow 0.15s ease, transform 0.15s ease; text-decoration: none; display: block; }
-    .bt-card:hover { box-shadow: 0 12px 28px rgba(17,17,17,0.08); transform: translateY(-2px); }
+    .bt-card:hover { box-shadow: 0 12px 28px rgba(17,17,17,0.08), 0 0 0 2px rgba(0,132,255,0.28), 0 0 20px rgba(0,132,255,0.4); transform: translateY(-2px); }
     .bt-cat-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; }
     .bt-res-row { display: flex; gap: 24px; align-items: stretch; flex-wrap: wrap; }
     .bt-res-card { flex: 1 1 260px; }
-    .bt-choice-badge { position: relative; display: inline-flex; vertical-align: middle; cursor: pointer; }
+    .bt-choice-badge { position: relative; display: inline-flex; vertical-align: middle; cursor: pointer; filter: drop-shadow(0 0 5px rgba(0,132,255,0.65)); }
     .bt-choice-tip {
       position: absolute; bottom: calc(100% + 9px); left: 50%; transform: translateX(-50%);
       background: #232323; color: #ffffff; font-size: 11.5px; font-weight: 700; letter-spacing: 0.01em;
@@ -56,12 +56,52 @@ label: Biotium – SfN 2026 Landing Page
       50% { box-shadow: 0 0 0 4px rgba(0,132,255,0), 0 0 8px 2px rgba(0,132,255,0.85); }
     }
 
+    /* Glass overlay across the hero — frosted where the copy sits, clearing to let the photo read on the right */
+    .bt-hero-glass-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(100deg,
+        rgba(255,255,255,0.94) 0%,
+        rgba(255,255,255,0.88) 16%,
+        rgba(255,255,255,0.66) 34%,
+        rgba(255,255,255,0.32) 52%,
+        rgba(255,255,255,0.1) 68%,
+        rgba(255,255,255,0) 82%);
+      pointer-events: none;
+    }
+
+    /* Icon glass chips — background brightens on hover; the interactive glow lives on the card border (see .bt-card:hover) */
+    .bt-icon-box {
+      background: rgba(0,132,255,0.08);
+      border: 1px solid rgba(0,132,255,0.16);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      transition: background-color 0.2s ease;
+    }
+    .bt-card:hover .bt-icon-box {
+      background: rgba(0,132,255,0.14);
+    }
+    .bt-icon-box-res {
+      background: rgba(0,132,255,0.10);
+      border: 1px solid rgba(0,132,255,0.18);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+      transition: background-color 0.2s ease;
+    }
+    .bt-res-card:hover .bt-icon-box-res {
+      background: rgba(0,132,255,0.16);
+    }
+
+    /* Urgency accent — reserved for the limited-supply swag callout only */
+    .bt-eyebrow--urgent { color: #ED1C24; text-shadow: 0 0 14px rgba(237,28,36,0.35); }
+
     /* Scroll progress bar */
     #scroll-progress {
       position: fixed; top: 0; left: 0; height: 3px; width: 0%;
       background: linear-gradient(90deg, #39B54A 0%, #0084FF 50%, #ED1C24 100%);
       z-index: 200; transition: width 0.08s linear;
       pointer-events: none;
+    }
+    #scroll-progress::after {
+      content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 12px;
+      background: radial-gradient(circle, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 75%);
     }
 
     /* Sticky header elevation on scroll — subtle glass */
@@ -74,7 +114,7 @@ label: Biotium – SfN 2026 Landing Page
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
       transition: box-shadow 0.3s ease, background-color 0.3s ease;
     }
-    #site-header.is-scrolled { background: rgba(255,255,255,0.95); box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 6px 24px rgba(20,20,20,0.08); }
+    #site-header.is-scrolled { background: rgba(255,255,255,0.95); box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 6px 24px rgba(20,20,20,0.08), 0 1px 0 rgba(0,132,255,0.18); }
     html.reduced-motion #site-header,
     html.reduced-motion #site-header.is-scrolled { background: #ffffff; backdrop-filter: none; -webkit-backdrop-filter: none; }
     #header-logo { transform: scale(0.88); transform-origin: left center; }
@@ -101,19 +141,6 @@ label: Biotium – SfN 2026 Landing Page
     /* Hero parallax layer */
     #hero-parallax { position: absolute; inset: -60px 0; will-change: transform; }
     #hero-parallax img { position: absolute; left: 0; right: 0; top: 60px; bottom: 60px; width: 100%; height: calc(100% - 120px); object-fit: cover; object-position: 80% center; display: block; }
-
-    /* Fades the hero photo into the copy on the left, clearing to let it read on the right */
-    .bt-hero-glass-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(100deg,
-        rgba(255,255,255,0.94) 0%,
-        rgba(255,255,255,0.88) 16%,
-        rgba(255,255,255,0.66) 34%,
-        rgba(255,255,255,0.32) 52%,
-        rgba(255,255,255,0.1) 68%,
-        rgba(255,255,255,0) 82%);
-      pointer-events: none;
-    }
 
     /* Hero entrance (staggered on load, not scroll-gated) */
     .hero-in { opacity: 0; transform: translateY(18px); transition: opacity 0.7s cubic-bezier(.16,.8,.24,1), transform 0.7s cubic-bezier(.16,.8,.24,1); }
@@ -170,8 +197,8 @@ label: Biotium – SfN 2026 Landing Page
       .bt-header-pill-text { max-width: 180px; font-size: 10.5px; }
       /* Portfolio cards: free up width for the title and sharpen title/body contrast */
       .bt-cat-grid .bt-card { gap: 14px !important; }
-      .bt-cat-icon { width: 64px !important; height: 64px !important; }
-      .bt-cat-icon svg { width: 26px !important; height: 26px !important; }
+      .bt-cat-grid .bt-icon-box { width: 64px !important; height: 64px !important; }
+      .bt-cat-grid .bt-icon-box svg { width: 26px !important; height: 26px !important; }
       .bt-cat-title { font-size: 17px !important; }
       .bt-cat-desc { font-size: 13px !important; color: #6b6b6b !important; }
     }
@@ -230,7 +257,7 @@ label: Biotium – SfN 2026 Landing Page
   </div>
   <div class="bt-hero-glass-overlay"></div>
   <div class="bt-wrap" style="padding-top:104px; padding-bottom:96px; position:relative; z-index:1;">
-    <div class="bt-hero-copy" style="max-width:620px;">
+    <div class="bt-hero-copy" style="max-width:620px; position:relative;">
       <div class="hero-in bt-hero-badge" style="transition-delay:0ms; display:inline-flex; align-items:center; gap:8px; background:#ffffff; border:1px solid #E3E3E3; border-radius:999px; padding:7px 14px; margin-bottom:22px;">
         <span class="bt-hero-pin">
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -308,7 +335,7 @@ label: Biotium – SfN 2026 Landing Page
     <div class="bt-cat-grid" style="padding-bottom:40px;">
 
       <a href="https://biotium.com/technology/primary-secondary-antibody-conjugates/" target="_blank" rel="noopener" class="reveal bt-card" style="transition-delay:0ms; display:flex; align-items:center; gap:18px; border:1px solid #EEEEEE; border-radius:16px; background:#ffffff; padding:20px; text-decoration:none;">
-        <div class="bt-cat-icon" style="width:96px; height:96px; border-radius:12px; background:#EEEEEE; display:flex; align-items:center; justify-content:center; flex:none;">
+        <div class="bt-icon-box" style="width:96px; height:96px; border-radius:12px; display:flex; align-items:center; justify-content:center; flex:none;">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
         </div>
         <div style="flex:1 1 auto; min-width:0;">
@@ -322,7 +349,7 @@ label: Biotium – SfN 2026 Landing Page
       </a>
 
       <a href="https://biotium.com/technology/primary-secondary-antibody-conjugates/" target="_blank" rel="noopener" class="reveal bt-card" style="transition-delay:60ms; display:flex; align-items:center; gap:18px; border:1px solid #EEEEEE; border-radius:16px; background:#ffffff; padding:20px; text-decoration:none;">
-        <div class="bt-cat-icon" style="width:96px; height:96px; border-radius:12px; background:#EEEEEE; display:flex; align-items:center; justify-content:center; flex:none;">
+        <div class="bt-icon-box" style="width:96px; height:96px; border-radius:12px; display:flex; align-items:center; justify-content:center; flex:none;">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
         </div>
         <div style="flex:1 1 auto; min-width:0;">
@@ -336,7 +363,7 @@ label: Biotium – SfN 2026 Landing Page
       </a>
 
       <a href="https://biotium.com/technology/cellular-stains/neuronal-probes/" target="_blank" rel="noopener" class="reveal bt-card" style="transition-delay:120ms; display:flex; align-items:center; gap:18px; border:1px solid #EEEEEE; border-radius:16px; background:#ffffff; padding:20px; text-decoration:none;">
-        <div class="bt-cat-icon" style="width:96px; height:96px; border-radius:12px; background:#EEEEEE; display:flex; align-items:center; justify-content:center; flex:none;">
+        <div class="bt-icon-box" style="width:96px; height:96px; border-radius:12px; display:flex; align-items:center; justify-content:center; flex:none;">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
         </div>
         <div style="flex:1 1 auto; min-width:0;">
@@ -347,7 +374,7 @@ label: Biotium – SfN 2026 Landing Page
       </a>
 
       <a href="https://biotium.com/technology/minimab-single-domain-antibodies/" target="_blank" rel="noopener" class="reveal bt-card" style="transition-delay:180ms; display:flex; align-items:center; gap:18px; border:1px solid #EEEEEE; border-radius:16px; background:#ffffff; padding:20px; text-decoration:none;">
-        <div class="bt-cat-icon" style="width:96px; height:96px; border-radius:12px; background:#EEEEEE; display:flex; align-items:center; justify-content:center; flex:none;">
+        <div class="bt-icon-box" style="width:96px; height:96px; border-radius:12px; display:flex; align-items:center; justify-content:center; flex:none;">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
         </div>
         <div style="flex:1 1 auto; min-width:0;">
@@ -358,7 +385,7 @@ label: Biotium – SfN 2026 Landing Page
       </a>
 
       <a href="https://biotium.com/technology/cellular-stains/neuronal-probes/" target="_blank" rel="noopener" class="reveal bt-card" style="transition-delay:240ms; display:flex; align-items:center; gap:18px; border:1px solid #EEEEEE; border-radius:16px; background:#ffffff; padding:20px; text-decoration:none;">
-        <div class="bt-cat-icon" style="width:96px; height:96px; border-radius:12px; background:#EEEEEE; display:flex; align-items:center; justify-content:center; flex:none;">
+        <div class="bt-icon-box" style="width:96px; height:96px; border-radius:12px; display:flex; align-items:center; justify-content:center; flex:none;">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
         </div>
         <div style="flex:1 1 auto; min-width:0;">
@@ -369,7 +396,7 @@ label: Biotium – SfN 2026 Landing Page
       </a>
 
       <a href="https://biotium.com/technology/cellular-stains/neuronal-probes/" target="_blank" rel="noopener" class="reveal bt-card" style="transition-delay:300ms; display:flex; align-items:center; gap:18px; border:1px solid #EEEEEE; border-radius:16px; background:#ffffff; padding:20px; text-decoration:none;">
-        <div class="bt-cat-icon" style="width:96px; height:96px; border-radius:12px; background:#EEEEEE; display:flex; align-items:center; justify-content:center; flex:none;">
+        <div class="bt-icon-box" style="width:96px; height:96px; border-radius:12px; display:flex; align-items:center; justify-content:center; flex:none;">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
         </div>
         <div style="flex:1 1 auto; min-width:0;">
@@ -380,7 +407,7 @@ label: Biotium – SfN 2026 Landing Page
       </a>
 
       <a href="https://biotium.com/technology/primary-secondary-antibody-conjugates/tyramide-signal-amplification/" target="_blank" rel="noopener" class="reveal bt-card" style="transition-delay:360ms; display:flex; align-items:center; gap:18px; border:1px solid #EEEEEE; border-radius:16px; background:#ffffff; padding:20px; text-decoration:none;">
-        <div class="bt-cat-icon" style="width:96px; height:96px; border-radius:12px; background:#EEEEEE; display:flex; align-items:center; justify-content:center; flex:none;">
+        <div class="bt-icon-box" style="width:96px; height:96px; border-radius:12px; display:flex; align-items:center; justify-content:center; flex:none;">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A0A0A0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5-9 9"/></svg>
         </div>
         <div style="flex:1 1 auto; min-width:0;">
@@ -404,7 +431,7 @@ label: Biotium – SfN 2026 Landing Page
     <div class="bt-res-row">
 
       <div class="reveal bt-card bt-res-card" style="transition-delay:0ms; background:#ffffff; border:1px solid #EEEEEE; border-radius:14px; padding:28px;">
-        <div style="width:44px; height:44px; border-radius:10px; background:#e5f2ff; display:flex; align-items:center; justify-content:center; margin-bottom:18px;">
+        <div class="bt-icon-box-res" style="width:44px; height:44px; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:18px;">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#087eec" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><path d="M14 2v6h6"></path><path d="M9 13h6"></path><path d="M9 17h6"></path></svg>
         </div>
         <div style="font-size:17px; font-weight:800; color:#2d2d2d; margin-bottom:8px;">Neuronal Probes Flyer</div>
@@ -416,7 +443,7 @@ label: Biotium – SfN 2026 Landing Page
       </div>
 
       <div class="reveal bt-card bt-res-card" style="transition-delay:80ms; background:#ffffff; border:1px solid #EEEEEE; border-radius:14px; padding:28px;">
-        <div style="width:44px; height:44px; border-radius:10px; background:#e5f2ff; display:flex; align-items:center; justify-content:center; margin-bottom:18px;">
+        <div class="bt-icon-box-res" style="width:44px; height:44px; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:18px;">
           <svg width="32" height="32" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M91.9043 19.5195H28.0957V100.48H91.9043V19.5195Z" stroke="black" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M81.8262 29.5977H38.1738V90.4023H81.8262V29.5977Z" stroke="black" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -435,7 +462,7 @@ label: Biotium – SfN 2026 Landing Page
       </div>
 
       <div class="reveal bt-card bt-res-card" style="transition-delay:160ms; background:#ffffff; border:1px solid #EEEEEE; border-radius:14px; padding:28px;">
-        <div style="width:44px; height:44px; border-radius:10px; background:#e5f2ff; display:flex; align-items:center; justify-content:center; margin-bottom:18px;">
+        <div class="bt-icon-box-res" style="width:44px; height:44px; border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:18px;">
           <svg width="32" height="32" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M91.9043 19.5195H28.0957V100.48H91.9043V19.5195Z" stroke="black" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M81.8262 29.5977H38.1738V90.4023H81.8262V29.5977Z" stroke="black" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
