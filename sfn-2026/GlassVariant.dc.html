@@ -24,11 +24,11 @@
     .bt-eyebrow { font-size: 13px; font-weight: 800; letter-spacing: 0.06em; color: #087eec; margin-bottom: 14px; }
     .bt-eyebrow--onDark { color: #66b5ff; }
     .bt-card { transition: box-shadow 0.15s ease, transform 0.15s ease; text-decoration: none; display: block; }
-    .bt-card:hover { box-shadow: 0 12px 28px rgba(17,17,17,0.08); transform: translateY(-2px); }
+    .bt-card:hover { box-shadow: 0 12px 28px rgba(17,17,17,0.08), 0 0 0 1px rgba(0,132,255,0.16), 0 0 12px rgba(0,132,255,0.18); transform: translateY(-2px); }
     .bt-cat-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; }
     .bt-res-row { display: flex; gap: 24px; align-items: stretch; flex-wrap: wrap; }
     .bt-res-card { flex: 1 1 260px; }
-    .bt-choice-badge { position: relative; display: inline-flex; vertical-align: middle; cursor: pointer; filter: drop-shadow(0 0 5px rgba(57,181,74,0.65)); }
+    .bt-choice-badge { position: relative; display: inline-flex; vertical-align: middle; cursor: pointer; filter: drop-shadow(0 0 5px rgba(0,132,255,0.65)); }
     .bt-choice-tip {
       position: absolute; bottom: calc(100% + 9px); left: 50%; transform: translateX(-50%);
       background: #232323; color: #ffffff; font-size: 11.5px; font-weight: 700; letter-spacing: 0.01em;
@@ -64,25 +64,24 @@
       pointer-events: none;
     }
 
-    /* Icon glass chips — glow appears only on hover/focus, signalling the card is interactive */
+    /* Icon glass chips — background brightens on hover; the interactive glow lives on the card border (see .bt-card:hover) */
     .bt-icon-box {
       background: rgba(0,132,255,0.08);
       border: 1px solid rgba(0,132,255,0.16);
       backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-      transition: box-shadow 0.2s ease, background-color 0.2s ease;
+      transition: background-color 0.2s ease;
     }
     .bt-card:hover .bt-icon-box {
       background: rgba(0,132,255,0.14);
-      box-shadow: 0 0 0 4px rgba(0,132,255,0.12), 0 0 24px rgba(0,132,255,0.35);
     }
     .bt-icon-box-res {
       background: rgba(0,132,255,0.10);
       border: 1px solid rgba(0,132,255,0.18);
       backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-      transition: box-shadow 0.2s ease;
+      transition: background-color 0.2s ease;
     }
     .bt-res-card:hover .bt-icon-box-res {
-      box-shadow: 0 0 0 4px rgba(0,132,255,0.12), 0 0 22px rgba(0,132,255,0.3);
+      background: rgba(0,132,255,0.16);
     }
 
     /* Play button glow — signals the thumbnail is playable media */
