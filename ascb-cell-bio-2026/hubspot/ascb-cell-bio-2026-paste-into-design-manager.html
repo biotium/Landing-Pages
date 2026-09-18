@@ -547,8 +547,8 @@ label: Biotium – ASCB Cell Bio 2026 Landing Page
     var pct = Math.max(0, Math.min(1, scrollTop / max));
     if (progress) progress.style.width = (pct * 100) + '%';
     if (header) {
-      if (scrollTop > 8) header.classList.add('is-scrolled');
-      else header.classList.remove('is-scrolled');
+      if (scrollTop > 24) header.classList.add('is-scrolled');
+      else if (scrollTop < 8) header.classList.remove('is-scrolled');
     }
     if (parallax && !reduced) {
       var offset = Math.max(-60, Math.min(60, scrollTop * 0.18));
