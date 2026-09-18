@@ -96,6 +96,19 @@
     #hero-parallax { position: absolute; inset: -60px 0; will-change: transform; }
     #hero-parallax img { position: absolute; left: 0; right: 0; top: 60px; bottom: 60px; width: 100%; height: calc(100% - 120px); object-fit: cover; object-position: 80% center; display: block; }
 
+    /* Fades the hero photo into the copy on the left, clearing to let it read on the right */
+    .bt-hero-glass-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(100deg,
+        rgba(255,255,255,0.94) 0%,
+        rgba(255,255,255,0.88) 16%,
+        rgba(255,255,255,0.66) 34%,
+        rgba(255,255,255,0.32) 52%,
+        rgba(255,255,255,0.1) 68%,
+        rgba(255,255,255,0) 82%);
+      pointer-events: none;
+    }
+
     /* Hero entrance (staggered on load, not scroll-gated) */
     .hero-in { opacity: 0; transform: translateY(18px); transition: opacity 0.7s cubic-bezier(.16,.8,.24,1), transform 0.7s cubic-bezier(.16,.8,.24,1); }
     .hero-in.is-visible { opacity: 1; transform: none; }
@@ -127,6 +140,14 @@
       .bt-flagship-img-col { max-width: 100% !important; }
       .bt-hero-badge { padding: 8px 14px !important; gap: 7px !important; }
       .bt-hero-badge-text { font-size: 11.5px !important; line-height: 1.45 !important; letter-spacing: 0.02em !important; }
+      .bt-hero-glass-overlay {
+        background: linear-gradient(180deg,
+          rgba(255,255,255,0.92) 0%,
+          rgba(255,255,255,0.86) 30%,
+          rgba(255,255,255,0.55) 55%,
+          rgba(255,255,255,0.18) 75%,
+          rgba(255,255,255,0) 92%) !important;
+      }
     }
     @media (max-width: 600px) {
       .bt-header-tagline { display: none !important; }
@@ -191,10 +212,10 @@
 <!-- Hero -->
 <div style="position:relative; overflow:hidden; background-color:#F7F7F7;">
   <div id="hero-parallax">
-    <img src="neuron-antibody-hero.webp" alt="">
-    <img src="neuron-antibody-hero.webp" alt="" style="filter:blur(18px); transform:scale(1.06); -webkit-mask-image:linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 78%); mask-image:linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 78%);">
+    <img src="neuron-antibody-hero-dark.webp" alt="">
+    <img src="neuron-antibody-hero-dark.webp" alt="" style="filter:blur(18px); transform:scale(1.06); -webkit-mask-image:linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 78%); mask-image:linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 78%);">
   </div>
-  <div style="position:absolute; inset:0; background:linear-gradient(100deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.82) 22%, rgba(255,255,255,0.4) 45%, rgba(255,255,255,0.08) 65%, rgba(255,255,255,0) 85%);"></div>
+  <div class="bt-hero-glass-overlay"></div>
   <div class="bt-wrap" style="padding-top:104px; padding-bottom:96px; position:relative; z-index:1;">
     <div class="bt-hero-copy" style="max-width:620px;">
       <div class="hero-in bt-hero-badge" style="transition-delay:0ms; display:inline-flex; align-items:center; gap:8px; background:#ffffff; border:1px solid #E3E3E3; border-radius:999px; padding:7px 14px; margin-bottom:22px;">
