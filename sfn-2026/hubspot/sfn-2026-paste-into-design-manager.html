@@ -132,7 +132,7 @@ label: Biotium – SfN 2026 Landing Page
     }
     .bt-header-pill-icon { position: relative; display: inline-flex; width: 11px; height: 11px; flex: none; }
     .bt-header-pill-icon svg { display: block; width: 100%; height: 100%; }
-    .bt-header-pill-text { font-size: 11px; font-weight: 800; letter-spacing: 0.03em; color: #555555; white-space: normal; line-height: 1.3; width: max-content; max-width: 200px; }
+    .bt-header-pill-text { font-size: 11px; font-weight: 800; letter-spacing: 0.03em; color: #555555; white-space: nowrap; line-height: 1.3; }
     #site-header.is-scrolled .bt-header-tagline { opacity: 0; pointer-events: none; }
     #site-header.is-scrolled .bt-header-pill { opacity: 1; pointer-events: auto; }
     html.reduced-motion .bt-header-tagline,
@@ -194,7 +194,7 @@ label: Biotium – SfN 2026 Landing Page
       .bt-img-pill--center { font-size: 10px !important; padding: 6px 10px !important; letter-spacing: 0.01em !important; }
       .bt-cat-grid { grid-template-columns: minmax(0,1fr) !important; }
       .bt-header-pill { padding: 4px 10px; gap: 5px; }
-      .bt-header-pill-text { max-width: 180px; font-size: 10.5px; }
+      .bt-header-pill-text { white-space: normal; width: max-content; max-width: 170px; font-size: 9.5px; }
       /* Portfolio cards: free up width for the title and sharpen title/body contrast */
       .bt-cat-grid .bt-card { gap: 14px !important; }
       .bt-cat-grid .bt-icon-box { width: 64px !important; height: 64px !important; }
@@ -203,8 +203,7 @@ label: Biotium – SfN 2026 Landing Page
       .bt-cat-desc { font-size: 13px !important; color: #6b6b6b !important; }
     }
     @media (max-width: 340px) {
-      /* Too narrow for one line without crowding the logo — wrap instead of overflowing */
-      .bt-header-pill-text { width: auto; max-width: 128px; }
+      .bt-header-pill-text { width: auto; max-width: 118px; font-size: 9px; }
     }
     </style>
 </head>
