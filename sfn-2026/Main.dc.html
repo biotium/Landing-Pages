@@ -84,7 +84,7 @@
     }
     .bt-header-pill-icon { position: relative; display: inline-flex; width: 11px; height: 11px; flex: none; }
     .bt-header-pill-icon svg { display: block; width: 100%; height: 100%; }
-    .bt-header-pill-text { font-size: 11px; font-weight: 800; letter-spacing: 0.03em; color: #555555; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
+    .bt-header-pill-text { font-size: 11px; font-weight: 800; letter-spacing: 0.03em; color: #555555; white-space: normal; line-height: 1.3; width: max-content; max-width: 200px; }
     #site-header.is-scrolled .bt-header-tagline { display: none !important; }
     #site-header.is-scrolled .bt-header-pill { display: inline-flex; }
 
@@ -123,8 +123,7 @@
       .bt-hero-copy { max-width: 100% !important; }
       .bt-h1 { font-size: 40px !important; }
       .bt-flagship-img-col { max-width: 100% !important; }
-      .bt-hero-badge { padding: 8px 14px !important; gap: 7px !important; align-items: flex-start !important; }
-      .bt-hero-pin { margin-top: 4px !important; }
+      .bt-hero-badge { padding: 8px 14px !important; gap: 7px !important; }
       .bt-hero-badge-text { font-size: 11.5px !important; line-height: 1.45 !important; letter-spacing: 0.02em !important; }
     }
     @media (max-width: 600px) {
@@ -133,7 +132,11 @@
     @media (max-width: 560px) {
       .bt-cat-grid { grid-template-columns: minmax(0,1fr) !important; }
       .bt-header-pill { padding: 4px 10px; gap: 5px; }
-      .bt-header-pill-text { max-width: 120px; font-size: 10.5px; }
+      .bt-header-pill-text { max-width: 180px; font-size: 10.5px; }
+    }
+    @media (max-width: 340px) {
+      /* Too narrow for one line without crowding the logo — wrap instead of overflowing */
+      .bt-header-pill-text { width: auto; max-width: 128px; }
     }
   </style>
 </helmet>
