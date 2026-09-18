@@ -43,10 +43,12 @@
     .bt-choice-badge:hover .bt-choice-tip,
     .bt-choice-badge:focus .bt-choice-tip,
     .bt-choice-badge:focus-visible .bt-choice-tip { opacity: 1; visibility: visible; }
-    .bt-hero-dot { animation: btHeroDotPulse 1.8s ease-in-out infinite; }
+    .bt-hero-pin { position: relative; display: inline-flex; width: 13px; height: 13px; flex: none; }
+    .bt-hero-pin svg { display: block; width: 100%; height: 100%; }
+    .bt-hero-pin-tip { animation: btHeroDotPulse 1.8s ease-in-out infinite; }
     @keyframes btHeroDotPulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(8,126,236,0.65); }
-      50% { box-shadow: 0 0 0 5px rgba(8,126,236,0), 0 0 10px 3px rgba(8,126,236,0.85); }
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0,132,255,0.65); }
+      50% { box-shadow: 0 0 0 4px rgba(0,132,255,0), 0 0 8px 2px rgba(0,132,255,0.85); }
     }
 
     /* Scroll progress bar */
@@ -110,7 +112,7 @@
       .bt-h1 { font-size: 40px !important; }
       .bt-flagship-img-col { max-width: 100% !important; }
       .bt-hero-badge { padding: 8px 14px !important; gap: 7px !important; align-items: flex-start !important; }
-      .bt-hero-badge-dot { margin-top: 4px !important; }
+      .bt-hero-pin { margin-top: 4px !important; }
       .bt-hero-badge-text { font-size: 11.5px !important; line-height: 1.45 !important; letter-spacing: 0.02em !important; }
     }
     @media (max-width: 560px) {
@@ -157,7 +159,13 @@
   <div class="bt-wrap" style="padding-top:104px; padding-bottom:96px; position:relative; z-index:1;">
     <div class="bt-hero-copy" style="max-width:620px;">
       <div class="hero-in bt-hero-badge" style="transition-delay:0ms; display:inline-flex; align-items:center; gap:8px; background:#ffffff; border:1px solid #E3E3E3; border-radius:999px; padding:7px 14px; margin-bottom:22px;">
-        <div class="bt-hero-dot bt-hero-badge-dot" style="width:7px; height:7px; aspect-ratio:1/1; border-radius:999px; background:#087eec; flex:none; flex-shrink:0;"></div>
+        <span class="bt-hero-pin">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 5.53 10.19 6.39 10.93a.94.94 0 0 0 1.22 0C13.47 19.19 19 14.25 19 9c0-3.87-3.13-7-7-7Z" fill="#454545"/>
+            <circle cx="12" cy="9" r="2.7" fill="#ffffff"/>
+          </svg>
+          <span class="bt-hero-pin-tip" style="position:absolute; left:50%; bottom:-1px; width:3px; height:3px; border-radius:999px; background:#0084FF; transform:translateX(-50%);"></span>
+        </span>
         <span class="bt-hero-badge-text" style="font-size:12.5px; font-weight:800; letter-spacing:0.04em; color:#555555;">WASHINGTON, DC &middot; NOV 14&ndash;18</span>
       </div>
       <h1 class="hero-in bt-h1" style="transition-delay:80ms; margin:0 0 22px 0; font-size:56px; line-height:1.06; font-weight:800; letter-spacing:-0.01em; color:#2d2d2d;">Biotium at SfN 2026.</h1>
