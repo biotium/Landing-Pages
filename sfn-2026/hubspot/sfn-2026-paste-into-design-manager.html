@@ -472,6 +472,26 @@ label: Biotium – SfN 2026 Landing Page
   try { reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
   if (reduced) root.classList.add('reduced-motion');
 
+  // Subtle wheel-scroll easing: softens large wheel/trackpad jumps into smaller steps
+  if (!reduced) {
+    var wheelPending = 0;
+    var wheelRunning = false;
+    var wheelDamp = 0.2;
+    function wheelStep() {
+      if (Math.abs(wheelPending) < 0.5) { wheelPending = 0; wheelRunning = false; return; }
+      var move = wheelPending * wheelDamp;
+      wheelPending -= move;
+      window.scrollBy(0, move);
+      window.requestAnimationFrame(wheelStep);
+    }
+    window.addEventListener('wheel', function (e) {
+      if (e.ctrlKey) return; // let pinch-zoom through untouched
+      e.preventDefault();
+      wheelPending += e.deltaY;
+      if (!wheelRunning) { wheelRunning = true; window.requestAnimationFrame(wheelStep); }
+    }, { passive: false });
+  }
+
   var progress = document.getElementById('scroll-progress');
   var header = document.getElementById('site-header');
   var parallax = document.getElementById('hero-parallax');
