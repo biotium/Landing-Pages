@@ -133,7 +133,7 @@
     html.reduced-motion .bt-header-pill { transition: none !important; }
 
     /* Hero network canvas — interactive neuron field, quiet on the left, dense on the right */
-    #hero-network { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    #hero-network { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
 
     /* Ascii molecule-mark layer — flush with the hero's top/bottom edges, hanging past the hero's right edge (clipped by the hero's own overflow:hidden) for visual balance, on top of the network; pointer events forwarded to #hero-network (see script) */
     .bt-hero-ascii-layer {
@@ -142,6 +142,7 @@
       pointer-events: none; z-index: 2;
     }
     #hero-ascii { height: 100%; width: 100%; display: block; object-fit: contain; object-position: center; touch-action: none; pointer-events: auto; }
+    #hero-ascii[hidden] { display: none; }
     @media (max-width: 900px) {
       /* Below the copy, in normal flow, still inside the hero's own frame (not hidden, not overlaid) */
       .bt-hero-ascii-layer {
@@ -842,6 +843,7 @@
     });
   } catch (e) {
     canvas.hidden = true;
+    canvas.style.pointerEvents = 'none';
     return;
   }
 
