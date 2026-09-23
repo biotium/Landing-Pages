@@ -141,7 +141,7 @@
       display: flex; align-items: stretch; justify-content: flex-end;
       pointer-events: none; z-index: 2;
     }
-    #hero-ascii { height: 100%; width: 100%; display: block; object-fit: contain; touch-action: none; pointer-events: auto; }
+    #hero-ascii { height: 100%; width: 100%; display: block; object-fit: contain; object-position: center; touch-action: none; pointer-events: auto; }
     @media (max-width: 900px) {
       .bt-hero-ascii-layer { display: none; }
     }
@@ -658,16 +658,16 @@
       nodes = []; edges = [];
       var count = Math.max(24, Math.round((cssW * cssH) / 7500));
       for (var i = 0; i < count; i++) {
-        var xt = 1 - Math.pow(Math.random(), 2.3);
+        var xt = 1 - Math.pow(Math.random(), 1.6);
         nodes.push({
           idx: i,
           x: xt * cssW, y: Math.random() * cssH,
           vx: (Math.random() - 0.5) * 0.06, vy: (Math.random() - 0.5) * 0.06,
-          r: 1.2 + Math.random() * 1.3 + xt * 0.5, glow: 0
+          r: 1.2 + Math.random() * 1.3 + xt * 0.28, glow: 0
         });
       }
       var minDim = Math.min(cssW, cssH);
-      var distLeft = minDim * 0.11, distRight = minDim * 0.19;
+      var distLeft = minDim * 0.13, distRight = minDim * 0.17;
       for (var a = 0; a < nodes.length; a++) {
         for (var b = a + 1; b < nodes.length; b++) {
           var dx = nodes[a].x - nodes[b].x, dy = nodes[a].y - nodes[b].y;
