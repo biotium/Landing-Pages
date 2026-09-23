@@ -659,7 +659,11 @@
           var dx = nodes[a].x - nodes[b].x, dy = nodes[a].y - nodes[b].y;
           var avgXFrac = ((nodes[a].x + nodes[b].x) / 2) / cssW;
           var localMax = distLeft + (distRight - distLeft) * avgXFrac;
-          if (Math.sqrt(dx * dx + dy * dy) < localMax) edges.push({ a: a, b: b });
+          if (Math.sqrt(dx * dx + dy * dy) < localMax) edges.push({
+            a: a, b: b,
+            bow1: (Math.random() - 0.5) * 0.6,
+            bow2: (Math.random() - 0.5) * 0.6
+          });
         }
       }
       var adj = {};
@@ -761,9 +765,16 @@
         ctx.strokeStyle = g > 0.03 ? lerpColor(INK, BLUE, g * 0.8) : 'rgba(45,45,45,0.07)';
         ctx.globalAlpha = g > 0.03 ? (0.12 + g * 0.5) : 1;
         ctx.lineWidth = 1;
+        var ax = nodes[e.a].x, ay = nodes[e.a].y;
+        var bx2 = nodes[e.b].x, by2 = nodes[e.b].y;
+        var edx = bx2 - ax, edy = by2 - ay;
+        var elen = Math.sqrt(edx * edx + edy * edy) || 1;
+        var epx = -edy / elen, epy = edx / elen;
+        var c1x = ax + edx * 0.33 + epx * elen * e.bow1, c1y = ay + edy * 0.33 + epy * elen * e.bow1;
+        var c2x = ax + edx * 0.66 + epx * elen * e.bow2, c2y = ay + edy * 0.66 + epy * elen * e.bow2;
         ctx.beginPath();
-        ctx.moveTo(nodes[e.a].x, nodes[e.a].y);
-        ctx.lineTo(nodes[e.b].x, nodes[e.b].y);
+        ctx.moveTo(ax, ay);
+        ctx.bezierCurveTo(c1x, c1y, c2x, c2y, bx2, by2);
         ctx.stroke();
       });
       ctx.globalAlpha = 1;
