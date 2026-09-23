@@ -22,8 +22,9 @@
     .bt-btn-outline { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.55); color: #087eec; font-weight: 800; font-size: 14px; padding: 11px 20px; border-radius: 999px; border: 1.5px solid rgba(8,126,236,0.55); backdrop-filter: blur(10px) saturate(1.4); -webkit-backdrop-filter: blur(10px) saturate(1.4); text-decoration: none; transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease; }
     .bt-btn-outline:hover { background: rgba(229,242,255,0.78); color: #0062be; box-shadow: 0 6px 18px rgba(8,126,236,0.22); }
     .bt-link-arrow { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; font-size: 14px; text-decoration: none; }
-    .bt-eyebrow { font-size: 13px; font-weight: 800; letter-spacing: 0.06em; color: #087eec; margin-bottom: 14px; }
-    .bt-eyebrow--onDark { color: #66b5ff; }
+    .bt-kicker-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .bt-kicker-row--center { justify-content: center; }
+    .bt-kicker { display: inline-flex; align-items: center; flex: none; background: #E9F3FF; color: #0062be; font-size: 12.5px; font-weight: 800; padding: 6px 14px; border-radius: 999px; }
     .bt-card { position: relative; transition: box-shadow 0.15s ease, transform 0.15s ease; text-decoration: none; display: block; }
     .bt-card:hover { box-shadow: 0 12px 28px rgba(17,17,17,0.08); transform: translateY(-2px); }
     @property --bt-beam-a { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
@@ -82,8 +83,6 @@
       background: rgba(0,132,255,0.16);
     }
 
-    /* Urgency accent — reserved for the limited-supply swag callout only */
-    .bt-eyebrow--urgent { color: #ED1C24; text-shadow: 0 0 14px rgba(237,28,36,0.35); }
 
     /* Scroll progress bar */
     #scroll-progress {
@@ -271,8 +270,10 @@
 <div style="background:#232323; border-top:1px solid #3f3f3f;">
   <div class="bt-wrap bt-featured-row" style="display:flex; align-items:center; gap:64px; padding-top:80px; padding-bottom:80px;">
     <div class="reveal" style="transition-delay:0ms; flex:1 1 0; max-width:560px;">
-      <div class="bt-eyebrow bt-eyebrow--onDark">FEATURED AT NEUROSCIENCE 2026</div>
-      <h2 style="margin:0 0 18px 0; font-size:34px; line-height:1.18; font-weight:800; color:#ffffff;">MiniMab&trade;: Small Format, Big Difference</h2>
+      <div class="bt-kicker-row" style="margin-bottom:18px;">
+        <span class="bt-kicker">Featured at Neuroscience 2026</span>
+        <h2 style="margin:0; flex:0 1 auto; min-width:0; font-size:34px; line-height:1.18; font-weight:800; color:#ffffff;">MiniMab&trade;: Small Format, Big Difference</h2>
+      </div>
       <ul style="margin:0 0 26px 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:12px;">
         <li style="display:flex; align-items:flex-start; gap:10px;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#66b5ff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px;"><path d="M20 6L9 17l-5-5"></path></svg>
@@ -312,8 +313,10 @@
 <div style="background:#ffffff;">
   <div class="bt-wrap" style="padding-top:56px; padding-bottom:32px;">
     <div class="reveal" style="transition-delay:0ms; max-width:680px; margin:0 auto 32px auto; text-align:center;">
-      <div class="bt-eyebrow">OUR PORTFOLIO AT NEUROSCIENCE 2026</div>
-      <h2 style="margin:0; font-size:28px; line-height:1.3; font-weight:800; color:#2d2d2d;">Everything you need for neuroscience research</h2>
+      <div class="bt-kicker-row bt-kicker-row--center">
+        <span class="bt-kicker">Portfolio</span>
+        <h2 style="margin:0; flex:0 1 auto; min-width:0; font-size:28px; line-height:1.3; font-weight:800; color:#2d2d2d;">Everything you need for neuroscience research</h2>
+      </div>
     </div>
     <div class="bt-cat-grid" style="padding-bottom:40px;">
 
@@ -408,8 +411,10 @@
 <div style="background:#F7F7F7;">
   <div class="bt-wrap" style="padding-top:72px; padding-bottom:80px;">
     <div class="reveal" style="transition-delay:0ms; max-width:680px; margin:0 auto 44px auto; text-align:center;">
-      <div class="bt-eyebrow">TAKE IT WITH YOU</div>
-      <h2 style="margin:0; font-size:28px; line-height:1.3; font-weight:800; color:#2d2d2d;">Resources for the show and after</h2>
+      <div class="bt-kicker-row bt-kicker-row--center">
+        <span class="bt-kicker">Take it with you</span>
+        <h2 style="margin:0; flex:0 1 auto; min-width:0; font-size:28px; line-height:1.3; font-weight:800; color:#2d2d2d;">Resources for the show and after</h2>
+      </div>
     </div>
     <div class="bt-res-row">
 
@@ -473,8 +478,10 @@
     <div class="reveal" style="transition-delay:0ms; display:flex; align-items:center; justify-content:center; gap:32px; flex-wrap:wrap;">
       <img src="tshirts.webp" alt="Biotium spectra and TrueBlack conference t-shirts" style="width:320px; max-width:100%; height:auto; flex:none; display:block;">
       <div style="flex:1 1 260px; min-width:220px;">
-        <div class="bt-eyebrow">WIN SWAG</div>
-        <h2 style="margin:0 0 8px 0; font-size:28px; line-height:1.3; font-weight:800; color:#2d2d2d;">Come play Lab DnD for a chance to win a limited release tee and other prizes</h2>
+        <div class="bt-kicker-row" style="margin-bottom:8px;">
+          <span class="bt-kicker">Win swag</span>
+          <h2 style="margin:0; flex:0 1 auto; min-width:0; font-size:28px; line-height:1.3; font-weight:800; color:#2d2d2d;">Come play Lab DnD for a chance to win a limited release tee and other prizes</h2>
+        </div>
         <p style="margin:0; font-size:14px; line-height:1.55; color:#555555;">Stop by our booth to play for a chance to win various prizes, including our limited release t-shirts, while supplies last.</p>
       </div>
     </div>
