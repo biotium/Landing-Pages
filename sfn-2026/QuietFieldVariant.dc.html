@@ -135,6 +135,17 @@
     /* Hero network canvas — interactive neuron field, quiet on the left, dense on the right */
     #hero-network { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 
+    /* Ascii molecule-mark layer — overlaid on the hero's right edge, flush with the hero's top/bottom edges, on top of the network; pointer events forwarded to #hero-network (see script) */
+    .bt-hero-ascii-layer {
+      position: absolute; top: 0; right: 0; bottom: 0; width: 46%; max-width: 620px;
+      display: flex; align-items: stretch; justify-content: flex-end;
+      pointer-events: none; z-index: 2;
+    }
+    #hero-ascii { height: 100%; width: auto; max-width: 100%; aspect-ratio: 1000 / 430; display: block; touch-action: none; pointer-events: auto; }
+    @media (max-width: 900px) {
+      .bt-hero-ascii-layer { display: none; }
+    }
+
     /* Hero entrance (staggered on load, not scroll-gated) */
     .hero-in { opacity: 0; transform: translateY(18px); transition: opacity 0.7s cubic-bezier(.16,.8,.24,1), transform 0.7s cubic-bezier(.16,.8,.24,1); }
     .hero-in.is-visible { opacity: 1; transform: none; }
@@ -268,6 +279,9 @@
         </a>
       </div>
     </div>
+  </div>
+  <div class="hero-in bt-hero-ascii-layer" style="transition-delay:180ms;">
+    <canvas id="hero-ascii"></canvas>
   </div>
 </div>
 
@@ -798,6 +812,61 @@
     }
     requestAnimationFrame(frame);
   })();
+})();
+</script>
+
+<!-- Ascii molecule-mark overlay — separate module script since it uses a static import;
+     forwards pointer events onto #hero-network so both layered visuals stay interactive
+     where they overlap. -->
+<script type="module">
+(async function () {
+  var canvas = document.getElementById('hero-ascii');
+  var networkCanvas = document.getElementById('hero-network');
+  if (!canvas) return;
+
+  try {
+    var mod = await import('https://cdn.jsdelivr.net/npm/asciify-engine/studio/+esm');
+    await mod.mountStudio(canvas, 'biotium_molecule_mark.svg', {
+      settings: {
+        version: 1,
+        aspectRatio: 'original',
+        style: 'mixed',
+        cellSize: 5,
+        charset: '-°•',
+        colorMode: 'source',
+        ink: '#0084ff',
+        crop: { x: 0.5, y: 0.5, zoom: 1, rotation: 0 },
+        backdrop: { mode: 'solid', color: '#080808', color2: '#393323', blur: 12, opacity: 1 },
+        color: { brightness: 0.2, contrast: 1, saturation: 1.15, grayscale: 1, tint: '#0084ff', amount: 1, blend: 'source-over' },
+        dither: { algorithm: 'bayer4', palette: 'mono', colors: ['#080808', '#e8b900'], amount: 1, scale: 2, threshold: 0.5, motion: 'none', speed: 1 },
+        mask: { enabled: false, invert: false, shapes: [] },
+        lights: [],
+        effects: { bloom: 0, characterBloom: 0, grain: 0, dust: 0, scanlines: 0, crt: 0, prism: 0, vignette: 0, glitch: 0, pixelate: 0, blur: 0, blurType: 'gaussian', angle: 0, focus: 0.5, halftone: 0 },
+        motion: { type: 'none', speed: 1 },
+        hover: { effect: 'trail', strength: 0.55, radius: 0.2, edgeSafe: false }
+      }
+    });
+  } catch (e) {
+    canvas.hidden = true;
+    return;
+  }
+
+  // The ascii canvas sits on top of the network canvas where they overlap; forward
+  // pointer events onto the network canvas so its own listeners still fire, since
+  // the browser only dispatches the native event to the top-most element.
+  if (networkCanvas) {
+    function forward(type, e) {
+      var evt = new PointerEvent(type, {
+        clientX: e.clientX, clientY: e.clientY,
+        pointerId: e.pointerId, pointerType: e.pointerType || 'mouse',
+        bubbles: true, cancelable: true, isPrimary: true
+      });
+      networkCanvas.dispatchEvent(evt);
+    }
+    canvas.addEventListener('pointermove', function (e) { forward('pointermove', e); });
+    canvas.addEventListener('pointerdown', function (e) { forward('pointerdown', e); });
+    canvas.addEventListener('pointerleave', function (e) { forward('pointerleave', e); });
+  }
 })();
 </script>
 
