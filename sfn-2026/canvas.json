@@ -17,6 +17,15 @@
       "h": 2750,
       "expand": "fill",
       "is_interactive": true
+    },
+    {
+      "file": "QuietFieldVariant.dc.html",
+      "x": 3120,
+      "y": 0,
+      "w": 1440,
+      "h": 2750,
+      "expand": "fill",
+      "is_interactive": true
     }
   ],
   "annotations": [
@@ -25,18 +34,25 @@
       "x": 0,
       "y": -90,
       "w": 420,
-      "text": "Main: the live SfN 2026 page — flat buttons, solid cards, no glass/glow treatment."
+      "text": "Main: the live SfN 2026 page. Frosted glass buttons, glass icon chips, card hover glow, and a Biotium Choice badge glow (blue) throughout — the committed glass direction, same as GlassVariant."
     },
     {
       "id": "glassvariant-note",
       "x": 1560,
       "y": -90,
       "w": 420,
-      "text": "GlassVariant: same content, copy and bt- design system as Main, exploring a glassmorphism direction. Glass (frosted, translucent) buttons throughout; a full-bleed glass overlay across the hero, frosted on the left behind the copy and clearing to the right so the (now black-faded, not white-faded) photo reads on its own; and purposeful glows only — a green glow on the Biotium Choice badge (validated/optimized), a blue hover-glow on card icons (signals interactivity), a pulsing glow on the video play button (signals playable media), a glow at the scroll-progress bar's leading edge (current position), and a small red text-glow on “WIN SWAG” (urgency). No purely decorative glow was added."
+      "text": "GlassVariant: kept as a reference copy alongside Main now that its glass treatment has been committed to the live page. Content and behavior are otherwise identical to Main."
+    },
+    {
+      "id": "quietfieldvariant-note",
+      "x": 3120,
+      "y": -90,
+      "w": 420,
+      "text": "QuietFieldVariant: same as Main, but the hero's static neuron photo is replaced with a live interactive canvas — a dot-and-line neuron network, off-white background, quiet/sparse on the left behind the copy and thickening into a dense synapse-like tangle on the right. Hover or click lights nodes up in biotium blue and hands a pulse along their connections to neighbors."
     }
   ],
   "launch": {
     "view": "focused",
-    "file": "GlassVariant.dc.html"
+    "file": "QuietFieldVariant.dc.html"
   }
 }
