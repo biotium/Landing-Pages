@@ -26,6 +26,15 @@
       "h": 2750,
       "expand": "fill",
       "is_interactive": true
+    },
+    {
+      "file": "SynapticMeshVariant.dc.html",
+      "x": 4680,
+      "y": 0,
+      "w": 1440,
+      "h": 2750,
+      "expand": "fill",
+      "is_interactive": true
     }
   ],
   "annotations": [
@@ -49,10 +58,17 @@
       "y": -90,
       "w": 420,
       "text": "QuietFieldVariant: same as Main, but the hero's static neuron photo is replaced with a live interactive canvas — a dot-and-line neuron network, off-white background, quiet/sparse on the left behind the copy and thickening into a dense synapse-like tangle on the right. Hover or click lights nodes up in biotium blue and hands a pulse along their connections to neighbors."
+    },
+    {
+      "id": "synapticmeshvariant-note",
+      "x": 4680,
+      "y": -90,
+      "w": 420,
+      "text": "SynapticMeshVariant: same as Main, but the hero is a two-column layout with the copy on the left and a boxed, off-white interactive WebGL neuron mesh (three.js) occupying the right column — a branching dendrite structure that pulses biotium blue on hover/click, rather than a full-bleed background."
     }
   ],
   "launch": {
     "view": "focused",
-    "file": "QuietFieldVariant.dc.html"
+    "file": "SynapticMeshVariant.dc.html"
   }
 }
