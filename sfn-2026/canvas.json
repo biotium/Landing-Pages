@@ -57,18 +57,18 @@
       "x": 3120,
       "y": -90,
       "w": 420,
-      "text": "QuietFieldVariant: same as Main, but the hero's static neuron photo is replaced with a live interactive canvas — a dot-and-line neuron network, off-white background, quiet/sparse on the left behind the copy and thickening into a dense synapse-like tangle on the right. Hover or click lights nodes up in biotium blue and hands a pulse along their connections to neighbors."
+      "text": "QuietFieldVariant: same as Main, but the hero's static neuron photo is replaced with a live interactive canvas — a dot-and-line neuron network, off-white background, quiet/sparse on the left behind the copy and thickening into a dense synapse-like tangle on the right. Hover or click lights nodes up in biotium blue and hands a pulse along their connections to neighbors. A second layer, the Biotium molecule mark rendered as interactive ASCII art (asciify-engine, hover-trail effect, blue on near-black), overlays the hero's right edge — flush with its top/bottom — on top of the network's dense side; pointer events are forwarded between the two so both stay interactive where they overlap."
     },
     {
       "id": "synapticmeshvariant-note",
       "x": 4680,
       "y": -90,
       "w": 420,
-      "text": "SynapticMeshVariant: same as Main, but the hero is a two-column layout with the copy on the left and a boxed, off-white interactive WebGL neuron mesh (three.js) occupying the right column — a branching dendrite structure that pulses biotium blue on hover/click, rather than a full-bleed background."
+      "text": "SynapticMeshVariant: same as Main, but the hero is a two-column layout with the copy on the left and an off-white interactive WebGL neuron mesh (three.js) superimposed in the right column, no card chrome — a branching dendrite structure that pulses biotium blue on hover/click."
     }
   ],
   "launch": {
     "view": "focused",
-    "file": "SynapticMeshVariant.dc.html"
+    "file": "QuietFieldVariant.dc.html"
   }
 }
