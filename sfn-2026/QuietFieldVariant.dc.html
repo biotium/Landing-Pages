@@ -135,9 +135,9 @@
     /* Hero network canvas — interactive neuron field, quiet on the left, dense on the right */
     #hero-network { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 
-    /* Ascii molecule-mark layer — overlaid on the hero's right edge, flush with the hero's top/bottom edges, on top of the network; pointer events forwarded to #hero-network (see script) */
+    /* Ascii molecule-mark layer — flush with the hero's top/bottom edges, hanging past the hero's right edge (clipped by the hero's own overflow:hidden) for visual balance, on top of the network; pointer events forwarded to #hero-network (see script) */
     .bt-hero-ascii-layer {
-      position: absolute; top: 0; right: 0; bottom: 0; width: 56%; max-width: 780px;
+      position: absolute; top: 0; right: -140px; bottom: 0; width: 62%; max-width: 900px;
       display: flex; align-items: stretch; justify-content: flex-end;
       pointer-events: none; z-index: 2;
     }
@@ -644,7 +644,7 @@
     if (!canvas) return;
     var ctx = canvas.getContext('2d');
     var INK = { r: 0x2d, g: 0x2d, b: 0x2d };
-    var BLUE = { r: 0x08, g: 0x7e, b: 0xec };
+    var BLUE = { r: 0x00, g: 0x84, b: 0xff };
     function lerpColor(a, b, t) {
       t = Math.max(0, Math.min(1, t));
       return 'rgb(' + Math.round(a.r + (b.r - a.r) * t) + ',' + Math.round(a.g + (b.g - a.g) * t) + ',' + Math.round(a.b + (b.b - a.b) * t) + ')';
