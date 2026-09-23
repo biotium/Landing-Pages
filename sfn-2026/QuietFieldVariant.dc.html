@@ -141,7 +141,7 @@
       display: flex; align-items: stretch; justify-content: flex-end;
       pointer-events: none; z-index: 2;
     }
-    #hero-ascii { height: 100%; width: auto; max-width: 100%; aspect-ratio: 1000 / 430; display: block; touch-action: none; pointer-events: auto; }
+    #hero-ascii { height: 100%; width: 100%; display: block; touch-action: none; pointer-events: auto; }
     @media (max-width: 900px) {
       .bt-hero-ascii-layer { display: none; }
     }
@@ -836,7 +836,7 @@
         colorMode: 'source',
         ink: '#0084ff',
         crop: { x: 0.5, y: 0.5, zoom: 1, rotation: 0 },
-        backdrop: { mode: 'solid', color: '#080808', color2: '#393323', blur: 12, opacity: 1 },
+        backdrop: { mode: 'solid', color: '#080808', color2: '#393323', blur: 12, opacity: 0 },
         color: { brightness: 0.2, contrast: 1, saturation: 1.15, grayscale: 1, tint: '#0084ff', amount: 1, blend: 'source-over' },
         dither: { algorithm: 'bayer4', palette: 'mono', colors: ['#080808', '#e8b900'], amount: 1, scale: 2, threshold: 0.5, motion: 'none', speed: 1 },
         mask: { enabled: false, invert: false, shapes: [] },
