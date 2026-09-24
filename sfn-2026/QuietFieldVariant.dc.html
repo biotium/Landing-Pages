@@ -153,12 +153,7 @@
     #hero-ascii { height: 100%; width: 100%; display: block; object-fit: contain; object-position: center; touch-action: none; pointer-events: auto; }
     #hero-ascii[hidden] { display: none; }
     @media (max-width: 900px) {
-      /* Below the copy, in normal flow, still inside the hero's own frame (not hidden, not overlaid) */
-      .bt-hero-ascii-layer {
-        position: relative; top: auto; right: auto; bottom: auto;
-        width: 100%; max-width: 100%; height: 240px;
-        margin-top: 8px; padding-bottom: 28px;
-      }
+      .bt-hero-ascii-layer { display: none; }
     }
 
     /* Hero entrance (staggered on load, not scroll-gated) */
@@ -843,13 +838,13 @@
         version: 1,
         aspectRatio: 'original',
         style: 'mixed',
-        cellSize: 5,
+        cellSize: 8,
         charset: '-°•',
         colorMode: 'source',
         ink: '#0084ff',
-        crop: { x: 0.5, y: 0.5, zoom: 1, rotation: 0 },
+        crop: { x: 0.5, y: 0.5, zoom: 1.35, rotation: 0 },
         backdrop: { mode: 'solid', color: '#080808', color2: '#393323', blur: 12, opacity: 0 },
-        color: { brightness: 0.2, contrast: 1, saturation: 1.15, grayscale: 1, tint: '#0084ff', amount: 1, blend: 'source-over' },
+        color: { brightness: 0.2, contrast: 1, saturation: 1.15, grayscale: 1, tint: '#232323', amount: 1, blend: 'source-over' },
         dither: { algorithm: 'bayer4', palette: 'mono', colors: ['#080808', '#e8b900'], amount: 1, scale: 2, threshold: 0.5, motion: 'none', speed: 1 },
         mask: { enabled: false, invert: false, shapes: [] },
         lights: [],
