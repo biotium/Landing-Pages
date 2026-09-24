@@ -147,11 +147,20 @@
     /* Ascii molecule-mark layer — flush with the hero's top/bottom edges, hanging past the hero's right edge (clipped by the hero's own overflow:hidden) for visual balance, on top of the network; pointer events forwarded to #hero-network (see script) */
     .bt-hero-ascii-layer {
       position: absolute; top: 0; right: -140px; bottom: 0; width: 62%; max-width: 900px;
-      display: flex; align-items: stretch; justify-content: flex-end;
+      display: flex; align-items: center; justify-content: flex-end;
       pointer-events: none; z-index: 2;
     }
-    #hero-ascii { height: 100%; width: 100%; display: block; object-fit: contain; object-position: center; touch-action: none; pointer-events: auto; }
-    #hero-ascii[hidden] { display: none; }
+    .bt-ascii-art { position: relative; pointer-events: auto; touch-action: none; }
+    .bt-ascii-base, .bt-ascii-glow {
+      margin: 0; font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+      font-size: clamp(7px, 1.05vw, 15px); line-height: 1.05; white-space: pre; user-select: none;
+    }
+    .bt-ascii-base { color: #232323; }
+    .bt-ascii-glow {
+      position: absolute; inset: 0; color: #0084ff;
+      -webkit-mask-image: radial-gradient(circle 0px at 50% 50%, #000 0%, transparent 100%);
+      mask-image: radial-gradient(circle 0px at 50% 50%, #000 0%, transparent 100%);
+    }
     @media (max-width: 900px) {
       .bt-hero-ascii-layer { display: none; }
     }
@@ -291,7 +300,60 @@
     </div>
   </div>
   <div class="hero-in bt-hero-ascii-layer" style="transition-delay:180ms;">
-    <canvas id="hero-ascii"></canvas>
+    <div class="bt-ascii-art" id="hero-ascii">
+      <pre class="bt-ascii-base" aria-hidden="true">                                    -===+===+==                        
+                      ..::+***++*+-***+*-*+**=+***=                   
+                 -=+=*-=+:+*+**-**==.=***+**:=+.******=.              
+             ++*+*:-+--=:+*=*-:+=...+***=..::=:-*..--=.--.            
+           +++.=*=:****+= **-:*+=..***++.:++++-..*:.=+*==**++         
+        :-.**++*+***-:. -+-*****=.-*+=::.=.**+.=+*+--::::+..-=:       
+       +=.-:+=++: -*+*+.:+*=::*+:=*-:***:*:=**-:.*-:.**--:-.=:.       
+    -+-*+-+.+*****..+**:..=+**+:.=*+.-*.*+**:***.-+..+*-::=-++.=.-.   
+   *=-:-**:**=.:****.*=.:**+=-+***=-.=+***+:+++****+..--.++**++:.::   
+  +:+:.*+.=******:--:-..+**+- **+*+-:**++-=.:-*+*-=**:--*==-=::.+==:. 
+ +*=-+=*+-  :.:-: -+-..:+. ..:*++****-+**+*-..-+*+*+=:.:::..:-+*:=.-+ 
+ ++.*----.. .*= +****:.::+*+:::***.=**=..::.:-:.--::.:.. =**+*=.+.....
+:* ****+.+***+* **=++::.***+.:+:=*-*-:..**+***=+=-:..+-=:.-*+..:+*+=: 
+.+.+-++=.**+.***:+-: ..=****+:-= ...::+**-=:---.-*+*****=.-++*= +**+. 
+ :***= *-=+:.:----.....:.:::-=-:.:*.**=.*+=..==-==++*=++:..====*-=-.. 
+ +++=*:::+++-= .. .::.-*+*****++***+**+::.:. +*+*****+..-.==-..::-  . 
+  +:.:++. ..:---::. +*+=+*::::-=--..::--.*+-===-::=--=:..:::--=:::    
+    -:::..:.-::. . +**+:.:-:*=+.:-+-*+:-*+- ...:::-:-::.:: ......     
+      .           **+:... .=+ ::=-=: -.:.=-.:-=......:.:-..:-.        
+                  +*********-...:.:=-::::.:-.....:::...::.-:..        
+                  .-::-+=:--=:.=-:...:.:.:......:.:-::.:-- :..        
+                     ..:.-:=   . .     =--.:.:-.=-.::.::..:..         
+                                        :+=....:.:: ..::.             
+                                          .---...:.:..                
+                                             .-:.:.                   
+                                                .=:</pre>
+      <pre class="bt-ascii-glow" aria-hidden="true">                                    -===+===+==                        
+                      ..::+***++*+-***+*-*+**=+***=                   
+                 -=+=*-=+:+*+**-**==.=***+**:=+.******=.              
+             ++*+*:-+--=:+*=*-:+=...+***=..::=:-*..--=.--.            
+           +++.=*=:****+= **-:*+=..***++.:++++-..*:.=+*==**++         
+        :-.**++*+***-:. -+-*****=.-*+=::.=.**+.=+*+--::::+..-=:       
+       +=.-:+=++: -*+*+.:+*=::*+:=*-:***:*:=**-:.*-:.**--:-.=:.       
+    -+-*+-+.+*****..+**:..=+**+:.=*+.-*.*+**:***.-+..+*-::=-++.=.-.   
+   *=-:-**:**=.:****.*=.:**+=-+***=-.=+***+:+++****+..--.++**++:.::   
+  +:+:.*+.=******:--:-..+**+- **+*+-:**++-=.:-*+*-=**:--*==-=::.+==:. 
+ +*=-+=*+-  :.:-: -+-..:+. ..:*++****-+**+*-..-+*+*+=:.:::..:-+*:=.-+ 
+ ++.*----.. .*= +****:.::+*+:::***.=**=..::.:-:.--::.:.. =**+*=.+.....
+:* ****+.+***+* **=++::.***+.:+:=*-*-:..**+***=+=-:..+-=:.-*+..:+*+=: 
+.+.+-++=.**+.***:+-: ..=****+:-= ...::+**-=:---.-*+*****=.-++*= +**+. 
+ :***= *-=+:.:----.....:.:::-=-:.:*.**=.*+=..==-==++*=++:..====*-=-.. 
+ +++=*:::+++-= .. .::.-*+*****++***+**+::.:. +*+*****+..-.==-..::-  . 
+  +:.:++. ..:---::. +*+=+*::::-=--..::--.*+-===-::=--=:..:::--=:::    
+    -:::..:.-::. . +**+:.:-:*=+.:-+-*+:-*+- ...:::-:-::.:: ......     
+      .           **+:... .=+ ::=-=: -.:.=-.:-=......:.:-..:-.        
+                  +*********-...:.:=-::::.:-.....:::...::.-:..        
+                  .-::-+=:--=:.=-:...:.:.:......:.:-::.:-- :..        
+                     ..:.-:=   . .     =--.:.:-.=-.::.::..:..         
+                                        :+=....:.:: ..::.             
+                                          .---...:.:..                
+                                             .-:.:.                   
+                                                .=:</pre>
+    </div>
   </div>
 </div>
 
@@ -822,44 +884,44 @@
 })();
 </script>
 
-<!-- Ascii molecule-mark overlay — separate module script since it uses a static import;
-     forwards pointer events onto #hero-network so both layered visuals stay interactive
-     where they overlap. -->
-<script type="module">
-(async function () {
-  var canvas = document.getElementById('hero-ascii');
+<!-- Ascii molecule-mark overlay — hover/interact reveals the blue layer near the
+     pointer; also forwards pointer events onto #hero-network so both layered
+     visuals stay interactive where they overlap. -->
+<script>
+(function () {
+  var art = document.getElementById('hero-ascii');
+  var glow = art ? art.querySelector('.bt-ascii-glow') : null;
   var networkCanvas = document.getElementById('hero-network');
-  if (!canvas) return;
+  if (!art || !glow) return;
 
-  try {
-    var mod = await import('https://cdn.jsdelivr.net/npm/asciify-engine/studio/+esm');
-    await mod.mountStudio(canvas, 'biotium_molecule_mark.svg', {
-      settings: {
-        version: 1,
-        aspectRatio: 'original',
-        style: 'mixed',
-        cellSize: 8,
-        charset: '-°•',
-        colorMode: 'source',
-        ink: '#0084ff',
-        crop: { x: 0.5, y: 0.5, zoom: 1.35, rotation: 0 },
-        backdrop: { mode: 'solid', color: '#080808', color2: '#393323', blur: 12, opacity: 0 },
-        color: { brightness: 0.2, contrast: 1, saturation: 1.15, grayscale: 1, tint: '#232323', amount: 1, blend: 'source-over' },
-        dither: { algorithm: 'bayer4', palette: 'mono', colors: ['#080808', '#e8b900'], amount: 1, scale: 2, threshold: 0.5, motion: 'none', speed: 1 },
-        mask: { enabled: false, invert: false, shapes: [] },
-        lights: [],
-        effects: { bloom: 0, characterBloom: 0, grain: 0, dust: 0, scanlines: 0, crt: 0, prism: 0, vignette: 0, glitch: 0, pixelate: 0, blur: 0, blurType: 'gaussian', angle: 0, focus: 0.5, halftone: 0 },
-        motion: { type: 'none', speed: 1 },
-        hover: { effect: 'trail', strength: 0.55, radius: 0.2, edgeSafe: false }
-      }
-    });
-  } catch (e) {
-    canvas.hidden = true;
-    canvas.style.pointerEvents = 'none';
-    return;
+  var restRadius = 130, activeRadius = 220;
+  function setGlow(x, y, radius) {
+    var css = 'radial-gradient(circle ' + radius + 'px at ' + x + 'px ' + y + 'px, #000 0%, transparent 100%)';
+    glow.style.webkitMaskImage = css;
+    glow.style.maskImage = css;
+  }
+  function pointerPos(e) {
+    var rect = art.getBoundingClientRect();
+    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
   }
 
-  // The ascii canvas sits on top of the network canvas where they overlap; forward
+  art.addEventListener('pointermove', function (e) {
+    var p = pointerPos(e);
+    setGlow(p.x, p.y, e.buttons ? activeRadius : restRadius);
+  });
+  art.addEventListener('pointerdown', function (e) {
+    var p = pointerPos(e);
+    setGlow(p.x, p.y, activeRadius);
+  });
+  art.addEventListener('pointerup', function (e) {
+    var p = pointerPos(e);
+    setGlow(p.x, p.y, restRadius);
+  });
+  art.addEventListener('pointerleave', function () {
+    setGlow(-9999, -9999, restRadius);
+  });
+
+  // The ascii art sits on top of the network canvas where they overlap; forward
   // pointer events onto the network canvas so its own listeners still fire, since
   // the browser only dispatches the native event to the top-most element.
   if (networkCanvas) {
@@ -871,9 +933,9 @@
       });
       networkCanvas.dispatchEvent(evt);
     }
-    canvas.addEventListener('pointermove', function (e) { forward('pointermove', e); });
-    canvas.addEventListener('pointerdown', function (e) { forward('pointerdown', e); });
-    canvas.addEventListener('pointerleave', function (e) { forward('pointerleave', e); });
+    art.addEventListener('pointermove', function (e) { forward('pointermove', e); });
+    art.addEventListener('pointerdown', function (e) { forward('pointerdown', e); });
+    art.addEventListener('pointerleave', function (e) { forward('pointerleave', e); });
   }
 })();
 </script>
