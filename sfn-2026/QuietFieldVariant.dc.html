@@ -144,25 +144,16 @@
     /* Hero network canvas — interactive neuron field, quiet on the left, dense on the right */
     #hero-network { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
 
-    /* Ascii molecule-mark layer — flush with the hero's top/bottom edges, hanging past the hero's right edge (clipped by the hero's own overflow:hidden) for visual balance, on top of the network; pointer events forwarded to #hero-network (see script) */
-    .bt-hero-ascii-layer {
-      position: absolute; top: 0; right: -140px; bottom: 0; width: 62%; max-width: 900px;
-      display: flex; align-items: center; justify-content: flex-end;
-      pointer-events: none; z-index: 2;
-    }
-    .bt-ascii-art { position: relative; pointer-events: auto; touch-action: none; }
-    .bt-ascii-base, .bt-ascii-glow {
-      margin: 0; font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
-      font-size: clamp(7px, 1.05vw, 15px); line-height: 1.05; white-space: pre; user-select: none;
-    }
-    .bt-ascii-base { color: #232323; }
-    .bt-ascii-glow {
-      position: absolute; inset: 0; color: #0084ff;
-      -webkit-mask-image: radial-gradient(circle 0px at 50% 50%, #000 0%, transparent 100%);
-      mask-image: radial-gradient(circle 0px at 50% 50%, #000 0%, transparent 100%);
-    }
+    /* Hero brain — decorative overlay on top of the neuron field, anchored to the hero's right edge below the fixed header; on mobile it drops into flow, centered under the hero copy */
+    .bt-hero-brain-col { position: absolute; top: 59px; right: 0; bottom: 0; width: 50%; max-width: 760px; pointer-events: none; }
+    #hero-brain { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    @media (max-width: 1180px) { .bt-hero-brain-col { width: 42%; } }
     @media (max-width: 900px) {
-      .bt-hero-ascii-layer { display: none; }
+      .bt-hero-brain-col {
+        position: relative; top: auto; right: auto; bottom: auto;
+        width: 100%; max-width: 100%; height: 260px;
+        margin-top: -64px; margin-bottom: 32px;
+      }
     }
 
     /* Hero entrance (staggered on load, not scroll-gated) */
@@ -299,61 +290,8 @@
       </div>
     </div>
   </div>
-  <div class="hero-in bt-hero-ascii-layer" style="transition-delay:180ms;">
-    <div class="bt-ascii-art" id="hero-ascii">
-      <pre class="bt-ascii-base" aria-hidden="true">                                    -===+===+==                        
-                      ..::+***++*+-***+*-*+**=+***=                   
-                 -=+=*-=+:+*+**-**==.=***+**:=+.******=.              
-             ++*+*:-+--=:+*=*-:+=...+***=..::=:-*..--=.--.            
-           +++.=*=:****+= **-:*+=..***++.:++++-..*:.=+*==**++         
-        :-.**++*+***-:. -+-*****=.-*+=::.=.**+.=+*+--::::+..-=:       
-       +=.-:+=++: -*+*+.:+*=::*+:=*-:***:*:=**-:.*-:.**--:-.=:.       
-    -+-*+-+.+*****..+**:..=+**+:.=*+.-*.*+**:***.-+..+*-::=-++.=.-.   
-   *=-:-**:**=.:****.*=.:**+=-+***=-.=+***+:+++****+..--.++**++:.::   
-  +:+:.*+.=******:--:-..+**+- **+*+-:**++-=.:-*+*-=**:--*==-=::.+==:. 
- +*=-+=*+-  :.:-: -+-..:+. ..:*++****-+**+*-..-+*+*+=:.:::..:-+*:=.-+ 
- ++.*----.. .*= +****:.::+*+:::***.=**=..::.:-:.--::.:.. =**+*=.+.....
-:* ****+.+***+* **=++::.***+.:+:=*-*-:..**+***=+=-:..+-=:.-*+..:+*+=: 
-.+.+-++=.**+.***:+-: ..=****+:-= ...::+**-=:---.-*+*****=.-++*= +**+. 
- :***= *-=+:.:----.....:.:::-=-:.:*.**=.*+=..==-==++*=++:..====*-=-.. 
- +++=*:::+++-= .. .::.-*+*****++***+**+::.:. +*+*****+..-.==-..::-  . 
-  +:.:++. ..:---::. +*+=+*::::-=--..::--.*+-===-::=--=:..:::--=:::    
-    -:::..:.-::. . +**+:.:-:*=+.:-+-*+:-*+- ...:::-:-::.:: ......     
-      .           **+:... .=+ ::=-=: -.:.=-.:-=......:.:-..:-.        
-                  +*********-...:.:=-::::.:-.....:::...::.-:..        
-                  .-::-+=:--=:.=-:...:.:.:......:.:-::.:-- :..        
-                     ..:.-:=   . .     =--.:.:-.=-.::.::..:..         
-                                        :+=....:.:: ..::.             
-                                          .---...:.:..                
-                                             .-:.:.                   
-                                                .=:</pre>
-      <pre class="bt-ascii-glow" aria-hidden="true">                                    -===+===+==                        
-                      ..::+***++*+-***+*-*+**=+***=                   
-                 -=+=*-=+:+*+**-**==.=***+**:=+.******=.              
-             ++*+*:-+--=:+*=*-:+=...+***=..::=:-*..--=.--.            
-           +++.=*=:****+= **-:*+=..***++.:++++-..*:.=+*==**++         
-        :-.**++*+***-:. -+-*****=.-*+=::.=.**+.=+*+--::::+..-=:       
-       +=.-:+=++: -*+*+.:+*=::*+:=*-:***:*:=**-:.*-:.**--:-.=:.       
-    -+-*+-+.+*****..+**:..=+**+:.=*+.-*.*+**:***.-+..+*-::=-++.=.-.   
-   *=-:-**:**=.:****.*=.:**+=-+***=-.=+***+:+++****+..--.++**++:.::   
-  +:+:.*+.=******:--:-..+**+- **+*+-:**++-=.:-*+*-=**:--*==-=::.+==:. 
- +*=-+=*+-  :.:-: -+-..:+. ..:*++****-+**+*-..-+*+*+=:.:::..:-+*:=.-+ 
- ++.*----.. .*= +****:.::+*+:::***.=**=..::.:-:.--::.:.. =**+*=.+.....
-:* ****+.+***+* **=++::.***+.:+:=*-*-:..**+***=+=-:..+-=:.-*+..:+*+=: 
-.+.+-++=.**+.***:+-: ..=****+:-= ...::+**-=:---.-*+*****=.-++*= +**+. 
- :***= *-=+:.:----.....:.:::-=-:.:*.**=.*+=..==-==++*=++:..====*-=-.. 
- +++=*:::+++-= .. .::.-*+*****++***+**+::.:. +*+*****+..-.==-..::-  . 
-  +:.:++. ..:---::. +*+=+*::::-=--..::--.*+-===-::=--=:..:::--=:::    
-    -:::..:.-::. . +**+:.:-:*=+.:-+-*+:-*+- ...:::-:-::.:: ......     
-      .           **+:... .=+ ::=-=: -.:.=-.:-=......:.:-..:-.        
-                  +*********-...:.:=-::::.:-.....:::...::.-:..        
-                  .-::-+=:--=:.=-:...:.:.:......:.:-::.:-- :..        
-                     ..:.-:=   . .     =--.:.:-.=-.::.::..:..         
-                                        :+=....:.:: ..::.             
-                                          .---...:.:..                
-                                             .-:.:.                   
-                                                .=:</pre>
-    </div>
+  <div class="hero-in bt-hero-brain-col" style="transition-delay:180ms;" aria-hidden="true">
+    <canvas id="hero-brain"></canvas>
   </div>
 </div>
 
@@ -884,60 +822,279 @@
 })();
 </script>
 
-<!-- Ascii molecule-mark overlay — hover/interact reveals the blue layer near the
-     pointer; also forwards pointer events onto #hero-network so both layered
-     visuals stay interactive where they overlap. -->
+<!-- Hero brain -->
 <script>
-(function () {
-  var art = document.getElementById('hero-ascii');
-  var glow = art ? art.querySelector('.bt-ascii-glow') : null;
-  var networkCanvas = document.getElementById('hero-network');
-  if (!art || !glow) return;
+  /* Hero brain — procedural wireframe brain (two folded hemispheres + cerebellum)
+     drawn as WebGL lines over the neuron field, slowly rotating. Decorative only
+     (no pointer events, so the field underneath stays interactive); the column is
+     hidden if WebGL isn't available. */
+  (function initHeroBrain() {
+    var canvas = document.getElementById('hero-brain');
+    if (!canvas) return;
+    var col = canvas.parentNode;
+    var gl = canvas.getContext('webgl', { antialias: true, premultipliedAlpha: true, alpha: true, depth: true });
+    if (!gl) { col.hidden = true; return; }
 
-  var restRadius = 130, activeRadius = 220;
-  function setGlow(x, y, radius) {
-    var css = 'radial-gradient(circle ' + radius + 'px at ' + x + 'px ' + y + 'px, #000 0%, transparent 100%)';
-    glow.style.webkitMaskImage = css;
-    glow.style.maskImage = css;
-  }
-  function pointerPos(e) {
-    var rect = art.getBoundingClientRect();
-    return { x: e.clientX - rect.left, y: e.clientY - rect.top };
-  }
-
-  art.addEventListener('pointermove', function (e) {
-    var p = pointerPos(e);
-    setGlow(p.x, p.y, e.buttons ? activeRadius : restRadius);
-  });
-  art.addEventListener('pointerdown', function (e) {
-    var p = pointerPos(e);
-    setGlow(p.x, p.y, activeRadius);
-  });
-  art.addEventListener('pointerup', function (e) {
-    var p = pointerPos(e);
-    setGlow(p.x, p.y, restRadius);
-  });
-  art.addEventListener('pointerleave', function () {
-    setGlow(-9999, -9999, restRadius);
-  });
-
-  // The ascii art sits on top of the network canvas where they overlap; forward
-  // pointer events onto the network canvas so its own listeners still fire, since
-  // the browser only dispatches the native event to the top-most element.
-  if (networkCanvas) {
-    function forward(type, e) {
-      var evt = new PointerEvent(type, {
-        clientX: e.clientX, clientY: e.clientY,
-        pointerId: e.pointerId, pointerType: e.pointerType || 'mouse',
-        bubbles: true, cancelable: true, isPrimary: true
-      });
-      networkCanvas.dispatchEvent(evt);
+    // Seeded Perlin noise so the folds look the same on every load
+    var seed = 20261114;
+    function rand() { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; }
+    var perm = new Uint8Array(512), pi;
+    var base = []; for (pi = 0; pi < 256; pi++) base.push(pi);
+    for (pi = 255; pi > 0; pi--) { var sj = Math.floor(rand() * (pi + 1)); var tmp = base[pi]; base[pi] = base[sj]; base[sj] = tmp; }
+    for (pi = 0; pi < 512; pi++) perm[pi] = base[pi & 255];
+    function fade(t) { return t * t * t * (t * (t * 6 - 15) + 10); }
+    function lerp(a, b, t) { return a + (b - a) * t; }
+    function grad(h, x, y, z) {
+      h &= 15; var u = h < 8 ? x : y, v = h < 4 ? y : (h === 12 || h === 14 ? x : z);
+      return ((h & 1) ? -u : u) + ((h & 2) ? -v : v);
     }
-    art.addEventListener('pointermove', function (e) { forward('pointermove', e); });
-    art.addEventListener('pointerdown', function (e) { forward('pointerdown', e); });
-    art.addEventListener('pointerleave', function (e) { forward('pointerleave', e); });
-  }
-})();
+    function noise(x, y, z) {
+      var X = Math.floor(x) & 255, Y = Math.floor(y) & 255, Z = Math.floor(z) & 255;
+      x -= Math.floor(x); y -= Math.floor(y); z -= Math.floor(z);
+      var u = fade(x), v = fade(y), w = fade(z);
+      var A = perm[X] + Y, AA = perm[A] + Z, AB = perm[A + 1] + Z, B = perm[X + 1] + Y, BA = perm[B] + Z, BB = perm[B + 1] + Z;
+      return lerp(lerp(lerp(grad(perm[AA], x, y, z), grad(perm[BA], x - 1, y, z), u),
+                       lerp(grad(perm[AB], x, y - 1, z), grad(perm[BB], x - 1, y - 1, z), u), v),
+                  lerp(lerp(grad(perm[AA + 1], x, y, z - 1), grad(perm[BA + 1], x - 1, y, z - 1), u),
+                       lerp(grad(perm[AB + 1], x, y - 1, z - 1), grad(perm[BB + 1], x - 1, y - 1, z - 1), u), v), w);
+    }
+
+    function icosphere(level) {
+      var t = (1 + Math.sqrt(5)) / 2;
+      var v = [[-1, t, 0], [1, t, 0], [-1, -t, 0], [1, -t, 0], [0, -1, t], [0, 1, t], [0, -1, -t], [0, 1, -t], [t, 0, -1], [t, 0, 1], [-t, 0, -1], [-t, 0, 1]];
+      var f = [[0, 11, 5], [0, 5, 1], [0, 1, 7], [0, 7, 10], [0, 10, 11], [1, 5, 9], [5, 11, 4], [11, 10, 2], [10, 7, 6], [7, 1, 8],
+               [3, 9, 4], [3, 4, 2], [3, 2, 6], [3, 6, 8], [3, 8, 9], [4, 9, 5], [2, 4, 11], [6, 2, 10], [8, 6, 7], [9, 8, 1]];
+      v = v.map(function (p) { var l = Math.hypot(p[0], p[1], p[2]); return [p[0] / l, p[1] / l, p[2] / l]; });
+      for (var s = 0; s < level; s++) {
+        var cache = {}, nf = [];
+        var mid = function (a, b) {
+          var k = a < b ? a + '_' + b : b + '_' + a;
+          if (cache[k] !== undefined) return cache[k];
+          var p = [(v[a][0] + v[b][0]) / 2, (v[a][1] + v[b][1]) / 2, (v[a][2] + v[b][2]) / 2];
+          var l = Math.hypot(p[0], p[1], p[2]);
+          v.push([p[0] / l, p[1] / l, p[2] / l]);
+          return (cache[k] = v.length - 1);
+        };
+        for (var i = 0; i < f.length; i++) {
+          var a = f[i][0], b = f[i][1], c = f[i][2], ab = mid(a, b), bc = mid(b, c), ca = mid(c, a);
+          nf.push([a, ab, ca], [b, bc, ab], [c, ca, bc], [ab, bc, ca]);
+        }
+        f = nf;
+      }
+      return { v: v, f: f };
+    }
+
+    function smooth(e0, e1, x) { var t = Math.max(0, Math.min(1, (x - e0) / (e1 - e0))); return t * t * (3 - 2 * t); }
+    function segDist(px, py, ax, ay, bx, by) {
+      var dx = bx - ax, dy = by - ay, t = ((px - ax) * dx + (py - ay) * dy) / (dx * dx + dy * dy);
+      t = Math.max(0, Math.min(1, t));
+      return Math.hypot(px - (ax + dx * t), py - (ay + dy * t));
+    }
+
+    // One cerebral hemisphere (right side, z >= 0); side = -1 mirrors it to the left
+    function hemisphere(u, side) {
+      var ux = u[0], uy = u[1], uz = u[2];
+      var x = ux * (ux > 0 ? 1.0 : 0.95);
+      var lateral = smooth(-0.3, 0.5, uz);
+      var y;
+      if (uy >= 0) {
+        y = uy * (0.63 + 0.06 * Math.exp(-Math.pow((x - 0.05) / 0.6, 2)));
+      } else {
+        var depth = 0.22 + (0.21 * Math.exp(-Math.pow((x - 0.02) / 0.4, 2))) * (0.55 + 0.45 * lateral) + 0.07 * Math.exp(-Math.pow((x + 0.72) / 0.25, 2));
+        y = uy * depth;
+      }
+      // Flat medial wall facing the other hemisphere, rounded lateral side
+      var z = uz >= 0 ? 0.43 + uz * 0.41 : 0.43 - Math.pow(-uz, 0.6) * 0.41;
+      // Sylvian fissure separating the temporal lobe
+      var syl = segDist(x, y, 0.46, -0.2, -0.36, 0.1);
+      var groove = 0.075 * Math.exp(-Math.pow(syl / 0.045, 2)) * lateral * smooth(-0.5, -0.1, uy + 0.5);
+      // Gyri: rounded, worm-like ridges with narrow sulci along the (domain-warped) noise zero-crossings
+      var o = side > 0 ? 0 : 17.3;
+      var wx = noise(x * 1.6 + 100 + o, y * 1.6, z * 1.6) * 0.32;
+      var wy = noise(x * 1.6 + o, y * 1.6 + 100, z * 1.6) * 0.32;
+      var wz = noise(x * 1.6 + o, y * 1.6, z * 1.6 + 100) * 0.32;
+      var n1 = noise((x + wx) * 4.4 + o, (y + wy) * 5.2, (z + wz) * 4.6);
+      var n2 = noise(x * 9.5 + 40 + o, y * 10.5, z * 9.5);
+      var fold = smooth(0.0, 0.42, Math.abs(n1)) * 0.8 + smooth(0.0, 0.35, Math.abs(n2)) * 0.2;
+      var disp = 0.1 * (fold - 0.6) - groove;
+      var cx = 0, cy = 0, cz = 0.43;
+      var dx = x - cx, dy = y - cy, dz = z - cz, dl = Math.hypot(dx, dy, dz) || 1;
+      var medial = 0.4 + 0.6 * smooth(-0.6, 0.1, uz);
+      x += dx / dl * disp * medial; y += dy / dl * disp * medial; z += dz / dl * disp * medial;
+      return { p: [x, y, z * side], cav: Math.max(0, Math.min(1, 1 - fold + groove * 8)) };
+    }
+
+    function cerebellum(u) {
+      var x = -0.56 + u[0] * 0.29, y = -0.47 + u[1] * 0.19, z = u[2] * 0.47;
+      z *= 1 - 0.08 * Math.exp(-Math.pow(u[2] / 0.18, 2));
+      var ang = Math.atan2(u[1], u[0]);
+      var folia = Math.sin(ang * 24);
+      var d = 0.008 * folia;
+      var dl = Math.hypot(u[0] * 0.29, u[1] * 0.19, u[2] * 0.47) || 1;
+      x += u[0] * 0.29 / dl * d; y += u[1] * 0.19 / dl * d; z += u[2] * 0.47 / dl * d;
+      return { p: [x, y, z], cav: 0.5 - 0.5 * folia };
+    }
+
+    var pos = [], nrm = [], cav = [], idx = [], tri = [];
+    function addMesh(sphere, fn, side) {
+      var offset = pos.length / 3, verts = [], i;
+      for (i = 0; i < sphere.v.length; i++) {
+        var r = fn(sphere.v[i], side);
+        verts.push(r.p);
+        pos.push(r.p[0], r.p[1], r.p[2]);
+        cav.push(r.cav);
+      }
+      var acc = new Float32Array(sphere.v.length * 3), seen = {};
+      for (i = 0; i < sphere.f.length; i++) {
+        var a = sphere.f[i][0], b = sphere.f[i][1], c = sphere.f[i][2];
+        var A = verts[a], B = verts[b], C = verts[c];
+        var e1 = [B[0] - A[0], B[1] - A[1], B[2] - A[2]], e2 = [C[0] - A[0], C[1] - A[1], C[2] - A[2]];
+        var fn0 = e1[1] * e2[2] - e1[2] * e2[1], fn1 = e1[2] * e2[0] - e1[0] * e2[2], fn2 = e1[0] * e2[1] - e1[1] * e2[0];
+        if (side < 0) { fn0 = -fn0; fn1 = -fn1; fn2 = -fn2; }
+        tri.push(offset + a, offset + b, offset + c);
+        [a, b, c].forEach(function (k) { acc[k * 3] += fn0; acc[k * 3 + 1] += fn1; acc[k * 3 + 2] += fn2; });
+        [[a, b], [b, c], [c, a]].forEach(function (e) {
+          var key = e[0] < e[1] ? e[0] * 65536 + e[1] : e[1] * 65536 + e[0];
+          if (!seen[key]) { seen[key] = 1; idx.push(offset + e[0], offset + e[1]); }
+        });
+      }
+      for (i = 0; i < sphere.v.length; i++) {
+        var l = Math.hypot(acc[i * 3], acc[i * 3 + 1], acc[i * 3 + 2]) || 1;
+        nrm.push(acc[i * 3] / l, acc[i * 3 + 1] / l, acc[i * 3 + 2] / l);
+      }
+    }
+    var hemi = icosphere(5);
+    addMesh(hemi, hemisphere, 1);
+    addMesh(hemi, hemisphere, -1);
+    addMesh(icosphere(4), cerebellum, 1);
+
+    // Center the model on its bounding box so it rotates in place
+    var minY = Infinity, maxY = -Infinity, minX = Infinity, maxX = -Infinity, i;
+    for (i = 0; i < pos.length; i += 3) {
+      minX = Math.min(minX, pos[i]); maxX = Math.max(maxX, pos[i]);
+      minY = Math.min(minY, pos[i + 1]); maxY = Math.max(maxY, pos[i + 1]);
+    }
+    var midX = (minX + maxX) / 2, midY = (minY + maxY) / 2, radXZ = 0, halfY = (maxY - minY) / 2;
+    for (i = 0; i < pos.length; i += 3) {
+      pos[i] -= midX; pos[i + 1] -= midY;
+      radXZ = Math.max(radXZ, Math.hypot(pos[i], pos[i + 2]));
+    }
+
+    function shader(type, src) { var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; }
+    var prog = gl.createProgram();
+    gl.attachShader(prog, shader(gl.VERTEX_SHADER, [
+      'attribute vec3 aPos; attribute vec3 aNrm; attribute float aCav;',
+      'uniform mat3 uRot; uniform vec2 uScale; uniform vec2 uOffset; uniform float uAlpha;',
+      'varying float vA;',
+      'void main() {',
+      '  vec3 p = uRot * aPos; vec3 n = uRot * aNrm;',
+      '  float persp = 1.0 / (1.0 - p.z / 7.0);',
+      '  gl_Position = vec4(p.xy * uScale * persp + uOffset, -p.z * 0.4, 1.0);',
+      '  float shade = 1.0 - max(dot(n, normalize(vec3(-0.45, 0.65, 0.6))), 0.0);',
+      '  float rim = 1.0 - abs(n.z);',
+      '  vA = uAlpha * (0.35 + 0.7 * shade + 0.35 * rim) * (0.55 + 1.5 * aCav);',
+      '}'].join('\n')));
+    gl.attachShader(prog, shader(gl.FRAGMENT_SHADER, [
+      'precision mediump float; varying float vA; uniform vec3 uColor; uniform vec4 uFill; uniform float uFillPass;',
+      'void main() { gl_FragColor = uFillPass > 0.5 ? uFill : vec4(uColor * vA, vA); }'].join('\n')));
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { col.hidden = true; return; }
+    gl.useProgram(prog);
+
+    function buffer(data, loc, size) {
+      var b = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, b);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(data), gl.STATIC_DRAW);
+      var l = gl.getAttribLocation(prog, loc);
+      gl.enableVertexAttribArray(l);
+      gl.vertexAttribPointer(l, size, gl.FLOAT, false, 0, 0);
+    }
+    buffer(pos, 'aPos', 3); buffer(nrm, 'aNrm', 3); buffer(cav, 'aCav', 1);
+    var ib = gl.createBuffer();
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ib);
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(idx), gl.STATIC_DRAW);
+    var lineCount = idx.length;
+    var tb = gl.createBuffer();
+    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, tb);
+    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(tri), gl.STATIC_DRAW);
+    var triCount = tri.length;
+
+    var uRot = gl.getUniformLocation(prog, 'uRot'), uScale = gl.getUniformLocation(prog, 'uScale'),
+        uOffset = gl.getUniformLocation(prog, 'uOffset'), uAlpha = gl.getUniformLocation(prog, 'uAlpha');
+    gl.uniform3f(gl.getUniformLocation(prog, 'uColor'), 0x23 / 255, 0x23 / 255, 0x23 / 255);
+    // Surface fill in the hero's background color (premultiplied) so the neuron field behind reads as occluded
+    var FILL_A = 0.92, BG = 0xF7 / 255;
+    gl.uniform4f(gl.getUniformLocation(prog, 'uFill'), BG * FILL_A, BG * FILL_A, BG * FILL_A, FILL_A);
+    var uFillPass = gl.getUniformLocation(prog, 'uFillPass');
+    gl.enable(gl.BLEND);
+    gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+    gl.clearColor(0, 0, 0, 0);
+    // Hidden-line removal: the surface is drawn first (pushed back slightly in depth),
+    // so the wireframe on the far side and inside the sulci gets occluded.
+    gl.enable(gl.DEPTH_TEST);
+    gl.depthFunc(gl.LEQUAL);
+    gl.polygonOffset(1.5, 2.0);
+
+    var mobileMq = window.matchMedia('(max-width: 900px)');
+    function resize() {
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      var w = canvas.clientWidth, h = canvas.clientHeight;
+      canvas.width = Math.max(1, Math.round(w * dpr));
+      canvas.height = Math.max(1, Math.round(h * dpr));
+      gl.viewport(0, 0, canvas.width, canvas.height);
+      var s = Math.min((w / 2) / (radXZ * 1.12), (h / 2) / (halfY * 1.12));
+      gl.uniform2f(uScale, s * 2 / w, s * 2 / h);
+      var cxPx = mobileMq.matches ? w / 2 : w - s * radXZ * 1.12;
+      gl.uniform2f(uOffset, cxPx / w * 2 - 1, 0);
+      // Thinner lines read denser at high DPR, so lighten per-line alpha to match
+      gl.uniform1f(uAlpha, dpr > 1.5 ? 0.42 : 0.5);
+      draw();
+    }
+
+    var TILT = 0.18, angle = -0.5;
+    function draw() {
+      var ca = Math.cos(angle), sa = Math.sin(angle), ct = Math.cos(TILT), st = Math.sin(TILT);
+      // Rx(tilt) * Ry(angle), column-major
+      gl.uniformMatrix3fv(uRot, false, [ca, st * sa, -ct * sa, 0, ct, st, sa, -st * ca, ct * ca]);
+      gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+      gl.uniform1f(uFillPass, 1);
+      gl.enable(gl.POLYGON_OFFSET_FILL);
+      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, tb);
+      gl.drawElements(gl.TRIANGLES, triCount, gl.UNSIGNED_SHORT, 0);
+      gl.disable(gl.POLYGON_OFFSET_FILL);
+      gl.uniform1f(uFillPass, 0);
+      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ib);
+      gl.drawElements(gl.LINES, lineCount, gl.UNSIGNED_SHORT, 0);
+    }
+
+    resize();
+    if ('ResizeObserver' in window) new ResizeObserver(resize).observe(canvas);
+    else window.addEventListener('resize', resize);
+
+    // Software-rendered WebGL can't keep up with ~115k primitives a frame, so those
+    // browsers (and reduced-motion users) get a single static frame instead.
+    var dbg = gl.getExtension('WEBGL_debug_renderer_info');
+    var renderer = dbg ? String(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL)) : '';
+    if (/swiftshader|llvmpipe|software/i.test(renderer)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var SPEED = (Math.PI * 2) / 60000; // one full turn per minute
+    var visible = true, last = 0, rafId = 0;
+    function frame(now) {
+      rafId = requestAnimationFrame(frame);
+      if (last && now - last < 32) return; // ~30fps is plenty at this rotation speed
+      if (last) angle += (now - last) * SPEED;
+      last = now;
+      draw();
+    }
+    function start() { if (!rafId && visible && !document.hidden) { last = 0; rafId = requestAnimationFrame(frame); } }
+    function stop() { if (rafId) { cancelAnimationFrame(rafId); rafId = 0; } }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) { visible = entries[0].isIntersecting; visible ? start() : stop(); }).observe(canvas);
+    }
+    document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
+    start();
+  })();
 </script>
 
 </x-dc>

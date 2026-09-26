@@ -66,7 +66,7 @@
       "x": 3120,
       "y": -90,
       "w": 420,
-      "text": "QuietFieldVariant: same as Main, but the hero's static neuron photo is replaced with a live interactive canvas — a dot-and-line neuron network, off-white background, quiet/sparse on the left behind the copy and thickening into a dense synapse-like tangle on the right. Hover or click lights nodes up in biotium blue and hands a pulse along their connections to neighbors. A second layer, the Biotium molecule mark rendered as interactive ASCII art (asciify-engine, hover-trail effect, blue on near-black), overlays the hero's right edge — flush with its top/bottom — on top of the network's dense side; pointer events are forwarded between the two so both stay interactive where they overlap."
+      "text": "QuietFieldVariant: same as Main, but the hero's static neuron photo is replaced with a live interactive canvas — a dot-and-line neuron network, off-white background, quiet/sparse on the left behind the copy and thickening into a dense synapse-like tangle on the right. Hover or click lights nodes up in biotium blue and hands a pulse along their connections to neighbors. On top of the network's dense side sits a slowly rotating wireframe brain (same procedural WebGL brain as BrainVariant, its surface filled with the hero background so the network reads as behind it), anchored to the hero's right edge on desktop and centered under the copy on mobile. The brain ignores pointer events, so the network stays interactive underneath it."
     },
     {
       "id": "synapticmeshvariant-note",
