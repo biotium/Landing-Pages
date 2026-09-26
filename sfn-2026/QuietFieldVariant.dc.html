@@ -141,8 +141,8 @@
     html.reduced-motion .bt-header-tagline,
     html.reduced-motion .bt-header-pill { transition: none !important; }
 
-    /* Hero network canvas — interactive neuron field, quiet on the left, dense on the right */
-    #hero-network { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; }
+    /* Hero network canvas — ambient neuron field, quiet on the left, dense on the right; not interactive, so touches scroll the page normally */
+    #hero-network { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
 
     /* Hero brain — decorative overlay on top of the neuron field, anchored to the hero's right edge below the fixed header; on mobile it drops into flow, centered under the hero copy */
     .bt-hero-brain-col { position: absolute; top: 59px; right: 0; bottom: 0; width: 50%; max-width: 760px; pointer-events: none; }
@@ -655,8 +655,9 @@
     for (var k = 0; k < revealEls.length; k++) io.observe(revealEls[k]);
   }
 
-  /* Hero network — interactive neuron field, quiet on the left (behind the
-     copy), thickening into a dense synapse-like tangle on the right. */
+  /* Hero network — ambient neuron field, quiet on the left (behind the copy),
+     thickening into a dense synapse-like tangle on the right. Every few seconds a
+     single random neuron pulses blue, lighting its connections as it fades. */
   (function initHeroNetwork() {
     var canvas = document.getElementById('hero-network');
     if (!canvas) return;
@@ -669,8 +670,7 @@
     }
 
     var nodes = [], edges = [];
-    var pointer = { x: -9999, y: -9999, active: false };
-    var pulses = [];
+    var pulse = null; // { idx, start }
 
     function build(cssW, cssH) {
       nodes = []; edges = [];
@@ -681,7 +681,7 @@
           idx: i,
           x: xt * cssW, y: Math.random() * cssH,
           vx: (Math.random() - 0.5) * 0.06, vy: (Math.random() - 0.5) * 0.06,
-          r: 1.2 + Math.random() * 1.3 + xt * 0.28, glow: 0
+          r: 1.2 + Math.random() * 1.3 + xt * 0.28
         });
       }
       var minDim = Math.min(cssW, cssH);
@@ -702,38 +702,26 @@
       build.adj = adj;
     }
 
-    function firePulseFrom(idx) {
-      pulses.push({ front: [idx], visited: {}, t: 0 });
-      pulses[pulses.length - 1].visited[idx] = 0;
-    }
-    function nearestNode(x, y) {
-      var best = -1, bestD = Infinity;
-      for (var i = 0; i < nodes.length; i++) {
-        var dx = nodes[i].x - x, dy = nodes[i].y - y;
-        var d = dx * dx + dy * dy;
-        if (d < bestD) { bestD = d; best = i; }
+    // Pick a connected neuron that isn't hidden behind the brain overlay
+    var brainCanvas = document.getElementById('hero-brain');
+    function pickNode() {
+      var cRect = canvas.getBoundingClientRect();
+      var bRect = brainCanvas && brainCanvas.offsetParent ? brainCanvas.getBoundingClientRect() : null;
+      for (var tries = 0; tries < 20; tries++) {
+        var i = Math.floor(Math.random() * nodes.length);
+        if (!(build.adj[i] || []).length) continue;
+        var px = cRect.left + nodes[i].x, py = cRect.top + nodes[i].y;
+        if (bRect && px > bRect.left && px < bRect.right && py > bRect.top && py < bRect.bottom) continue;
+        return i;
       }
-      return best;
+      return -1;
     }
-    function pointerPos(e) {
-      var rect = canvas.getBoundingClientRect();
-      var cx = (e.touches && e.touches[0] ? e.touches[0].clientX : e.clientX);
-      var cy = (e.touches && e.touches[0] ? e.touches[0].clientY : e.clientY);
-      return { x: cx - rect.left, y: cy - rect.top };
-    }
-
-    canvas.addEventListener('pointermove', function (e) {
-      var p = pointerPos(e);
-      pointer.x = p.x; pointer.y = p.y; pointer.active = true;
-    });
-    canvas.addEventListener('pointerleave', function () { pointer.active = false; });
-    canvas.addEventListener('pointerdown', function (e) {
-      var p = pointerPos(e);
-      firePulseFrom(nearestNode(p.x, p.y));
-    });
+    var PULSE_MS = 1400;
+    var nextPulseAt = performance.now() + 1200;
+    function scheduleNext(now) { nextPulseAt = now + PULSE_MS + 1600 + Math.random() * 3000; }
 
     var lastSize = { w: 0, h: 0 };
-    function frame() {
+    function frame(now) {
       var rect = canvas.getBoundingClientRect();
       var dpr = Math.min(window.devicePixelRatio || 1, 2);
       var w = Math.max(1, Math.round(rect.width * dpr));
@@ -754,42 +742,21 @@
         });
       }
 
-      var proxR = Math.min(rect.width, rect.height) * 0.15;
-      nodes.forEach(function (n) {
-        var target = 0;
-        if (pointer.active) {
-          var dx = n.x - pointer.x, dy = n.y - pointer.y;
-          var d = Math.sqrt(dx * dx + dy * dy);
-          if (d < proxR) target = (1 - d / proxR) * 0.8;
-        }
-        n.glow += (target - n.glow) * 0.15;
-      });
-
-      pulses = pulses.filter(function (p) { return p.t < 1.6; });
-      pulses.forEach(function (p) {
-        p.t += 0.028;
-        if (p.t > 0.12 && Math.floor(p.t * 10) % 2 === 0) {
-          var next = [];
-          p.front.forEach(function (idx) {
-            (build.adj[idx] || []).forEach(function (ei) {
-              var e = edges[ei];
-              var other = e.a === idx ? e.b : e.a;
-              if (!(other in p.visited)) { p.visited[other] = p.t; next.push(other); }
-            });
-          });
-          if (next.length) p.front = next;
-        }
-      });
+      // One pulse at a time: ramp up fast, fade out slowly, then wait a random beat
+      if (!reduced && !pulse && now >= nextPulseAt && nodes.length) {
+        var pick = pickNode();
+        if (pick >= 0) pulse = { idx: pick, start: now };
+        scheduleNext(now);
+      }
+      var pulseG = 0;
+      if (pulse) {
+        var k = (now - pulse.start) / PULSE_MS;
+        if (k >= 1 || !nodes[pulse.idx]) { pulse = null; }
+        else pulseG = k < 0.18 ? k / 0.18 : 1 - (k - 0.18) / 0.82;
+      }
 
       edges.forEach(function (e) {
-        var g = Math.max(nodes[e.a].glow, nodes[e.b].glow);
-        pulses.forEach(function (p) {
-          var va = p.visited[e.a], vb = p.visited[e.b];
-          if (va !== undefined && vb !== undefined) {
-            var age = p.t - Math.max(va, vb);
-            g = Math.max(g, Math.max(0, 1 - age * 2.2));
-          }
-        });
+        var g = pulse && (e.a === pulse.idx || e.b === pulse.idx) ? pulseG * 0.75 : 0;
         ctx.strokeStyle = g > 0.03 ? lerpColor(INK, BLUE, g * 0.8) : 'rgba(45,45,45,0.07)';
         ctx.globalAlpha = g > 0.03 ? (0.12 + g * 0.5) : 1;
         ctx.lineWidth = 1;
@@ -801,17 +768,10 @@
       ctx.globalAlpha = 1;
 
       nodes.forEach(function (n) {
-        var g = n.glow;
-        for (var i = 0; i < pulses.length; i++) {
-          var vt = pulses[i].visited[n.idx];
-          if (vt !== undefined) {
-            var age = pulses[i].t - vt;
-            g = Math.max(g, Math.max(0, 1 - age * 2.2));
-          }
-        }
+        var g = pulse && n.idx === pulse.idx ? pulseG : 0;
         ctx.fillStyle = g > 0.03 ? lerpColor(INK, BLUE, g) : 'rgba(45,45,45,0.32)';
         ctx.beginPath();
-        ctx.arc(n.x, n.y, n.r + g * 1.2, 0, Math.PI * 2);
+        ctx.arc(n.x, n.y, n.r + g * 1.6, 0, Math.PI * 2);
         ctx.fill();
       });
 
@@ -825,9 +785,8 @@
 <!-- Hero brain -->
 <script>
   /* Hero brain — procedural wireframe brain (two folded hemispheres + cerebellum)
-     drawn as WebGL lines over the neuron field, slowly rotating. Decorative only
-     (no pointer events, so the field underneath stays interactive); the column is
-     hidden if WebGL isn't available. */
+     drawn as WebGL lines over the neuron field, slowly rotating. Decorative only;
+     the column is hidden if WebGL isn't available. */
   (function initHeroBrain() {
     var canvas = document.getElementById('hero-brain');
     if (!canvas) return;
