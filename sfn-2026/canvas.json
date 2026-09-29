@@ -28,17 +28,8 @@
       "is_interactive": true
     },
     {
-      "file": "SynapticMeshVariant.dc.html",
-      "x": 4680,
-      "y": 0,
-      "w": 1440,
-      "h": 2750,
-      "expand": "fill",
-      "is_interactive": true
-    },
-    {
       "file": "BrainVariant.dc.html",
-      "x": 6240,
+      "x": 4680,
       "y": 0,
       "w": 1440,
       "h": 2750,
@@ -69,18 +60,11 @@
       "text": "QuietFieldVariant: same as Main, but the hero's static neuron photo is replaced with a live ambient canvas — a dot-and-line neuron network, off-white background, quiet/sparse on the left behind the copy and thickening into a dense synapse-like tangle on the right. It isn't interactive (so touches scroll the page normally); instead, every few seconds a single random neuron pulses biotium blue and lights its connections as it fades. On top of the network's dense side sits a slowly rotating wireframe brain (same procedural WebGL brain as BrainVariant, its surface filled with the hero background so the network reads as behind it), anchored to the hero's right edge on desktop and centered under the copy on mobile."
     },
     {
-      "id": "synapticmeshvariant-note",
+      "id": "brainvariant-note",
       "x": 4680,
       "y": -90,
       "w": 420,
-      "text": "SynapticMeshVariant: same as Main, but the hero is a two-column layout with the copy on the left and an off-white interactive WebGL neuron mesh (three.js) superimposed in the right column, no card chrome — a branching dendrite structure that pulses biotium blue on hover/click."
-    },
-    {
-      "id": "brainvariant-note",
-      "x": 6240,
-      "y": -90,
-      "w": 420,
-      "text": "BrainVariant: same as SynapticMeshVariant, but the hero visual is a slowly rotating wireframe brain (procedural folded hemispheres + cerebellum, raw WebGL with hidden-line removal, no external libraries), anchored to the hero's right edge on desktop and centered under the hero copy on mobile. Decorative only; static frame for reduced-motion or software-rendered WebGL."
+      "text": "BrainVariant: same as Main, but the hero is a two-column layout and the hero visual is a slowly rotating wireframe brain (procedural folded hemispheres + cerebellum, raw WebGL with hidden-line removal, no external libraries), anchored to the hero's right edge on desktop and centered under the hero copy on mobile. Decorative only; static frame for reduced-motion or software-rendered WebGL."
     }
   ],
   "launch": {
