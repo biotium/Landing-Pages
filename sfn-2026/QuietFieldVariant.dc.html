@@ -713,8 +713,8 @@
       return -1;
     }
     var PULSE_MS = 1400;
-    var nextPulseAt = performance.now() + 1200;
-    function scheduleNext(now) { nextPulseAt = now + PULSE_MS + 1600 + Math.random() * 3000; }
+    var nextPulseAt = performance.now() + 600;
+    function scheduleNext(now) { nextPulseAt = now + PULSE_MS + 300 + Math.random() * 1000; }
 
     var lastSize = { w: 0, h: 0 };
     function frame(now) {
