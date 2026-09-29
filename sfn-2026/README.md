@@ -13,7 +13,7 @@ Design source for Biotium's booth landing page at Neuroscience 2026 (SfN), Nov 1
 ## Assets
 
 - `neuron-antibody-hero.webp`, `neuron-antibody-hero-dark.webp`, `minimab-hero.jpg` - hero imagery.
-- `hero-brain.webp` - transparent dot-particle brain for the Quiet Field hero.
+- `hero-brain.webp` - transparent dot-particle brain in Biotium red and blue for the Quiet Field hero.
 - `biotium-choice-icon.svg` - Biotium Choice badge.
 - `tshirts.webp` - show merch photo.
 

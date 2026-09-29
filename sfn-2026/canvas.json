@@ -57,7 +57,7 @@
       "x": 3120,
       "y": -90,
       "w": 420,
-      "text": "QuietFieldVariant: same as Main, but the hero's static neuron photo is replaced with a live ambient canvas — a dot-and-line neuron network, off-white background, quiet/sparse on the left behind the copy and thickening into a dense synapse-like tangle on the right. It isn't interactive (so touches scroll the page normally); instead, every few seconds a single random neuron pulses biotium blue and lights its connections as it fades. On top of the network's dense side sits a static dot-particle brain image (hero-brain.webp, transparent WebP), anchored to the hero's right edge on desktop and centered under the copy on mobile."
+      "text": "QuietFieldVariant: same as Main, but the hero's static neuron photo is replaced with a live ambient canvas — a dot-and-line neuron network, off-white background, quiet/sparse on the left behind the copy and thickening into a dense synapse-like tangle on the right. It isn't interactive (so touches scroll the page normally); instead, every few seconds a single random neuron pulses biotium blue and lights its connections as it fades. On top of the network's dense side sits a static dot-particle brain image in Biotium red and blue (hero-brain.webp, transparent WebP), anchored to the hero's right edge on desktop and centered under the copy on mobile."
     },
     {
       "id": "brainvariant-note",
