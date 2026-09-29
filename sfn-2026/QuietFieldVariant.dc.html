@@ -785,7 +785,7 @@
 <!-- Hero brain -->
 <script>
   /* Hero brain — procedural wireframe brain (two folded hemispheres + cerebellum)
-     drawn as WebGL lines over the neuron field, slowly rotating. Decorative only;
+     drawn as a static WebGL mesh over the neuron field at a fixed three-quarter view. Decorative only;
      the column is hidden if WebGL isn't available. */
   (function initHeroBrain() {
     var canvas = document.getElementById('hero-brain');
@@ -927,7 +927,7 @@
     addMesh(hemi, hemisphere, -1);
     addMesh(icosphere(4), cerebellum, 1);
 
-    // Center the model on its bounding box so it rotates in place
+    // Center the model on its bounding box
     var minY = Infinity, maxY = -Infinity, minX = Infinity, maxX = -Infinity, i;
     for (i = 0; i < pos.length; i += 3) {
       minX = Math.min(minX, pos[i]); maxX = Math.max(maxX, pos[i]);
@@ -1026,33 +1026,10 @@
       gl.drawElements(gl.LINES, lineCount, gl.UNSIGNED_SHORT, 0);
     }
 
+    // Static: drawn once, and again only when the column resizes
     resize();
     if ('ResizeObserver' in window) new ResizeObserver(resize).observe(canvas);
     else window.addEventListener('resize', resize);
-
-    // Software-rendered WebGL can't keep up with ~115k primitives a frame, so those
-    // browsers (and reduced-motion users) get a single static frame instead.
-    var dbg = gl.getExtension('WEBGL_debug_renderer_info');
-    var renderer = dbg ? String(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL)) : '';
-    if (/swiftshader|llvmpipe|software/i.test(renderer)) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    var SPEED = (Math.PI * 2) / 60000; // one full turn per minute
-    var visible = true, last = 0, rafId = 0;
-    function frame(now) {
-      rafId = requestAnimationFrame(frame);
-      if (last && now - last < 32) return; // ~30fps is plenty at this rotation speed
-      if (last) angle += (now - last) * SPEED;
-      last = now;
-      draw();
-    }
-    function start() { if (!rafId && visible && !document.hidden) { last = 0; rafId = requestAnimationFrame(frame); } }
-    function stop() { if (rafId) { cancelAnimationFrame(rafId); rafId = 0; } }
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (entries) { visible = entries[0].isIntersecting; visible ? start() : stop(); }).observe(canvas);
-    }
-    document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
-    start();
   })();
 </script>
 

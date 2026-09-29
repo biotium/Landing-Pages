@@ -5,7 +5,7 @@ Design source for Biotium's booth landing page at Neuroscience 2026 (SfN), Nov 1
 ## Pages
 
 - `Main.dc.html` - the landing page (hero, MiniMab flagship story, portfolio grid, resources, show promo, closing CTA, footer), styled to match the ASCB Cell Bio 2026 landing page's design system.
-- `QuietFieldVariant.dc.html` - hero with an ambient neuron field (quiet on the left, dense on the right) and a rotating wireframe brain overlay.
+- `QuietFieldVariant.dc.html` - hero with an ambient neuron field (quiet on the left, dense on the right) and a static wireframe mesh brain overlay.
 - `BrainVariant.dc.html`, `GlassVariant.dc.html` - earlier hero directions, kept for reference.
 - `ScrollVariant.dc.html` - the scroll-reveal comparison that was promoted into `Main`.
 - `canvas.json` - layout of the artboards on the design canvas.
