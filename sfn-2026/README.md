@@ -1,10 +1,27 @@
 # SfN 2026 (Neuroscience 2026) Landing Page
 
-Design source for Biotium's booth landing page at Neuroscience 2026 (SfN), Nov 14-18, 2026, Booth #1106.
+Design source for Biotium's booth landing page at Neuroscience 2026 (SfN), Nov 14-18, 2026, Washington, DC, Booth #1106. Not live yet.
+
+## Pages
 
 - `Main.dc.html` - the landing page (hero, MiniMab flagship story, portfolio grid, resources, show promo, closing CTA, footer), styled to match the ASCB Cell Bio 2026 landing page's design system.
-- `HeroB.dc.html` - an alternate hero direction ("Built for the Brain's Smallest Structures") kept as a side-by-side comparison, not part of the live page.
-- `canvas.json` - layout for both artboards on the design canvas.
-- `hero-bg.jpg`, `booth_sm.jpg` - reused Biotium show photography.
+- `QuietFieldVariant.dc.html` - hero with an ambient neuron field (quiet on the left, dense on the right) and a rotating wireframe brain overlay.
+- `SynapticMeshVariant.dc.html` - hero with an interactive WebGL (Three.js) neuron mesh hanging off the right edge.
+- `BrainVariant.dc.html`, `GlassVariant.dc.html` - earlier hero directions, kept for reference.
+- `ScrollVariant.dc.html` - the scroll-reveal comparison that was promoted into `Main`.
+- `canvas.json` - layout of the artboards on the design canvas.
 
-Live, editable version: https://claude.ai/code/artifact/0811bd8d-09e3-4316-aca7-3f6592f45047
+## Assets
+
+- `neuron-antibody-hero.webp`, `neuron-antibody-hero-dark.webp`, `minimab-hero.jpg` - hero imagery.
+- `biotium-choice-icon.svg` - Biotium Choice badge.
+- `tshirts.webp` - show merch photo.
+
+## HubSpot
+
+`hubspot/` holds the self-contained file to paste into HubSpot Design Manager. See `hubspot/README.md`.
+
+## Artifacts
+
+- Quiet Field: https://claude.ai/artifact/9jy6gG9UWHWavorH6RLzDK
+- Synaptic Mesh: https://claude.ai/artifact/UqunTJfNjs1yRCJvCMWTeu
