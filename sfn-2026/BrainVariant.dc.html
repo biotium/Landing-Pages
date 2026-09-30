@@ -178,7 +178,9 @@
       .bt-img-pill--center { font-size: 10px !important; padding: 6px 10px !important; letter-spacing: 0.01em !important; }
       .bt-cat-grid { grid-template-columns: minmax(0,1fr) !important; }
       .bt-header-pill { padding: 4px 10px; gap: 5px; }
-      .bt-header-pill-text { white-space: normal; width: max-content; max-width: 170px; font-size: 9.5px; }
+      .bt-header-pill-text { font-size: 9.5px; }
+      /* Scrolled pill on phones: drop the city so it stays on one line */
+      .bt-header-pill-city { display: none; }
       /* Portfolio cards: free up width for the title and sharpen title/body contrast */
       .bt-cat-grid .bt-card { gap: 14px !important; }
       .bt-cat-grid .bt-icon-box { width: 64px !important; height: 64px !important; }
@@ -187,7 +189,7 @@
       .bt-cat-desc { font-size: 13px !important; color: #6b6b6b !important; }
     }
     @media (max-width: 340px) {
-      .bt-header-pill-text { width: auto; max-width: 118px; font-size: 9px; }
+      .bt-header-pill-text { font-size: 9px; }
     }
   </style>
 </helmet>
@@ -225,7 +227,7 @@
             <circle cx="12" cy="9" r="2.7" fill="#ffffff"/>
           </svg>
         </span>
-        <span class="bt-header-pill-text">SFN 2026 &middot; WASHINGTON, DC &middot; NOV 14&ndash;18</span>
+        <span class="bt-header-pill-text">SFN 2026<span class="bt-header-pill-city"> &middot; WASHINGTON, DC</span> &middot; NOV 14&ndash;18</span>
       </span>
     </div>
   </div>

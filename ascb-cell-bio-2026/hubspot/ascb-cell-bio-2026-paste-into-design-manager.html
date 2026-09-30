@@ -150,7 +150,9 @@ label: Biotium – ASCB Cell Bio 2026 Landing Page
       .bt-cat-grid { grid-template-columns: minmax(0,1fr) !important; }
       .bt-header-tagline { display: none !important; }
       .bt-header-pill { padding: 4px 10px; gap: 5px; }
-      .bt-header-pill-text { white-space: normal; width: max-content; max-width: 170px; font-size: 9.5px; }
+      .bt-header-pill-text { font-size: 9.5px; }
+      /* Scrolled pill on phones: drop the city so it stays on one line */
+      .bt-header-pill-city { display: none; }
       /* Portfolio cards: free up width for the title and sharpen title/body contrast */
       .bt-cat-grid .bt-card { gap: 14px !important; }
       .bt-cat-icon { width: 64px !important; height: 64px !important; }
@@ -158,7 +160,7 @@ label: Biotium – ASCB Cell Bio 2026 Landing Page
       .bt-cat-desc { font-size: 13px !important; color: #6b6b6b !important; }
     }
     @media (max-width: 340px) {
-      .bt-header-pill-text { width: auto; max-width: 118px; font-size: 9px; }
+      .bt-header-pill-text { font-size: 9px; }
     }
   </style>
 </head>
@@ -196,7 +198,7 @@ label: Biotium – ASCB Cell Bio 2026 Landing Page
             <circle cx="12" cy="9" r="2.7" fill="#ffffff"/>
           </svg>
         </span>
-        <span class="bt-header-pill-text">ASCB 2026 &middot; SAN DIEGO &middot; DEC 12&ndash;15</span>
+        <span class="bt-header-pill-text">ASCB 2026<span class="bt-header-pill-city"> &middot; SAN DIEGO</span> &middot; DEC 12&ndash;15</span>
       </span>
     </div>
   </div>
