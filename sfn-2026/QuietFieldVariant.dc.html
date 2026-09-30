@@ -653,8 +653,8 @@
   }
 
   /* Hero network — ambient neuron field, quiet on the left (behind the copy),
-     thickening into a dense synapse-like tangle on the right. Every few seconds a
-     single random neuron pulses blue, lighting its connections as it fades. */
+     thickening into a dense synapse-like tangle on the right. Every second or two a
+     random neuron pulses blue with a soft glow, lighting its connections as it fades. */
   (function initHeroNetwork() {
     var canvas = document.getElementById('hero-network');
     if (!canvas) return;
@@ -667,7 +667,7 @@
     }
 
     var nodes = [], edges = [];
-    var pulse = null; // { idx, start }
+    var pulses = []; // [{ idx, start }], a new one can start while the last is still fading
 
     function build(cssW, cssH) {
       nodes = []; edges = [];
@@ -713,9 +713,10 @@
       }
       return -1;
     }
-    var PULSE_MS = 1400;
+    var PULSE_MS = 2000;
     var nextPulseAt = performance.now() + 600;
-    function scheduleNext(now) { nextPulseAt = now + PULSE_MS + 300 + Math.random() * 1000; }
+    // A new pulse every 1.1-1.9s; each lasts 2s, so up to two overlap as one fades
+    function scheduleNext(now) { nextPulseAt = now + 1100 + Math.random() * 800; }
 
     var lastSize = { w: 0, h: 0 };
     function frame(now) {
@@ -739,24 +740,25 @@
         });
       }
 
-      // One pulse at a time: ramp up fast, fade out slowly, then wait a random beat
-      if (!reduced && !pulse && now >= nextPulseAt && nodes.length) {
+      // Pulses ramp up fast, hold at full strength for a beat, then fade out slowly
+      if (!reduced && now >= nextPulseAt && nodes.length) {
         var pick = pickNode();
-        if (pick >= 0) pulse = { idx: pick, start: now };
+        if (pick >= 0 && !pulses.some(function (p) { return p.idx === pick; })) pulses.push({ idx: pick, start: now });
         scheduleNext(now);
       }
-      var pulseG = 0;
-      if (pulse) {
-        var k = (now - pulse.start) / PULSE_MS;
-        if (k >= 1 || !nodes[pulse.idx]) { pulse = null; }
-        else pulseG = k < 0.18 ? k / 0.18 : 1 - (k - 0.18) / 0.82;
-      }
+      var glow = {};
+      pulses = pulses.filter(function (p) {
+        var k = (now - p.start) / PULSE_MS;
+        if (k >= 1 || !nodes[p.idx]) return false;
+        glow[p.idx] = k < 0.15 ? k / 0.15 : k < 0.4 ? 1 : 1 - (k - 0.4) / 0.6;
+        return true;
+      });
 
       edges.forEach(function (e) {
-        var g = pulse && (e.a === pulse.idx || e.b === pulse.idx) ? pulseG * 0.75 : 0;
-        ctx.strokeStyle = g > 0.03 ? lerpColor(INK, BLUE, g * 0.8) : 'rgba(45,45,45,0.07)';
-        ctx.globalAlpha = g > 0.03 ? (0.12 + g * 0.5) : 1;
-        ctx.lineWidth = 1;
+        var g = Math.max(glow[e.a] || 0, glow[e.b] || 0);
+        ctx.strokeStyle = g > 0.03 ? lerpColor(INK, BLUE, Math.min(1, g * 1.4)) : 'rgba(45,45,45,0.07)';
+        ctx.globalAlpha = g > 0.03 ? (0.15 + g * 0.75) : 1;
+        ctx.lineWidth = 1 + g * 0.8;
         ctx.beginPath();
         ctx.moveTo(nodes[e.a].x, nodes[e.a].y);
         ctx.lineTo(nodes[e.b].x, nodes[e.b].y);
@@ -765,10 +767,17 @@
       ctx.globalAlpha = 1;
 
       nodes.forEach(function (n) {
-        var g = pulse && n.idx === pulse.idx ? pulseG : 0;
-        ctx.fillStyle = g > 0.03 ? lerpColor(INK, BLUE, g) : 'rgba(45,45,45,0.32)';
+        var g = glow[n.idx] || 0;
+        if (g > 0.03) {
+          // Soft blue halo behind a pulsing neuron
+          ctx.fillStyle = 'rgba(0,132,255,' + (0.22 * g).toFixed(3) + ')';
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.r + 9 * g, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.fillStyle = g > 0.03 ? lerpColor(INK, BLUE, Math.min(1, g * 1.3)) : 'rgba(45,45,45,0.32)';
         ctx.beginPath();
-        ctx.arc(n.x, n.y, n.r + g * 1.6, 0, Math.PI * 2);
+        ctx.arc(n.x, n.y, n.r + g * 2.2, 0, Math.PI * 2);
         ctx.fill();
       });
 
