@@ -787,9 +787,9 @@
 <!-- Hero brain -->
 <script>
   /* Hero brain: ~10k particles sampled from hero-brain.webp (regenerate with sfn-2026/tools/brain-particles.py).
-     On load they drift in from the neuron field and assemble into the brain. A mouse pushes them aside and
-     they spring back; a click or tap sends a ripple through them. Touch never blocks scrolling, and
-     reduced motion draws the brain still. The loop only runs while something is moving. */
+     On load they drift in from the neuron field and assemble into the brain. A mouse, or a finger after a short
+     hold, pushes them aside and they spring back; a click or tap sends a ripple through them. A plain
+     swipe still scrolls the page, and reduced motion draws the brain still. The loop only runs while something is moving. */
   (function initHeroBrain() {
     var canvas = document.getElementById('hero-brain');
     if (!canvas || !canvas.getContext) return;
@@ -903,7 +903,7 @@
         return;
       }
 
-      var R = 70 / scale, R2 = R * R, PUSH = 3.2 / Math.max(scale, 0.35);
+      var R = (dragging ? 90 : 70) / scale, R2 = R * R, PUSH = 3.2 / Math.max(scale, 0.35);
       var energy = 0;
       for (var r = ripples.length - 1; r >= 0; r--) {
         if ((now - ripples[r].t0) * RIPPLE_SPEED > maxRipple) ripples.splice(r, 1);
@@ -962,6 +962,7 @@
     window.addEventListener('pointerdown', function (e) { down = { x: e.clientX, y: e.clientY, t: performance.now() }; }, { passive: true });
     window.addEventListener('pointerup', function (e) {
       if (!down || !introDone) return;
+      if (dragging) { down = null; return; }
       var moved = Math.abs(e.clientX - down.x) + Math.abs(e.clientY - down.y);
       var quick = performance.now() - down.t < 400;
       down = null;
@@ -972,6 +973,48 @@
       if (ripples.length > 3) ripples.shift();
       wake();
     }, { passive: true });
+
+    // Touch: hold still on the brain for a moment, then drag to push the particles around.
+    // Scrolling is only blocked while a hold-drag is active, so a normal swipe still scrolls the page.
+    var HOLD_MS = 280, holdTimer = 0, holdStart = null, dragging = false;
+    function firstTouch(e) { var t = e.touches[0]; return t ? { clientX: t.clientX, clientY: t.clientY } : null; }
+    function onBrain(p) { return p && p.x >= 0 && p.y >= 0 && p.x <= BRAIN_W && p.y <= BRAIN_H; }
+    window.addEventListener('touchstart', function (e) {
+      clearTimeout(holdTimer); holdStart = null; dragging = false;
+      if (e.touches.length !== 1 || !introDone) return;
+      var t = firstTouch(e), p = toBrain(t);
+      if (!onBrain(p)) return;
+      holdStart = t;
+      holdTimer = setTimeout(function () {
+        // Hold landed: a small ripple confirms it, then the finger pushes particles
+        dragging = true; pointer = p;
+        ripples.push({ x: p.x, y: p.y, t0: performance.now() });
+        if (ripples.length > 3) ripples.shift();
+        wake();
+      }, HOLD_MS);
+    }, { passive: true });
+    window.addEventListener('touchmove', function (e) {
+      var t = firstTouch(e);
+      if (!t) return;
+      if (!dragging) {
+        // Moved before the hold landed, so it's a scroll: let it through
+        if (holdStart && Math.abs(t.clientX - holdStart.clientX) + Math.abs(t.clientY - holdStart.clientY) > 10) {
+          clearTimeout(holdTimer); holdStart = null;
+        }
+        return;
+      }
+      if (e.cancelable) e.preventDefault();
+      pointer = toBrain(t);
+      wake();
+    }, { passive: false });
+    function endDrag() {
+      clearTimeout(holdTimer); holdStart = null;
+      if (dragging) { dragging = false; pointer = null; wake(); }
+    }
+    window.addEventListener('touchend', endDrag, { passive: true });
+    window.addEventListener('touchcancel', endDrag, { passive: true });
+    // Keep the long-press menu from popping up over a hold-drag
+    window.addEventListener('contextmenu', function (e) { if (holdStart || dragging) e.preventDefault(); });
 
     // Start the assemble once the column has a size
     (function startWhenSized() {
