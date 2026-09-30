@@ -25,6 +25,10 @@
     .bt-kicker { display: inline-flex; align-items: center; flex: none; background: #E9F3FF; color: #0062be; font-size: 12.5px; font-weight: 800; padding: 6px 14px; border-radius: 999px; }
     .bt-card { position: relative; transition: box-shadow 0.15s ease, transform 0.15s ease; text-decoration: none; display: block; }
     .bt-card:hover { box-shadow: 0 12px 28px rgba(17,17,17,0.08); transform: translateY(-2px); }
+    /* Show merch photo: smooth, slight scale on hover (pointer devices only) */
+    .bt-tshirts { transition: transform 0.45s cubic-bezier(.16,.8,.24,1); }
+    @media (hover: hover) { .bt-tshirts:hover { transform: scale(1.04); } }
+    @media (prefers-reduced-motion: reduce) { .bt-tshirts { transition: none; } .bt-tshirts:hover { transform: none; } }
     @property --bt-beam-a { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
     .bt-card::before {
       content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 2px;
@@ -353,7 +357,7 @@
 <div style="background:#ffffff;">
   <div class="bt-wrap" style="padding-top:56px; padding-bottom:56px;">
     <div style="display:flex; align-items:center; justify-content:center; gap:32px; flex-wrap:wrap;">
-      <img src="tshirts.webp" alt="Biotium spectra and TrueBlack conference t-shirts" style="width:320px; max-width:100%; height:auto; flex:none; display:block;">
+      <img src="tshirts.webp" alt="Biotium spectra and TrueBlack conference t-shirts" class="bt-tshirts" style="width:320px; max-width:100%; height:auto; flex:none; display:block;">
       <div style="flex:1 1 260px; min-width:220px;">
         <div class="bt-kicker-row" style="margin-bottom:8px;">
           <span class="bt-kicker">Win cool merch</span>
