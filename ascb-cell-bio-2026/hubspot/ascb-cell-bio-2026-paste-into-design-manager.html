@@ -36,6 +36,7 @@ label: Biotium – ASCB Cell Bio 2026 Landing Page
     /* Come say hi: floating team faces (placeholders until headshots are in). They pop in one by one
        when the section scrolls into view, then drift gently. Below 1180px they gather in a row just above the copy. */
     .bt-say-hi { position: relative; overflow: hidden; }
+    .bt-say-hi > .bt-wrap { padding-top: 104px !important; padding-bottom: 112px !important; }
     .bt-team-float { position: absolute; inset: 0; pointer-events: none; }
     .bt-face { position: absolute; left: calc(50% + var(--x)); top: var(--y); width: var(--s); height: var(--s); margin: calc(var(--s) / -2) 0 0 calc(var(--s) / -2); animation: btFaceFloat var(--f) ease-in-out infinite alternate; }
     .bt-face-in {
@@ -48,10 +49,10 @@ label: Biotium – ASCB Cell Bio 2026 Landing Page
     .bt-face-in svg, .bt-face-in img { width: 100%; height: 100%; display: block; object-fit: cover; }
     @keyframes btFaceFloat { from { transform: translateY(-6px); } to { transform: translateY(6px); } }
     @media (max-width: 1180px) {
-      .bt-team-float { position: relative; inset: auto; display: flex; justify-content: center; padding-top: 44px; }
+      .bt-team-float { position: relative; inset: auto; display: flex; justify-content: center; padding-top: 64px; }
       .bt-face { position: relative; left: auto; top: auto; width: 56px; height: 56px; margin: 0 -5px; }
       .bt-face:nth-child(n+7) { display: none; }
-      .bt-say-hi > .bt-wrap { padding-top: 18px !important; }
+      .bt-say-hi > .bt-wrap { padding-top: 18px !important; padding-bottom: 88px !important; }
     }
     @media (max-width: 400px) { .bt-face { width: 48px; height: 48px; } }
     @media (prefers-reduced-motion: reduce) {
