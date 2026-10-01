@@ -329,6 +329,28 @@ label: Biotium – SfN 2026 Landing Page
         <style>wistia-player[media-id='lztnsxqbfz']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/lztnsxqbfz/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
         <wistia-player media-id="lztnsxqbfz" aspect="1.7777777777777777"></wistia-player>
         <div class="bt-img-pill bt-img-pill--center">Mouse Brain stained with GFAP and vGLUT1 Nanobody - LifeCanvas Tech</div>
+        <script>
+          /* Caption pill: when the caption wraps, shrink the pill to its widest line so it hugs the text */
+          (function () {
+            var pills = document.querySelectorAll('.bt-img-pill--center');
+            if (!pills.length || !document.createRange) return;
+            function fit() {
+              pills.forEach(function (p) {
+                p.style.width = '';
+                var r = document.createRange(); r.selectNodeContents(p);
+                var w = 0;
+                Array.prototype.forEach.call(r.getClientRects(), function (q) { w = Math.max(w, q.width); });
+                if (!w) return;
+                var cs = getComputedStyle(p);
+                var extra = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight) + parseFloat(cs.borderLeftWidth) + parseFloat(cs.borderRightWidth);
+                p.style.width = Math.ceil(w + extra + 1) + 'px';
+              });
+            }
+            fit();
+            window.addEventListener('resize', fit);
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+          })();
+        </script>
       </div>
     </div>
   </div>
