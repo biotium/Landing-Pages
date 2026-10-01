@@ -30,6 +30,31 @@
     .bt-tshirts { transition: transform 0.45s cubic-bezier(.16,.8,.24,1); }
     @media (hover: hover) { .bt-tshirts:hover { transform: scale(1.04); } }
     @media (prefers-reduced-motion: reduce) { .bt-tshirts { transition: none; } .bt-tshirts:hover { transform: none; } }
+    /* Come say hi: floating team faces (placeholders until headshots are in). They pop in one by one
+       when the section scrolls into view, then drift gently. Below 1180px they gather in a row above the copy. */
+    .bt-say-hi { position: relative; overflow: hidden; }
+    .bt-team-float { position: absolute; inset: 0; pointer-events: none; }
+    .bt-face { position: absolute; left: var(--x); top: var(--y); width: var(--s); height: var(--s); margin: calc(var(--s) / -2) 0 0 calc(var(--s) / -2); animation: btFaceFloat var(--f) ease-in-out infinite alternate; }
+    .bt-face-in {
+      width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: var(--bg); color: var(--fg);
+      border: 3px solid #ffffff; box-shadow: 0 8px 22px rgba(20,20,20,0.12);
+      opacity: 0; transform: scale(0.6) translateY(14px);
+      transition: opacity 0.6s ease var(--d), transform 0.75s cubic-bezier(.2,1.4,.4,1) var(--d);
+    }
+    .bt-team-float.is-in .bt-face-in { opacity: 1; transform: none; }
+    .bt-face-in svg, .bt-face-in img { width: 100%; height: 100%; display: block; object-fit: cover; }
+    @keyframes btFaceFloat { from { transform: translateY(-6px); } to { transform: translateY(6px); } }
+    @media (max-width: 1180px) {
+      .bt-team-float { position: relative; inset: auto; display: flex; justify-content: center; padding-top: 52px; }
+      .bt-face { position: relative; left: auto; top: auto; width: 56px; height: 56px; margin: 0 -5px; }
+      .bt-face:nth-child(n+7) { display: none; }
+      .bt-say-hi > .bt-wrap { padding-top: 28px !important; }
+    }
+    @media (max-width: 400px) { .bt-face { width: 48px; height: 48px; } }
+    @media (prefers-reduced-motion: reduce) {
+      .bt-face { animation: none; }
+      .bt-face-in { opacity: 1; transform: none; transition: none; }
+    }
     @property --bt-beam-a { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
     .bt-card::before {
       content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 2px;
@@ -519,7 +544,30 @@
 </div>
 
 <!-- Come say hi -->
-<div id="come-say-hi" style="background:#F7F7F7;">
+<div id="come-say-hi" class="bt-say-hi" style="background:#F7F7F7;">
+  <!-- Team faces: placeholders. Swap each <svg> for <img src="..." alt="Name"> when headshots are ready -->
+  <div class="bt-team-float" aria-hidden="true">
+    <div class="bt-face" style="--x:7%; --y:30%; --s:64px; --f:5.2s; --d:0ms; --bg:#E9F3FF; --fg:#8DBDF0;"><div class="bt-face-in"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="25" r="11" fill="currentColor"/><path d="M11 62c2-13 10-20 21-20s19 7 21 20z" fill="currentColor"/></svg></div></div>
+    <div class="bt-face" style="--x:86%; --y:27%; --s:80px; --f:6.1s; --d:90ms; --bg:#EBF7ED; --fg:#8FCF99;"><div class="bt-face-in"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="25" r="11" fill="currentColor"/><path d="M11 62c2-13 10-20 21-20s19 7 21 20z" fill="currentColor"/></svg></div></div>
+    <div class="bt-face" style="--x:16%; --y:70%; --s:88px; --f:6.8s; --d:180ms; --bg:#FDECEC; --fg:#F0A2A5;"><div class="bt-face-in"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="25" r="11" fill="currentColor"/><path d="M11 62c2-13 10-20 21-20s19 7 21 20z" fill="currentColor"/></svg></div></div>
+    <div class="bt-face" style="--x:94%; --y:62%; --s:56px; --f:5.6s; --d:270ms; --bg:#EEF0F3; --fg:#B5BCC6;"><div class="bt-face-in"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="25" r="11" fill="currentColor"/><path d="M11 62c2-13 10-20 21-20s19 7 21 20z" fill="currentColor"/></svg></div></div>
+    <div class="bt-face" style="--x:20%; --y:22%; --s:50px; --f:4.9s; --d:360ms; --bg:#E9F3FF; --fg:#8DBDF0;"><div class="bt-face-in"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="25" r="11" fill="currentColor"/><path d="M11 62c2-13 10-20 21-20s19 7 21 20z" fill="currentColor"/></svg></div></div>
+    <div class="bt-face" style="--x:82%; --y:78%; --s:62px; --f:6.4s; --d:450ms; --bg:#EBF7ED; --fg:#8FCF99;"><div class="bt-face-in"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="25" r="11" fill="currentColor"/><path d="M11 62c2-13 10-20 21-20s19 7 21 20z" fill="currentColor"/></svg></div></div>
+    <div class="bt-face" style="--x:5%; --y:80%; --s:46px; --f:5.9s; --d:540ms; --bg:#FDECEC; --fg:#F0A2A5;"><div class="bt-face-in"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="25" r="11" fill="currentColor"/><path d="M11 62c2-13 10-20 21-20s19 7 21 20z" fill="currentColor"/></svg></div></div>
+    <div class="bt-face" style="--x:95%; --y:18%; --s:44px; --f:5.3s; --d:630ms; --bg:#EEF0F3; --fg:#B5BCC6;"><div class="bt-face-in"><svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="25" r="11" fill="currentColor"/><path d="M11 62c2-13 10-20 21-20s19 7 21 20z" fill="currentColor"/></svg></div></div>
+  </div>
+  <script>
+    /* Reveal the team faces once the section scrolls into view */
+    (function () {
+      var el = document.querySelector('.bt-team-float');
+      if (!el) return;
+      if (!('IntersectionObserver' in window)) { el.classList.add('is-in'); return; }
+      var io = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { el.classList.add('is-in'); io.disconnect(); }
+      }, { threshold: 0.35 });
+      io.observe(el);
+    })();
+  </script>
   <div class="reveal bt-wrap" style="transition-delay:0ms; padding-top:72px; padding-bottom:80px; text-align:center;">
     <div style="max-width:620px; margin:0 auto;">
       <h2 style="margin:0 0 16px 0; font-size:30px; line-height:1.25; font-weight:800; color:#2d2d2d;">Come say hi. Bring your questions.</h2>
