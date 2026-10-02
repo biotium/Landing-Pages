@@ -14,7 +14,7 @@ Each event has its own folder:
 - `sfn-2026/`: Neuroscience 2026 (SfN), Washington, DC, Nov 14-18, Booth 1106. Not live yet.
   - `Main.dc.html` is the main page. `*Variant.dc.html` files are alternate hero directions.
   - `canvas.json` lays out the artboards on the design canvas. When you add, remove or rename a variant, update its artboard and note there too.
-  - `hubspot/` holds the single copy-paste file for HubSpot Design Manager.
+  - `hubspot/` holds the single copy-paste file for HubSpot Design Manager, built from `QuietFieldVariant.dc.html` by `tools/build-hubspot.py`. Rebuild it after changing that page.
 - `ascb-cell-bio-2026/`: ASCB Cell Bio 2026, San Diego, Dec 12-15. `design/` holds the source, `hubspot/` holds the HubSpot file.
 
 Pages are self-contained HTML: inline CSS and JS, Mulish from Google Fonts, Biotium blue `#0084FF` (links `#087eec`), green `#39B54A`, red `#ED1C24`. Nothing here is served from GitHub. Live pages are pasted into HubSpot Design Manager by hand.

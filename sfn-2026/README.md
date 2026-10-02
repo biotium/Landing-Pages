@@ -19,7 +19,7 @@ Design source for Biotium's booth landing page at Neuroscience 2026 (SfN), Nov 1
 
 ## HubSpot
 
-`hubspot/` holds the self-contained file to paste into HubSpot Design Manager. See `hubspot/README.md`.
+`hubspot/` holds the self-contained file to paste into HubSpot Design Manager, built from `QuietFieldVariant.dc.html` with `tools/build-hubspot.py`. See `hubspot/README.md`.
 
 ## Artifacts
 
