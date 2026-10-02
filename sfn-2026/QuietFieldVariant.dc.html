@@ -171,18 +171,18 @@
     /* Hero network canvas — ambient neuron field, quiet on the left, dense on the right; not interactive, so touches scroll the page normally */
     #hero-network { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
 
-    /* Hero brain — decorative overlay on top of the neuron field, anchored to the hero's right edge below the fixed header; on mobile it drops into flow, centered under the hero copy */
+    /* Hero brain — decorative overlay on top of the neuron field, anchored to the hero's right and bottom edges so it rises out of the next section; on mobile it drops into flow, centered under the hero copy and still sitting on the bottom edge */
     .bt-hero-brain-col { position: absolute; top: 59px; right: 0; bottom: 0; width: 50%; max-width: 760px; pointer-events: none; }
     #hero-brain { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
     /* On touch screens the brain breathes slightly between taps (compositor-only, no redraw) */
     @keyframes btBrainBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.015); } }
-    @media (hover: none) { html:not(.reduced-motion) #hero-brain { animation: btBrainBreathe 7s ease-in-out infinite; } }
+    @media (hover: none) { html:not(.reduced-motion) #hero-brain { transform-origin: 50% 100%; animation: btBrainBreathe 7s ease-in-out infinite; } }
     @media (max-width: 1180px) { .bt-hero-brain-col { width: 42%; } }
     @media (max-width: 900px) {
       .bt-hero-brain-col {
         position: relative; top: auto; right: auto; bottom: auto;
         width: 100%; max-width: 100%; height: 260px;
-        margin-top: -64px; margin-bottom: 32px;
+        margin-top: -64px; margin-bottom: 0;
       }
     }
 
@@ -852,7 +852,7 @@
     }
     buckets.forEach(function (bk) { bk.alpha /= bk.idx.length; bk.idx = Int32Array.from(bk.idx); });
 
-    // Layout: fit the brain inside the column like object-fit: contain
+    // Layout: fit the brain inside the column (contain), bottom-aligned
     var cw = 0, ch = 0, dpr = 1, scale = 1, ox = 0, oy = 0, dotR = 1, fadeNow = reduced ? 1 : 0;
     function resize() {
       var r = canvas.getBoundingClientRect();
@@ -861,7 +861,9 @@
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       canvas.width = Math.round(cw * dpr); canvas.height = Math.round(ch * dpr);
       scale = Math.min(cw / BRAIN_W, ch / BRAIN_H);
-      ox = (cw - BRAIN_W * scale) / 2; oy = (ch - BRAIN_H * scale) / 2;
+      // Centered across, but anchored to the bottom so the brainstem sits on the hero's bottom edge
+      // (the image has 16px of padding below the stem)
+      ox = (cw - BRAIN_W * scale) / 2; oy = ch - (BRAIN_H - 16) * scale;
       dotR = Math.max(2.7 * scale, 0.8);
       draw(fadeNow);
     }
